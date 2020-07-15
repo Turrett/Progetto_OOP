@@ -1,0 +1,12 @@
+package main;
+
+import java.util.Date;
+
+abstract class Insertion {
+
+	Integer code;
+	Integer numberOfItem;
+	Date expiration;
+	Date insertionDate;
+	User owner;
+}

@@ -1,0 +1,15 @@
+package main;
+
+public class Insertion {
+
+	Integer code;
+	Integer numberOfItem;
+	String itemName;
+		
+	User owner;
+	
+	
+	
+
+	
+}
