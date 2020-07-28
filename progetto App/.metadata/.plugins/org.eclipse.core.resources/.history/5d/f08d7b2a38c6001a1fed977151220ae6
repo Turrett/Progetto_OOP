@@ -1,7 +1,0 @@
-package FoodTypes;
-
-import main.App;
-
-public class Dish extends Insertion {
-
-}
