@@ -12,18 +12,18 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_login);
 
-        findViewById(R.id.sign_in_button).setOnClickListener(this);
-    }
+    findViewById(R.id.sign_in_button).setOnClickListener(this);
+}
 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
 
             case R.id.sign_in_button:
-            startActivity(new Intent(this,SignUp.class));
+                startActivity(new Intent(this,SignUp.class));
                 break;
         }
 

@@ -26,29 +26,39 @@
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
         <EditText
-            android:id="@+id/editTextTextEmailAddress3"
+            android:id="@+id/edit_text_registration_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textEmailAddress" />
 
         <EditText
-            android:id="@+id/editTextTextPassword"
+            android:id="@+id/edit_text_register_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPassword" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/button_sign_up"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="sign up" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/button_go_to_sign_in"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="go to sign in " />
+
+
     </LinearLayout>
+
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:id="@+id/progressbar_sign_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="gone" />
 </androidx.constraintlayout.widget.ConstraintLayout>

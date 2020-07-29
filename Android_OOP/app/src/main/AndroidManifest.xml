@@ -12,9 +12,6 @@
         <activity android:name=".ui.SignUp"></activity>
         <activity android:name=".ui.Login" />
         <activity
-            android:name=".ui.login.LoginActivity"
-            android:label="@string/title_activity_login" />
-        <activity
             android:name=".MainActivity"
             android:label="No Waste.">
             <intent-filter>
