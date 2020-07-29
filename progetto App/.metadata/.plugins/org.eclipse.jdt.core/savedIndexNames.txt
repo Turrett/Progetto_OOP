@@ -1,4 +1,0 @@
-INDEX VERSION 1.131+D:\github code\Progetto_OOP\progetto App\.metadata\.plugins\org.eclipse.jdt.core
-2935849019.index
-1671692264.index
-4062690752.index
