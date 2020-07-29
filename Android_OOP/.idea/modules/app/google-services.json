@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "429186453616",
+    "firebase_url": "https://fir-no-waste-14e09.firebaseio.com",
+    "project_id": "fir-no-waste-14e09",
+    "storage_bucket": "fir-no-waste-14e09.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:429186453616:android:cf60c00f3963096446a4b5",
+        "android_client_info": {
+          "package_name": "com.example.progettooop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "429186453616-8h0lodm775sbfri83dv9m172e7sptarq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.progettooop",
+            "certificate_hash": "84a53f2ef0072ec613762394a2538b9b51e6ac1d"
+          }
+        },
+        {
+          "client_id": "429186453616-agbqf5r0duslajm0b2hpudo82s1pbnhv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXpQd9ZHxgPc5g-OMS8mkspCq9LnzjlXI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "429186453616-agbqf5r0duslajm0b2hpudo82s1pbnhv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
