@@ -1,31 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#03DAC5</color>
-    <color name="colorPrimaryDark">#06C1AF</color>
-    <color name="colorAccent">#CE11A0ED</color>
+    <color name="color1">#00e0e0</color>
+    <color name="color2">#00cca3</color>
+    <color name="color3">#c14953</color>
+    <color name="color4">#3db88f</color>
+    <color name="color5">#e8aa14</color>
+    <color name="color6">#769fb6</color>
+    <color name="color7">#255957</color>
+    <color name="color8">#48ada9</color>
+    <color name="color9">#f18f01</color>
+    <color name="color10">#201e1f</color> <!-- font-->
+    <color name="color11">#9b5094</color>
+    <color name="color12">#fcaa67</color>
+    <color name="color13">#ff934f</color>
 </resources>
-
-
-<!--
-<resources>
-<color name="colorPrimary">#6200EE</color>
-<color name="colorPrimaryDark">#3700B3</color>
-<color name="colorAccent">#03DAC5</color>
-</resources>
--->
-
-<!--
-<resources>
-    <color name="colorPrimary">#03DAC5</color>
-    <color name="colorPrimaryDark">#03DAC5</color>
-    <color name="colorAccent">#CE11A0ED</color>
-</resources>
--->
-
-<!--
-<resources>
-<color name="colorPrimary">#03DAC5</color>
-<color name="colorPrimaryDark">#06C1AF</color>
-<color name="colorAccent">#CE11A0ED</color>
-</resources>
--->
