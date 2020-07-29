@@ -2,10 +2,7 @@ package com.example.progettooop;
 
 import android.os.Bundle;
 <<<<<<< HEAD
-<<<<<<< HEAD
 import android.view.View;
-=======
->>>>>>> parent of aad5a5a... navigazione
 =======
 >>>>>>> parent of aad5a5a... navigazione
 
@@ -18,11 +15,8 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 <<<<<<< HEAD
-<<<<<<< HEAD
 
 
-=======
->>>>>>> parent of aad5a5a... navigazione
 =======
 >>>>>>> parent of aad5a5a... navigazione
 
