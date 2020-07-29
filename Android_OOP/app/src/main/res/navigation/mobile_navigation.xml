@@ -5,62 +5,29 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/navigation_home">
 
-    <!-- home -->
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.example.progettooop.ui.home.HomeFragment"
-        android:label="Home"
+        android:label="@string/title_home"
         tools:layout="@layout/fragment_home" >
-        <!--<action
-            android:id="@+id/homesearch"
-            app:destination="@id/navigation_search" />-->
         <action
-            android:id="@+id/homeaddadv"
-            app:destination="@id/navigation_addadv" />
+            android:id="@+id/action_navigation_home_to_navigation_dashboard"
+            app:destination="@id/navigation_dashboard" />
     </fragment>
 
-    <!-- dashboard -->
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.example.progettooop.ui.dashboard.DashboardFragment"
-        android:label="Dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_navigation_dashboard_to_navigation_notifications"
+            app:destination="@id/navigation_notifications" />
+    </fragment>
 
-    <!-- notifiche -->
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.example.progettooop.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
-
-    <!-- ricerca -->
-    <fragment
-        android:id="@+id/navigation_search"
-        android:name="com.example.progettooop.ui.search.SearchFragment"
-        android:label="Ricerca"
-        tools:layout="@layout/fragment_search" >
-       <!-- <action
-            android:id="@+id/searchhome"
-            app:destination="@id/navigation_home" />-->
-    </fragment>
-
-    <!-- User -->
-    <fragment
-        android:id="@+id/navigation_user"
-        android:name="com.example.progettooop.ui.user.UserFragment"
-        android:label="Area personale"
-        tools:layout="@layout/fragment_user" />
-
-    <!-- inserimento nuovo adv -->
-    <fragment
-        android:id="@+id/navigation_addadv"
-        android:name="com.example.progettooop.ui.addadv.AddAdvFragment"
-        android:label="Inserimento nuovo annuncio"
-        tools:layout="@layout/fragment_addadv" >
-        <action
-            android:id="@+id/addadvhome"
-            app:destination="@id/navigation_home" />
-    </fragment>
-
-
 </navigation>
