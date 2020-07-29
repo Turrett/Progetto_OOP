@@ -2,7 +2,7 @@ package com.example.progettooop;
 
 import android.content.Intent;
 import android.os.Bundle;
-import com.example.progettooop.ui.home.HomeViewModel;
+//import com.example.progettooop.ui.home.HomeViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
