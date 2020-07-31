@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 
 public class SignUp extends AppCompatActivity implements View.OnClickListener {
@@ -106,8 +107,12 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                             updateUI(null);
                         }
                         else {
-                            Toast.makeText(getApplicationContext(),"User not Registered Correctly" ,Toast.LENGTH_SHORT).show();
-                            updateUI(null);
+                            if (task.getException() instanceof FirebaseAuthUserCollisionException)
+                                Toast.makeText(getApplicationContext(),"User already exist" ,Toast.LENGTH_SHORT).show();
+                            else {
+                                Toast.makeText(getApplicationContext(), "User not Registered Correctly", Toast.LENGTH_SHORT).show();
+                                updateUI(null);
+                            }
                         }
 
                     }
