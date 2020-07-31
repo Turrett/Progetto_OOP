@@ -19,5 +19,6 @@
     <string name="text_dashboard_1">Annunci attivi</string>
     <string name="text_dashboard_2">Annunci </string>
     <string name="active_adv">active adv</string>
+    <string name="go_to_sign_in">go to sign in</string>
 
 </resources>
