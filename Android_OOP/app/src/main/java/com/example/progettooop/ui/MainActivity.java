@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         EditTextPassword = (EditText) findViewById(R.id.edit_text_login_password);
         EditTextEmail = (EditText) findViewById(R.id.edit_text_login_mail);
+        progressBar =(ProgressBar) findViewById(R.id.progressbar_log_in);
         mAuth = FirebaseAuth.getInstance();
     }
 
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
     }
+
 
     private void LogUser() {
 
@@ -77,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         //password cannot be empty
 
+        progressBar.setVisibility(View.VISIBLE);
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
 
                     @Override
@@ -84,6 +87,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         if (task.isSuccessful()) {
                             Intent intent =new Intent(MainActivity.this,mainDashboard.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            progressBar.setVisibility(View.GONE);
                             startActivity(intent);
 
                         } else {

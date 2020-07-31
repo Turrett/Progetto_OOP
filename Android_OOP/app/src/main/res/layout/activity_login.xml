@@ -7,10 +7,12 @@
     tools:context=".ui.MainActivity">
 
     <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="729dp"
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
+        android:background="@color/color2"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,17 +30,22 @@
             style="@style/Base.Widget.MaterialComponents.TextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:contentDescription="insert account mail"
             android:ems="10"
             android:inputType="textEmailAddress"
             android:text="email" />
 
         <EditText
             android:id="@+id/edit_text_login_password"
+            style="@style/Base.Widget.MaterialComponents.TextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:contentDescription="insert account password "
             android:ems="10"
             android:inputType="textPassword"
             android:text="password" />
+
+        r
 
         <Button
             android:id="@+id/login_button"
@@ -51,14 +58,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Sign in" />
+
     </LinearLayout>
 
-    <androidx.core.widget.ContentLoadingProgressBar
+    <ProgressBar
         android:id="@+id/progressbar_log_in"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:visibility="gone" />
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

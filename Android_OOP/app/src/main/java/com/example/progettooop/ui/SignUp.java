@@ -111,6 +111,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                                 updateUI(null);
                             }
                         }
+                progressBar.setVisibility(View.GONE);
 
                     }
                 });
