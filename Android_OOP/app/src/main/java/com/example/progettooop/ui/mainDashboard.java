@@ -12,8 +12,8 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-public class mainDashboard extends AppCompatActivity implements View.OnClickListener {
 
+public class mainDashboard extends AppCompatActivity implements View.OnClickListener {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,8 +29,10 @@ public class mainDashboard extends AppCompatActivity implements View.OnClickList
         NavigationUI.setupWithNavController(navView, navController);
     }
 
+
     @Override
     public void onClick(View view) {
 
     }
 }
+
