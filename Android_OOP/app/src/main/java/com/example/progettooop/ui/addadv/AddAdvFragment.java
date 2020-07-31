@@ -7,10 +7,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.progettooop.R;
+import com.example.progettooop.ui.dashboard.DashboardViewModel;
 import com.example.progettooop.ui.home.HomeFragment;
 import com.example.progettooop.ui.user.UserViewModel;
 
@@ -19,8 +21,7 @@ public class AddAdvFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        addadvViewModel =
-                ViewModelProviders.of(this).get(AddAdvViewModel.class);
+        addadvViewModel = new ViewModelProvider(this).get(AddAdvViewModel.class);;
         View root = inflater.inflate(R.layout.fragment_addadv, container, false);
         return root;
     }
