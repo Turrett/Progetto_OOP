@@ -11,56 +11,54 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModel;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager.widget.ViewPager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.lifecycle.ViewModelProvider;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.fragment.app.FragmentManager;
+import androidx.viewpager2.widget.ViewPager2;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
+import com.example.progettooop.ui.dashboard.*;
 
 import com.example.progettooop.R;
+import com.example.progettooop.ui.home.HomeViewModel;
 import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 public class DashboardFragment extends Fragment {
 
-    private static final String ARG_SECTION_NUMBER = "section_number";
+    // When requested, this adapter returns a DemoObjectFragment,
+    // representing an object in the collection.
+    DashAdapter dashadapter;
+    ViewPager2 viewPager;
+    DashboardViewModel dashviewodel;
 
-    private DashboardViewModel dashboardViewModel;
-
-    public static DashboardFragment newInstance(int index) {
-        DashboardFragment fragment = new DashboardFragment();
-        Bundle bundle = new Bundle();
-        bundle.putInt(ARG_SECTION_NUMBER, index);
-        fragment.setArguments(bundle);
-        return fragment;
-    }
-
+    @Nullable
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        dashboardViewModel = new ViewModelProvider(this).get(DashboardViewModel.class);
-        int index = 1;
-        if (getArguments() != null) {
-            index = getArguments().getInt(ARG_SECTION_NUMBER);
-        }
-        dashboardViewModel.setIndex(index);
-
-
-    }
-
-
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    //crea la view
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        dashviewodel = new ViewModelProvider(this).get(DashboardViewModel.class);
         View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
-        /*final TextView textView = root.findViewById(R.id.text_dashboard);
-        dashboardViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });*/
-
         return root;
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        dashadapter = new DashAdapter(this);
+        viewPager = view.findViewById(R.id.pager);
+        viewPager.setAdapter(dashadapter);
+
+       TabLayout tabLayout = view.findViewById(R.id.tab_layout);
+       /* tabs.setupWithViewPager(viewPager);
+        tabs.getTabAt(0).setIcon(R.drawable.icon1);
+        tabs.getTabAt(1).setIcon(R.drawable.icon2);
+        tabs.getTabAt(0).setText(getResources().getText(R.string.tab1));
+        tabs.getTabAt(1).setText(getResources().getText(R.string.tab2));*/
+
+
+        new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> tab.setText( "Object "+ (position + 1))).attach();
+    }
 }
+
+
 
