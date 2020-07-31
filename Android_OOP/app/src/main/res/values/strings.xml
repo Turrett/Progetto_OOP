@@ -16,5 +16,8 @@
     <string name="login_failed">"Login failed"</string>
     <string name="tab_text_1">Sezione uno - annunci pubblicati</string>
     <string name="tab_text_2">Sezione due - preferiti</string>
+    <string name="text_dashboard_1">Annunci attivi</string>
+    <string name="text_dashboard_2">Annunci </string>
+    <string name="active_adv">active adv</string>
 
 </resources>
