@@ -102,11 +102,11 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(getApplicationContext(),"success",Toast.LENGTH_SHORT);
+                            Toast.makeText(getApplicationContext(),"success",Toast.LENGTH_SHORT).show();
                             updateUI(null);
                         }
                         else {
-                            Toast.makeText(getApplicationContext(),"User not Registered Correctly" ,Toast.LENGTH_SHORT);
+                            Toast.makeText(getApplicationContext(),"User not Registered Correctly" ,Toast.LENGTH_SHORT).show();
                             updateUI(null);
                         }
 
