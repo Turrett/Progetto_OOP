@@ -12,13 +12,13 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.progettooop.MainActivity;
 import com.example.progettooop.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.internal.InternalTokenProvider;
 
 public class SignUp extends AppCompatActivity implements View.OnClickListener {
  private EditText EditTextPassword,EditTextEmail;
@@ -47,7 +47,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                 registerUser();
                 break;
             case R.id.button_go_to_sign_in:
-                startActivity(new Intent(this,Login.class));
+                startActivity(new Intent(this, MainActivity.class));
                 break;
         }
     }

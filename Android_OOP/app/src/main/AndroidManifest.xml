@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.SignUp"></activity>
-        <activity android:name=".ui.Login" />
+        <activity android:name=".ui.mainDashboard" />
         <activity
             android:name=".MainActivity"
             android:label="No Waste.">
