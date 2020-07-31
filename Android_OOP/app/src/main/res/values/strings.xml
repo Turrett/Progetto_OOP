@@ -20,5 +20,7 @@
     <string name="text_dashboard_2">Annunci </string>
     <string name="active_adv">active adv</string>
     <string name="go_to_sign_in">go to sign in</string>
+    <string name="tbd">tbd</string>
+    <string name="name">Name</string>
 
 </resources>
