@@ -4,8 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FF9800"
-    android:backgroundTint="#03A9F4"
     tools:context=".ui.user.ModifyUserInfo">
 
     <ScrollView
