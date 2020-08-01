@@ -15,24 +15,27 @@ public class DashAdapter extends FragmentStateAdapter {
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-        // Return a NEW fragment instance in createFragment(int)
-        Fragment fragment = new ActiveAdvFragment();
-        Bundle args = new Bundle();
-        // Our object is just an integer :-P
-        args.putInt(ActiveAdvFragment.ARG_OBJECT, position + 1);
-        fragment.setArguments(args);
-        return fragment;
+        Fragment fragment;
+        switch (position) {
+            case 0:
+                fragment = new ActiveAdvFragment();
+                Bundle args = new Bundle();
+                // Our object is just an integer :-P
+                args.putInt(ActiveAdvFragment.ARG_OBJECT, position + 1);
+                fragment.setArguments(args);
+                return fragment;
+            case 1:
+                fragment = new FavouriteAdvFragment();
+                Bundle args1 = new Bundle();
+                // Our object is just an integer :-P
+                args1.putInt(FavouriteAdvFragment.ARG_OBJECT, position + 1);
+                fragment.setArguments(args1);
+                return fragment;
+            default:
+                return new ActiveAdvFragment();
+        }
     }
 
-    public Fragment createFragment1(int position) {
-        // Return a NEW fragment instance in createFragment(int)
-        Fragment fragment = new FavouriteAdvFragment();
-        Bundle args1 = new Bundle();
-        // Our object is just an integer :-P
-        args1.putInt(FavouriteAdvFragment.ARG_OBJECT, position + 2);
-        fragment.setArguments(args1);
-        return fragment;
-    }
 
     @Override
     public int getItemCount() {

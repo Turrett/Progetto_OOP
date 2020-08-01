@@ -51,14 +51,16 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="Sign up"
-            android:layout_gravity="center_horizontal"/>
+            android:layout_gravity="center_horizontal"
+            />
 
         <Button
             android:id="@+id/button_go_to_sign_in"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="Go tu sign in"
-            android:layout_gravity="center_horizontal"/>
+            android:layout_gravity="center_horizontal"
+            />
 
 
     </LinearLayout>
