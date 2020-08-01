@@ -9,44 +9,184 @@
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="348dp"
-        android:layout_height="220dp"
+        android:layout_height="700dp"
         android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_width="360dp"
+            android:layout_height="700dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="1dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <EditText
                 android:id="@+id/modify_username"
                 android:layout_width="match_parent"
-                android:layout_height="71dp"
-                android:backgroundTint="#FF9800"
+                android:layout_height="50dp"
                 android:ems="10"
-                android:foregroundTint="#FF9800"
+                android:hint="Inserisci un nuovo username"
                 android:importantForAutofill="yes"
                 android:inputType="textPersonName"
-                android:text="@string/name"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display3" />
+                android:textSize="18sp"
+                 />
 
             <EditText
                 android:id="@+id/modify_address"
                 android:layout_width="match_parent"
-                android:layout_height="67dp"
+                android:layout_height="50dp"
                 android:ems="10"
+                android:hint="Inserisci un nuovo indirizzo"
                 android:importantForAutofill="no"
-                android:inputType="textPostalAddress" />
+                android:inputType="textPostalAddress"
+                android:textSize="18sp"/>
 
             <EditText
                 android:id="@+id/modify_phone"
                 android:layout_width="match_parent"
-                android:layout_height="76dp"
+                android:layout_height="50dp"
                 android:ems="10"
+                android:hint="Inserisci un nuovo numero di telefono"
                 android:importantForAutofill="no"
-                android:inputType="phone" />
+                android:inputType="phone"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:id="@+id/labelorario1"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="Modifica gli orari di disponibilità"
+                android:paddingTop="5dp"
+                android:textSize="19sp" />
+
+            <GridLayout
+                android:id="@+id/gridl1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:paddingTop="8dp"
+                android:rowCount="7">
+
+                <TextView
+                    android:id="@+id/modifytxtv1"
+                    android:layout_width="130dp"
+                    android:layout_height="30dp"
+                    android:paddingTop="3dp"
+                    android:text="Lunedì"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/modifytxtv2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="3dp"
+                    android:hint="nuovo orario"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/modifytxtv3"
+                    android:layout_width="130dp"
+                    android:layout_height="30dp"
+                    android:paddingTop="3dp"
+                    android:text="Martedì"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/modifytxtv4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="3dp"
+                    android:hint="nuovo orario"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/modifytxtv5"
+                    android:layout_width="130dp"
+                    android:layout_height="30dp"
+                    android:paddingTop="3dp"
+                    android:text="Mercoledì"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/modifytxtv6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="3dp"
+                    android:hint="nuovo orario"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/modifytxtv7"
+                    android:layout_width="130dp"
+                    android:layout_height="30dp"
+                    android:paddingTop="3dp"
+                    android:text="Giovedì"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/modifytxtv8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="3dp"
+                    android:hint="nuovo orario"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/modifytxtv9"
+                    android:layout_width="130dp"
+                    android:layout_height="30dp"
+                    android:paddingTop="3dp"
+                    android:text="Venerdì"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/modifytxtv10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="3dp"
+                    android:hint="nuovo orario"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/modifytxtv11"
+                    android:layout_width="130dp"
+                    android:layout_height="30dp"
+                    android:paddingTop="3dp"
+                    android:text="Sabato"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/modifytxtv12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="3dp"
+                    android:hint="nuovo orario"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/modifytxtv13"
+                    android:layout_width="130dp"
+                    android:layout_height="30dp"
+                    android:paddingTop="3dp"
+                    android:text="Domenica"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/modifytxtv14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="3dp"
+                    android:hint="nuovo orario"
+                    android:textSize="18sp" />
+            </GridLayout>
 
         </LinearLayout>
     </ScrollView>
