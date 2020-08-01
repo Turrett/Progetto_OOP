@@ -3,6 +3,7 @@
     package="com.example.progettooop">
 
     <application
+        android:windowSoftInputMode="adjustResize"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="No Waste."
@@ -14,7 +15,8 @@
         <activity android:name=".ui.mainDashboard" />
         <activity
             android:name=".ui.MainActivity"
-            android:label="No Waste.">
+            android:label="No Waste."
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,5 +24,4 @@
             </intent-filter>
         </activity>
     </application>
-
 </manifest>

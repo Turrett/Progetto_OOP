@@ -10,17 +10,28 @@
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome !"</string>
+    <string name="action_sign_up">Sign up</string>
+    <string name="welcome">"Welcome!"</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="tab_text_1">Sezione uno - annunci pubblicati</string>
     <string name="tab_text_2">Sezione due - preferiti</string>
     <string name="text_dashboard_1">Annunci attivi</string>
-    <string name="text_dashboard_2">Annunci </string>
+    <string name="text_dashboard_2">Annunci preferiti </string>
     <string name="active_adv">active adv</string>
     <string name="go_to_sign_in">go to sign in</string>
     <string name="tbd">tbd</string>
     <string name="name">Name</string>
-
+    <string name="insmail">Insert account e-mail</string>
+    <string name="Email">E-mail</string>
+    <string name="Address">Address</string>
+    <string name="num">Phone number</string>
+    <string name="inspwd">Insert account password</string>
+    <string name="password">Password</string>
+    <string name="img">image</string>
+    <string name="insnewemail">Insert e-mail</string>
+    <string name="insnewpwd">Insert password</string>
+    <string name="bname">(Business) Name</string>
+    <string name="imgtest">img test</string>
 </resources>
