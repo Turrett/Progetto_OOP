@@ -26,36 +26,39 @@
 
         <EditText
             android:id="@+id/edit_text_login_mail"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:contentDescription="insert account mail"
+            android:contentDescription="Insert account mail"
             android:ems="10"
             android:inputType="textEmailAddress"
-            android:text="email"
-            android:hint="Insert e-mail address"/>
+            android:hint="Insert e-mail address"
+            android:layout_gravity="center_horizontal"/>
 
         <EditText
             android:id="@+id/edit_text_login_password"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:contentDescription="insert account password "
             android:ems="10"
             android:inputType="textPassword"
-            android:text="password" />
+            android:hint="Insert password"
+            android:layout_gravity="center_horizontal"
+            android:autofillHints="password" />
 
-        r
 
         <Button
             android:id="@+id/login_button"
-            android:layout_width="match_parent"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:text="Log In " />
+            android:text="Log In "
+            android:layout_gravity="center_horizontal"/>
 
         <Button
             android:id="@+id/sign_in_button"
-            android:layout_width="match_parent"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:text="Sign in" />
+            android:text="Sign in"
+            android:layout_gravity="center_horizontal"/>
 
     </LinearLayout>
 

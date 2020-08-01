@@ -95,22 +95,22 @@
 
                 <TextView
                     android:id="@+id/txtv4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:text="orario di martedì"
                     android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/txtv5"
                     android:layout_width="130dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:text="Mercoledì"
                     android:textSize="18sp"/>
 
                 <TextView
                     android:id="@+id/txtv6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:text="TextView"
                     android:textSize="18sp" />
 
