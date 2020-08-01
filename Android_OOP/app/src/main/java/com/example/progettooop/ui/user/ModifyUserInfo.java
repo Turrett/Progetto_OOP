@@ -21,6 +21,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.storage.*;
 
 
@@ -153,7 +154,23 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
         }
 
         FirebaseUser user = authenticator.getCurrentUser();
+    if (user!=null && photoStringLink!= null) {
+        UserProfileChangeRequest profile = new UserProfileChangeRequest.Builder()
+                .setDisplayName(nick)
+                .setPhotoUri(Uri.parse(photoStringLink))
+                .build();
 
+        user.updateProfile(profile).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText(getApplicationContext(), "profile updated correctly", Toast.LENGTH_SHORT);
+                } else {
+                    //set task not successful
+                }
+            }
+        });
+    }
 
     }
 
