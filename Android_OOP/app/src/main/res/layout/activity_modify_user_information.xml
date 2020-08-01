@@ -59,6 +59,7 @@
         android:layout_height="167dp"
         android:layout_marginTop="32dp"
         android:contentDescription="@string/tbd"
+        android:src="@drawable/ic_baseline_add_photo_alternate_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

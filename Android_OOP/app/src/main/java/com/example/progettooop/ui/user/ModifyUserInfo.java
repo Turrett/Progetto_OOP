@@ -4,9 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -26,10 +29,12 @@ import com.google.firebase.storage.*;
 
 
 import java.io.IOException;
+import java.security.Permissions;
 import java.util.UUID;
 
 public class ModifyUserInfo extends AppCompatActivity implements View.OnClickListener {
     private static final int CHOOSE_IMAGE = 101;
+    private static final int PERMISSION_CODE= 102;
     private EditText username, address, phone;
     private ImageView imageView;
     private Button save;
@@ -70,27 +75,53 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
 
     //image chooser
     private void openImageChooser() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent.createChooser(intent, "select profile image"), CHOOSE_IMAGE);
+        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
+            if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)== PackageManager.PERMISSION_DENIED){
+                //permission not granted
+                String[] permissions ={Manifest.permission.READ_EXTERNAL_STORAGE};
+                requestPermissions(permissions,PERMISSION_CODE);
+            }
+            else{
+                //permission granted
+                pickImage();
+            }
+        }
+        else{
+            //os older than marshmallow
+            pickImage();
+        }
+
 
     }
 
-    protected void onActivityResult ( int requestCode, int resultCode, @Nullable Intent data){
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == CHOOSE_IMAGE && requestCode == RESULT_OK && data != null && data.getData() != null)
-            FilePropic = data.getData();
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode){
+            case PERMISSION_CODE:{
+                if (grantResults.length>0&& grantResults[0]== PackageManager.PERMISSION_GRANTED){
+                    pickImage();}
+                    else{
+                        //permission denied
+                    Toast.makeText(this,"Permission Denied...",Toast.LENGTH_SHORT).show();
 
-        Bitmap bitmap = null;
-        try {
-            bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), FilePropic);
-            imageView.setImageBitmap(bitmap);
-
-        } catch (IOException e) {
-            e.printStackTrace();
+                }
+            }
         }
+    }
 
+    private void pickImage(){
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
+        startActivityForResult(intent,CHOOSE_IMAGE);
+
+    }
+
+    protected void onActivityResult ( int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == CHOOSE_IMAGE && requestCode == RESULT_OK)
+            FilePropic = data.getData();
+            imageView.setImageURI(FilePropic);
     }
 
     private void uploadImageToServer() {
