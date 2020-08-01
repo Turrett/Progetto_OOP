@@ -21,38 +21,31 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/username"
+            <TextView
+                android:id="@+id/modify_username"
                 android:layout_width="match_parent"
-                android:layout_height="71dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="@string/name"
-                android:importantForAutofill="yes" />
+                android:layout_height="65dp"
+                android:text="TextView" />
 
             <RatingBar
                 android:id="@+id/Personal_rating"
                 android:layout_width="match_parent"
                 android:layout_height="69dp" />
 
-            <EditText
-                android:id="@+id/E-mail"
+            <TextView
+                android:id="@+id/email"
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:ems="10"
-                android:inputType="textEmailAddress"
-                android:autofillHints="yes" />
+                android:layout_height="78dp"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/address"
+                android:layout_width="match_parent"
+                android:layout_height="74dp"
+                android:text="TextView" />
 
             <EditText
-                android:id="@+id/Personal_address"
-                android:layout_width="match_parent"
-                android:layout_height="67dp"
-                android:ems="10"
-                android:inputType="textPostalAddress"
-                android:importantForAutofill="no" />
-
-            <EditText
-                android:id="@+id/Personal_Phone_Number"
+                android:id="@+id/modify_phone"
                 android:layout_width="match_parent"
                 android:layout_height="76dp"
                 android:ems="10"
