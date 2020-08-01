@@ -182,6 +182,7 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
         if(numero.isEmpty()){
             phone.setError("Phone Number required");
             phone.requestFocus();
+            return;
         }
 
         FirebaseUser user = authenticator.getCurrentUser();
@@ -195,9 +196,10 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
-                    Toast.makeText(getApplicationContext(), "profile updated correctly", Toast.LENGTH_SHORT);
+                    Toast.makeText(getApplicationContext(), "profile updated correctly", Toast.LENGTH_SHORT).show();
                 } else {
                     //set task not successful
+                    Toast.makeText(getApplicationContext(), "Failure updating the profile", Toast.LENGTH_SHORT).show();
                 }
             }
         });
