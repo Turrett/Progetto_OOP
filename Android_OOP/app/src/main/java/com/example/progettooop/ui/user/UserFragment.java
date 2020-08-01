@@ -27,7 +27,7 @@ public class UserFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.modify_button);
-        startActivity(new Intent(getContext(), modify_user_information.class));
+        startActivity(new Intent(getContext(), ModifyUserInfo.class));
     }
 }
 

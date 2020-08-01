@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.user.modify_user_information">
+    android:background="#FF9800"
+    android:backgroundTint="#03A9F4"
+    tools:context=".ui.user.ModifyUserInfo">
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="356dp"
-        android:layout_height="727dp"
+        android:layout_width="348dp"
+        android:layout_height="220dp"
         android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,42 +23,32 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/username"
+                android:id="@+id/modify_username"
                 android:layout_width="match_parent"
                 android:layout_height="71dp"
+                android:backgroundTint="#FF9800"
                 android:ems="10"
+                android:foregroundTint="#FF9800"
+                android:importantForAutofill="yes"
                 android:inputType="textPersonName"
                 android:text="@string/name"
-                android:importantForAutofill="yes" />
-
-            <RatingBar
-                android:id="@+id/Personal_rating"
-                android:layout_width="match_parent"
-                android:layout_height="69dp" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Display3" />
 
             <EditText
-                android:id="@+id/E-mail"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:ems="10"
-                android:inputType="textEmailAddress"
-                android:autofillHints="yes" />
-
-            <EditText
-                android:id="@+id/Personal_address"
+                android:id="@+id/modify_address"
                 android:layout_width="match_parent"
                 android:layout_height="67dp"
                 android:ems="10"
-                android:inputType="textPostalAddress"
-                android:importantForAutofill="no" />
+                android:importantForAutofill="no"
+                android:inputType="textPostalAddress" />
 
             <EditText
-                android:id="@+id/Personal_Phone_Number"
+                android:id="@+id/modify_phone"
                 android:layout_width="match_parent"
                 android:layout_height="76dp"
                 android:ems="10"
-                android:inputType="phone"
-                android:importantForAutofill="no" />
+                android:importantForAutofill="no"
+                android:inputType="phone" />
 
         </LinearLayout>
     </ScrollView>
@@ -65,11 +57,22 @@
         android:id="@+id/imageView"
         android:layout_width="168dp"
         android:layout_height="167dp"
-        android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
+        android:contentDescription="@string/tbd"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars"
-        android:contentDescription="@string/tbd" />
+        tools:src="@tools:sample/avatars" />
+
+    <Button
+        android:id="@+id/save_changes_button"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
