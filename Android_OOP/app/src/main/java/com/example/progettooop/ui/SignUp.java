@@ -13,6 +13,7 @@ import com.example.progettooop.ui.FirebaseUtil;
 
 import com.example.progettooop.R;
 
+import com.example.progettooop.ui.user.ModifyUserInfo;
 import com.google.firebase.auth.*;
 import com.google.firebase.database.*;
 
@@ -89,7 +90,12 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         }
 
         progressBar.setVisibility(View.VISIBLE);
-        firebaseUtil.RegisterUser(email,password);
+
+        int result = firebaseUtil.RegisterUser(email,password);
+        System.out.println(result);
+        if (result == firebaseUtil.SUCCESS) {
+            Intent intent =new Intent(SignUp.this, ModifyUserInfo.class);
+            startActivity(intent);}
         progressBar.setVisibility(View.GONE);
 
     }

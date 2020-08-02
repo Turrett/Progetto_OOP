@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.progettooop.R;
+import com.example.progettooop.ui.FirebaseUtil;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -41,6 +42,7 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
     private String photoStringLink; // contains the download string from the firebase server after the file has been uploaded
     private StorageReference profileImageRef;//contains the reference of the uploaded file into the firebase server
     private FirebaseAuth authenticator;
+    private FirebaseUtil firebaseUtil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,12 +54,13 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
         imageView = findViewById(R.id.imageView);
         save = findViewById(R.id.save_changes_button);
         authenticator = FirebaseAuth.getInstance();
+        firebaseUtil =new FirebaseUtil(getApplicationContext());
 
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openImageChooser();
+               // openImageChooser();
             }
         });
 
@@ -163,6 +166,8 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
             phone.requestFocus();
             return;
         }
+
+
 
         FirebaseUser user = authenticator.getCurrentUser();
     if (user!=null && photoStringLink!= null) {

@@ -74,7 +74,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 // it activates the loading logo
         progressBar.setVisibility(View.VISIBLE);
         int result = firebaseUtil.LogIn(email,password);
-        if (result == firebaseUtil.SUCCESS) {
+        System.out.println(result);
+    if (result == firebaseUtil.SUCCESS) {
              Intent intent =new Intent(MainActivity.this,mainDashboard.class);
              intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
              startActivity(intent);}

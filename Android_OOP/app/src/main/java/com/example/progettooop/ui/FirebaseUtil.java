@@ -8,22 +8,20 @@ import androidx.annotation.NonNull;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.*;
-import com.google.firebase.database.*;
-
-
+import com.google.firebase.firestore.*;
 
 
 public class FirebaseUtil  {
-    private DatabaseReference mDatabase;
     private FirebaseAuth mAuth;
     private Context context ;
     public static final int SUCCESS = 1;
     public static final int FAIL = 0;
-    public int lastOperationResult = 0;
+    public int lastOperationResult = 1;
 
     public FirebaseUtil(Context context){
         this.context= context;
         mAuth = FirebaseAuth.getInstance();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
     }
 
     public int RegisterUser (String email, String password) {
@@ -48,12 +46,11 @@ public class FirebaseUtil  {
                     }
 
     });
-        return lastOperationResult;
+        return this.lastOperationResult;
     }
 
     public int LogIn(String email, String password){
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
@@ -67,7 +64,7 @@ public class FirebaseUtil  {
 
             }
         });
-        return lastOperationResult;
+        return this.lastOperationResult;
     }
 
 
