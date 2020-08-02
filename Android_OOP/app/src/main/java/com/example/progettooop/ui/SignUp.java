@@ -9,20 +9,17 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.Toast;
+import com.example.progettooop.ui.FirebaseUtil;
 
 import com.example.progettooop.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthUserCollisionException;
-import com.google.firebase.auth.FirebaseUser;
+
+import com.google.firebase.auth.*;
+import com.google.firebase.database.*;
 
 public class SignUp extends AppCompatActivity implements View.OnClickListener {
  private EditText EditTextPassword,EditTextEmail;
-    private FirebaseAuth mAuth;
     private ProgressBar progressBar;
+    public FirebaseUtil firebaseUtil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +28,8 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
         EditTextPassword=(EditText) findViewById(R.id.edit_text_register_password);
         EditTextEmail=(EditText) findViewById(R.id.edit_text_registration_email);
-        mAuth = FirebaseAuth.getInstance();
        progressBar = (ProgressBar) findViewById(R.id.progressbar_sign_up);
+       firebaseUtil = new FirebaseUtil(getApplicationContext());
 
         findViewById(R.id.button_sign_up).setOnClickListener(this);
     }
@@ -50,16 +47,15 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         }
     }
 
-    @Override
-    public void onStart() {
+    //@Override
+    /*public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
         updateUI(currentUser);
     }
 
     private void updateUI(FirebaseUser currentUser) {
-    }
+    }*/
 
 
     //login function given mail and password
@@ -93,28 +89,8 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         }
 
         progressBar.setVisibility(View.VISIBLE);
-
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(getApplicationContext(),"success",Toast.LENGTH_SHORT).show();
-                            updateUI(null);
-                        }
-                        else {
-                            if (task.getException() instanceof FirebaseAuthUserCollisionException)
-                                Toast.makeText(getApplicationContext(),"User already exist" ,Toast.LENGTH_SHORT).show();
-                            else {
-                                Toast.makeText(getApplicationContext(), "User not Registered Correctly", Toast.LENGTH_SHORT).show();
-                                updateUI(null);
-                            }
-                        }
-                progressBar.setVisibility(View.GONE);
-
-                    }
-                });
+        firebaseUtil.RegisterUser(email,password);
+        progressBar.setVisibility(View.GONE);
 
     }
 }

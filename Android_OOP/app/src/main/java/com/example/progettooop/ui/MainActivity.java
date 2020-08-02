@@ -1,6 +1,5 @@
 package com.example.progettooop.ui;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,21 +8,15 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.example.progettooop.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
 
     private EditText EditTextPassword, EditTextEmail;
-    private FirebaseAuth mAuth;
+    private FirebaseUtil firebaseUtil;
     private ProgressBar progressBar;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         EditTextPassword = (EditText) findViewById(R.id.edit_text_login_password);
         EditTextEmail = (EditText) findViewById(R.id.edit_text_login_mail);
         progressBar =(ProgressBar) findViewById(R.id.progressbar_log_in);
-        mAuth = FirebaseAuth.getInstance();
+       firebaseUtil =new FirebaseUtil(getApplicationContext());
     }
 
     @Override
@@ -80,23 +73,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 // it activates the loading logo
         progressBar.setVisibility(View.VISIBLE);
-        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Intent intent =new Intent(MainActivity.this,mainDashboard.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            progressBar.setVisibility(View.GONE);
-                            startActivity(intent);
-
-                        } else {
-                            Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-
-                    }
-                });
-
+        int result = firebaseUtil.LogIn(email,password);
+        if (result == firebaseUtil.SUCCESS) {
+             Intent intent =new Intent(MainActivity.this,mainDashboard.class);
+             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+             startActivity(intent);}
+        progressBar.setVisibility(View.GONE);
 
     }
 
