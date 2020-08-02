@@ -1,17 +1,14 @@
 package com.example.progettooop.ui.user;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,10 +23,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.storage.*;
+import com.karumi.dexter.*;
+import com.karumi.dexter.listener.*;
+import com.karumi.dexter.listener.single.PermissionListener;
 
-
-import java.io.IOException;
-import java.security.Permissions;
+import java.util.Objects;
 import java.util.UUID;
 
 public class ModifyUserInfo extends AppCompatActivity implements View.OnClickListener {
@@ -66,49 +64,25 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onClick(View view) {
             saveUserInfo();
+
             }
         });
 
     }
 
-    ;
-
-    //image chooser
-    private void openImageChooser() {
-        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
-            if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)== PackageManager.PERMISSION_DENIED){
-                //permission not granted
-                String[] permissions ={Manifest.permission.READ_EXTERNAL_STORAGE};
-                requestPermissions(permissions,PERMISSION_CODE);
-            }
-            else{
-                //permission granted
-                pickImage();
-            }
-        }
-        else{
-            //os older than marshmallow
-            pickImage();
-        }
-
+    private void openImageChooser(){
+        Dexter.withContext(this)
+                .withPermission(Manifest.permission.CAMERA)
+                .withListener(new PermissionListener() {
+                    @Override public void onPermissionGranted(PermissionGrantedResponse response) {/* ... */}
+                    @Override public void onPermissionDenied(PermissionDeniedResponse response) {/* ... */}
+                     @Override public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {/* ... */}
+                }).check();
 
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode){
-            case PERMISSION_CODE:{
-                if (grantResults.length>0&& grantResults[0]== PackageManager.PERMISSION_GRANTED){
-                    pickImage();}
-                    else{
-                        //permission denied
-                    Toast.makeText(this,"Permission Denied...",Toast.LENGTH_SHORT).show();
 
-                }
-            }
-        }
-    }
+
 
     private void pickImage(){
         Intent intent = new Intent(Intent.ACTION_PICK);
@@ -133,7 +107,7 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
             @Override
             public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
                 if (!task.isSuccessful()) {
-                    throw task.getException();
+                    throw Objects.requireNonNull(task.getException());
                 }
 
                 // Continue with the task to get the download URL
@@ -171,7 +145,7 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
         }
 
         String indirizzo =  address.getText().toString();
-        if(nick.isEmpty())
+        if(indirizzo.isEmpty())
         {
             address.setError("Name Required");
             address.requestFocus();

@@ -8,12 +8,12 @@
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="348dp"
-        android:layout_height="700dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="370dp"
+        android:layout_height="476dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView">
+        app:layout_constraintTop_toBottomOf="@+id/save_changes_button">
 
         <LinearLayout
             android:layout_width="360dp"
@@ -36,8 +36,7 @@
                 android:hint="Inserisci un nuovo username"
                 android:importantForAutofill="yes"
                 android:inputType="textPersonName"
-                android:textSize="18sp"
-                 />
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/modify_address"
@@ -47,7 +46,7 @@
                 android:hint="Inserisci un nuovo indirizzo"
                 android:importantForAutofill="no"
                 android:inputType="textPostalAddress"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/modify_phone"
@@ -57,14 +56,14 @@
                 android:hint="Inserisci un nuovo numero di telefono"
                 android:importantForAutofill="no"
                 android:inputType="phone"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/labelorario1"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:text="Modifica gli orari di disponibilità"
                 android:paddingTop="5dp"
+                android:text="Modifica gli orari di disponibilità"
                 android:textSize="19sp" />
 
             <GridLayout
@@ -87,8 +86,8 @@
                     android:id="@+id/modifytxtv2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingTop="3dp"
                     android:hint="nuovo orario"
+                    android:paddingTop="3dp"
                     android:textSize="18sp" />
 
                 <TextView
@@ -103,8 +102,8 @@
                     android:id="@+id/modifytxtv4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingTop="3dp"
                     android:hint="nuovo orario"
+                    android:paddingTop="3dp"
                     android:textSize="18sp" />
 
                 <TextView
@@ -119,8 +118,8 @@
                     android:id="@+id/modifytxtv6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingTop="3dp"
                     android:hint="nuovo orario"
+                    android:paddingTop="3dp"
                     android:textSize="18sp" />
 
                 <TextView
@@ -135,8 +134,8 @@
                     android:id="@+id/modifytxtv8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingTop="3dp"
                     android:hint="nuovo orario"
+                    android:paddingTop="3dp"
                     android:textSize="18sp" />
 
                 <TextView
@@ -151,8 +150,8 @@
                     android:id="@+id/modifytxtv10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingTop="3dp"
                     android:hint="nuovo orario"
+                    android:paddingTop="3dp"
                     android:textSize="18sp" />
 
                 <TextView
@@ -167,8 +166,8 @@
                     android:id="@+id/modifytxtv12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingTop="3dp"
                     android:hint="nuovo orario"
+                    android:paddingTop="3dp"
                     android:textSize="18sp" />
 
                 <TextView
@@ -183,8 +182,8 @@
                     android:id="@+id/modifytxtv14"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingTop="3dp"
                     android:hint="nuovo orario"
+                    android:paddingTop="3dp"
                     android:textSize="18sp" />
             </GridLayout>
 
@@ -207,11 +206,11 @@
         android:id="@+id/save_changes_button"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
         android:text="Save"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
