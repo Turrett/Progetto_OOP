@@ -22,8 +22,8 @@ import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.UserProfileChangeRequest;
+
+
 import com.google.firebase.storage.*;
 import com.karumi.dexter.*;
 import com.karumi.dexter.listener.*;
@@ -31,17 +31,17 @@ import com.karumi.dexter.listener.single.PermissionListener;
 
 import java.util.Objects;
 import java.util.UUID;
+import com.example.progettooop.ui.FirebaseUtil;
 
 public class ModifyUserInfo extends AppCompatActivity implements View.OnClickListener {
     private static final int CHOOSE_IMAGE = 101;
-    private static final int PERMISSION_CODE= 102;
+    private static final int PERMISSION_CODE = 102;
     private EditText username, address, phone;
     private ImageView imageView;
     private Button save;
     private Uri FilePropic; // contains the data of the image
     private String photoStringLink; // contains the download string from the firebase server after the file has been uploaded
     private StorageReference profileImageRef;//contains the reference of the uploaded file into the firebase server
-    private FirebaseAuth authenticator;
     private FirebaseUtil firebaseUtil;
 
     @Override
@@ -53,36 +53,44 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
         phone = findViewById(R.id.modify_phone);
         imageView = findViewById(R.id.imageView);
         save = findViewById(R.id.save_changes_button);
-        authenticator = FirebaseAuth.getInstance();
-        firebaseUtil =new FirebaseUtil(getApplicationContext());
+        firebaseUtil = new FirebaseUtil(getApplicationContext());
 
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // openImageChooser();
+                // openImageChooser();
             }
         });
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            saveUserInfo();
-
+                saveUserInfo();
             }
         });
 
     }
 
-    private void openImageChooser(){
+    private void openImageChooser() {
         Dexter.withContext(getApplicationContext())
                 .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
                 .withListener(new PermissionListener() {
-                    @Override public void onPermissionGranted(PermissionGrantedResponse response) {Toast.makeText(getApplicationContext(),"yep",Toast.LENGTH_SHORT).show();}
-                    @Override public void onPermissionDenied(PermissionDeniedResponse response) {Toast.makeText(getApplicationContext(),"nope",Toast.LENGTH_SHORT).show();}
-                     @Override public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {/* ... */}
+                    @Override
+                    public void onPermissionGranted(PermissionGrantedResponse response) {
+                        Toast.makeText(getApplicationContext(), "yep", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onPermissionDenied(PermissionDeniedResponse response) {
+                        Toast.makeText(getApplicationContext(), "nope", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {/* ... */}
                 }).withErrorListener(new PermissionRequestErrorListener() {
-            @Override public void onError(DexterError error) {
+            @Override
+            public void onError(DexterError error) {
                 Log.e("Dexter", "There was an error: " + error.toString());
             }
         }).check();
@@ -90,26 +98,24 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
     }
 
 
-
-
-    private void pickImage(){
+    private void pickImage() {
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");
-        startActivityForResult(intent,CHOOSE_IMAGE);
+        startActivityForResult(intent, CHOOSE_IMAGE);
 
     }
 
-    protected void onActivityResult ( int requestCode, int resultCode, Intent data){
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CHOOSE_IMAGE && requestCode == RESULT_OK)
             FilePropic = data.getData();
-            imageView.setImageURI(FilePropic);
+        imageView.setImageURI(FilePropic);
     }
 
     private void uploadImageToServer() {
         String uniqueId = UUID.randomUUID().toString();
         profileImageRef = FirebaseStorage.getInstance().getReference("profilepic/" + uniqueId);
-          UploadTask uploadTask =  profileImageRef.putFile(FilePropic);
+        UploadTask uploadTask = profileImageRef.putFile(FilePropic);
 
         Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
             @Override
@@ -143,53 +149,31 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
 
     }
 
-    private void saveUserInfo(){
-        String nick =  username.getText().toString();
-        if(nick.isEmpty())
-        {
+    private void saveUserInfo() {
+        String nick = username.getText().toString();
+        if (nick.isEmpty()) {
             username.setError("Name Required");
             username.requestFocus();
             return;
         }
 
-        String indirizzo =  address.getText().toString();
-        if(indirizzo.isEmpty())
-        {
+        String indirizzo = address.getText().toString();
+        if (indirizzo.isEmpty()) {
             address.setError("Name Required");
             address.requestFocus();
             return;
         }
 
-        String numero =phone.getText().toString();
-        if(numero.isEmpty()){
+        String numero = phone.getText().toString();
+        if (numero.isEmpty()) {
             phone.setError("Phone Number required");
             phone.requestFocus();
             return;
         }
 
-
-
-        FirebaseUser user = authenticator.getCurrentUser();
-    if (user!=null && photoStringLink!= null) {
-        UserProfileChangeRequest profile = new UserProfileChangeRequest.Builder()
-                .setDisplayName(nick)
-                .setPhotoUri(Uri.parse(photoStringLink))
-                .build();
-
-        user.updateProfile(profile).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
-                    Toast.makeText(getApplicationContext(), "profile updated correctly", Toast.LENGTH_SHORT).show();
-                } else {
-                    //set task not successful
-                    Toast.makeText(getApplicationContext(), "Failure updating the profile", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+        firebaseUtil.addDataToUser(numero,nick,indirizzo);
     }
 
-    }
 
 
     @Override

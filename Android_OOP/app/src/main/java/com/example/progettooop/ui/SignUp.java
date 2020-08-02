@@ -31,7 +31,6 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         EditTextEmail=(EditText) findViewById(R.id.edit_text_registration_email);
        progressBar = (ProgressBar) findViewById(R.id.progressbar_sign_up);
        firebaseUtil = new FirebaseUtil(getApplicationContext());
-
         findViewById(R.id.button_sign_up).setOnClickListener(this);
     }
 
@@ -94,7 +93,6 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         int result = firebaseUtil.RegisterUser(email,password);
         System.out.println(result);
         if (result == firebaseUtil.SUCCESS) {
-            firebaseUtil.insertUserFromAuth();
             Intent intent =new Intent(SignUp.this, ModifyUserInfo.class);
             startActivity(intent);}
         progressBar.setVisibility(View.GONE);

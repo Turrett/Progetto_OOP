@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+
 import static android.content.ContentValues.TAG;
 
 
@@ -44,6 +45,7 @@ public class FirebaseUtil  {
                         if (task.isSuccessful()) {
                             Toast.makeText(context.getApplicationContext(), "success", Toast.LENGTH_SHORT).show();
                             lastOperationResult = FirebaseUtil.SUCCESS;
+                            insertUserFromAuth();
 
                         } else {
                             if (task.getException() instanceof FirebaseAuthUserCollisionException){
@@ -101,8 +103,29 @@ public class FirebaseUtil  {
         });
     }
 
-    public void addDataToUser(){
+    public void addDataToUser(String phone,String username,String indirizzo){
+        Map<String, Object> user = new HashMap<>();
+        user.put("telefono", phone);
+        user.put("username",username);
+        user.put("indirizzo",indirizzo);
 
+
+        db.collection("utenti")
+                .document(Objects.requireNonNull(mAuth.getCurrentUser().getUid()))
+                .set(user,SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Toast.makeText(context,"correctly committed data to server",Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "DocumentSnapshot" );
+
+            }
+        })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error adding document", e);
+                    }
+                });
 
     }
 
