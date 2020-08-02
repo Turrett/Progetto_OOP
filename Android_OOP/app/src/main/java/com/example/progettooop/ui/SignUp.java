@@ -94,6 +94,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         int result = firebaseUtil.RegisterUser(email,password);
         System.out.println(result);
         if (result == firebaseUtil.SUCCESS) {
+            firebaseUtil.insertUserFromAuth();
             Intent intent =new Intent(SignUp.this, ModifyUserInfo.class);
             startActivity(intent);}
         progressBar.setVisibility(View.GONE);
