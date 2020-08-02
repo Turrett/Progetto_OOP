@@ -9,6 +9,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -71,13 +72,17 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
     }
 
     private void openImageChooser(){
-        Dexter.withContext(this)
-                .withPermission(Manifest.permission.CAMERA)
+        Dexter.withContext(getApplicationContext())
+                .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
                 .withListener(new PermissionListener() {
-                    @Override public void onPermissionGranted(PermissionGrantedResponse response) {/* ... */}
-                    @Override public void onPermissionDenied(PermissionDeniedResponse response) {/* ... */}
+                    @Override public void onPermissionGranted(PermissionGrantedResponse response) {Toast.makeText(getApplicationContext(),"yep",Toast.LENGTH_SHORT).show();}
+                    @Override public void onPermissionDenied(PermissionDeniedResponse response) {Toast.makeText(getApplicationContext(),"nope",Toast.LENGTH_SHORT).show();}
                      @Override public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {/* ... */}
-                }).check();
+                }).withErrorListener(new PermissionRequestErrorListener() {
+            @Override public void onError(DexterError error) {
+                Log.e("Dexter", "There was an error: " + error.toString());
+            }
+        }).check();
 
     }
 
