@@ -30,7 +30,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/username"
+                android:id="@+id/user_username"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:ems="10"

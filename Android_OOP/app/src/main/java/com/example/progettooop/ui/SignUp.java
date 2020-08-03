@@ -12,7 +12,6 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.example.progettooop.ui.FirebaseUtil;
 
 import com.example.progettooop.R;
 
@@ -22,7 +21,6 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.*;
-import com.google.firebase.database.*;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
