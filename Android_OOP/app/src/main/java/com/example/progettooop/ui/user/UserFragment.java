@@ -51,9 +51,7 @@ public class UserFragment extends Fragment implements View.OnClickListener {
 
     private void getInfo(){
         DocumentReference doc = db.collection("utenti")
-                .document(Objects.requireNonNull(mAuth.getCurrentUser()).getUid())
-                .
-        username.setText();
+                .document(Objects.requireNonNull(mAuth.getCurrentUser()).getUid());
     }
 }
 
