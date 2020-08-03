@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Switch;
 import android.widget.Toast;
 
 
@@ -35,7 +36,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
     private ProgressBar progressBar;
     private FirebaseAuth mAuth;
     public FirebaseFirestore db;
-    public Button btngoto;
+    public Button btngoto, btnsignup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +46,12 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         EditTextPassword=(EditText) findViewById(R.id.edit_text_register_password);
         EditTextEmail=(EditText) findViewById(R.id.edit_text_registration_email);
         progressBar = (ProgressBar) findViewById(R.id.progressbar_sign_up);
-
-
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
-
-
+        btngoto = (Button) findViewById(R.id.button_go_to_sign_in);
+        btngoto.setOnClickListener(this);
+        btnsignup = (Button) findViewById(R.id.button_sign_up);
+        btnsignup.setOnClickListener(this);
     }
 
     /*public void onViewCreated(){
@@ -71,26 +72,19 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                 registerUser();
                 break;
             case R.id.button_go_to_sign_in:
-               onDestroy();
-               // startActivity(new Intent(SignUp.this, MainActivity.class));
+                SignUp.this.finish();
+                break;
+            default:
                 break;
         }
+
     }
 
-      @Override
-      public void onResume(){
-      super.onResume();
-          btngoto = (Button) findViewById(R.id.button_go_to_sign_in);
-          btngoto.setOnClickListener(new View.OnClickListener() {
-              @Override
-              public void onClick(View v)
-              {
-                  // some code
-                  SignUp.this.finish();
-              }
-          });
 
-      }
+
+
+
+
 
 
 
@@ -186,9 +180,10 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                 });
 }
 
-private void changeUi(){
+    private void changeUi(){
 
-    Intent intent =new Intent(SignUp.this, ModifyUserInfo.class);
-    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-    startActivity(intent);}
+        Intent intent =new Intent(SignUp.this, ModifyUserInfo.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
 }
