@@ -62,6 +62,7 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
     private FirebaseAuth mAuth;
     public FirebaseFirestore db;
     public Uri imguri;
+    private StorageReference ref;
 
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -157,7 +158,7 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
         // loading the image , if it fails return, else it goes on
         if (imguri != null) {
             loadingBar.setVisibility(View.VISIBLE);
-            StorageReference ref = mStorageRef.child(System.currentTimeMillis() + "." + getExtension(imguri));
+            ref = mStorageRef.child(System.currentTimeMillis() + "." + getExtension(imguri));
             ref.putFile(imguri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -179,6 +180,7 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
                     });
 
         Map<String, Object> user = new HashMap<>();
+        user.put ("PhotoID",ref.getDownloadUrl().toString());
         user.put("telefono", numero);
         user.put("username", nick);
         user.put("indirizzo", indirizzo);
@@ -213,7 +215,6 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
         }
 
     }
-
 
     @Override
     public void onClick(View view) {
