@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -30,10 +31,11 @@ import java.util.Objects;
 import static android.content.ContentValues.TAG;
 
 public class SignUp extends AppCompatActivity implements View.OnClickListener {
- private EditText EditTextPassword,EditTextEmail;
+    private EditText EditTextPassword,EditTextEmail;
     private ProgressBar progressBar;
     private FirebaseAuth mAuth;
     public FirebaseFirestore db;
+    public Button btngoto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +46,22 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         EditTextEmail=(EditText) findViewById(R.id.edit_text_registration_email);
         progressBar = (ProgressBar) findViewById(R.id.progressbar_sign_up);
 
-       findViewById(R.id.button_sign_up).setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
+
+
     }
+
+    /*public void onViewCreated(){
+        btngoto = (Button) findViewById(R.id.button_go_to_sign_in);
+        btngoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SignUp.this, MainActivity.class));
+            }
+        });
+    }*/
 
 
     @Override
@@ -58,10 +71,28 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                 registerUser();
                 break;
             case R.id.button_go_to_sign_in:
-                startActivity(new Intent(this, MainActivity.class));
+               onDestroy();
+               // startActivity(new Intent(SignUp.this, MainActivity.class));
                 break;
         }
     }
+
+      @Override
+      public void onResume(){
+      super.onResume();
+          btngoto = (Button) findViewById(R.id.button_go_to_sign_in);
+          btngoto.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View v)
+              {
+                  // some code
+                  SignUp.this.finish();
+              }
+          });
+
+      }
+
+
 
     //@Override
     /*public void onStart() {

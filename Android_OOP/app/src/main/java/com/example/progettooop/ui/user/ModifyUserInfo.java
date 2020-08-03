@@ -94,7 +94,6 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 saveUserInfo();
             }
         });

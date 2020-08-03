@@ -102,4 +102,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void updateUI(Object o) {
     }
 
+    public void finish (){
+
+    }
+
 }
