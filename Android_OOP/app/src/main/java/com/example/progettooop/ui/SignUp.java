@@ -44,7 +44,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
         EditTextPassword=(EditText) findViewById(R.id.edit_text_register_password);
         EditTextEmail=(EditText) findViewById(R.id.edit_text_registration_email);
-       progressBar = (ProgressBar) findViewById(R.id.progressbar_sign_up);
+        progressBar = (ProgressBar) findViewById(R.id.progressbar_sign_up);
 
        findViewById(R.id.button_sign_up).setOnClickListener(this);
 

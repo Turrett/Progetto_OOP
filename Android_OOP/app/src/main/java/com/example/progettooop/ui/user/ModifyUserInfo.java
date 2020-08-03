@@ -1,6 +1,7 @@
 package com.example.progettooop.ui.user;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
@@ -30,6 +31,7 @@ import com.google.firebase.firestore.*;
 import com.google.firebase.storage.*;
 import com.karumi.dexter.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -38,46 +40,88 @@ import java.util.Objects;
 import static android.content.ContentValues.TAG;
 
 public class ModifyUserInfo extends AppCompatActivity implements View.OnClickListener {
+
     private static final int CHOOSE_IMAGE = 101;
     private static final int PERMISSION_CODE = 102;
+
+    private final static String TAG = "Upload user";
+    private ImageView image;
     private EditText username, address, phone;
-    private ImageView imageView;
     private Button save;
-    private Uri FilePropic; // contains the data of the image
-    private String photoStringLink; // contains the download string from the firebase server after the file has been uploaded
-    private StorageReference profileImageRef;//contains the reference of the uploaded file into the firebase server
+    private final static int mWidth = 30;
+    private final static int mLenght = 30;
+
+    private ArrayList<String> pathArray; //verrà salvato il percorso dell'immagine
+    private int array_position;
+    private StorageReference mStorageRef;
     private FirebaseAuth mAuth;
     public FirebaseFirestore db;
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modify_user_information);
-        username = findViewById(R.id.modify_username);
-        address = findViewById(R.id.modify_address);
-        phone = findViewById(R.id.modify_phone);
-        imageView = findViewById(R.id.imageView);
-        save = findViewById(R.id.save_changes_button);
-
+        username = (EditText) findViewById(R.id.modify_username);
+        address = (EditText) findViewById(R.id.modify_address);
+        phone =  (EditText) findViewById(R.id.modify_phone);
+        image = (ImageView) findViewById(R.id.imageView);
+        save = (Button) findViewById(R.id.save_changes_button);
+        pathArray = new ArrayList<>();
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
+        mStorageRef = FirebaseStorage.getInstance().getReference();
+
+        checkFilePermissions();
 
 
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // openImageChooser();
-            }
-        });
 
-        save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                saveUserInfo();
-            }
-        });
 
     }
+
+
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void checkFilePermissions() {
+        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP){
+            int permissionCheck = ModifyUserInfo.this.checkSelfPermission("Manifest.permission.READ_EXTERNAL_STORAGE");
+            permissionCheck += ModifyUserInfo.this.checkSelfPermission("Manifest.permission.WRITE_EXTERNAL_STORAGE");
+            if (permissionCheck != 0) {
+                this.requestPermissions(new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE,android.Manifest.permission.READ_EXTERNAL_STORAGE}, 1001); //Any number
+            }
+        }else{
+            Log.d(TAG, "checkBTPermissions: No need to check permissions. SDK version < LOLLIPOP.");
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     //TODO
 
    /* private void openImageChooser() {
