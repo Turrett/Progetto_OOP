@@ -47,10 +47,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.sign_in_button:
-                startActivity(new Intent(this, SignUp.class));
+               startActivity(new Intent(this, SignUp.class));
                 break;
-
-
         }
     }
 
@@ -88,7 +86,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Toast.makeText(getApplicationContext(), "success", Toast.LENGTH_SHORT).show();
                     Intent intent =new Intent(MainActivity.this,mainDashboard.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);}
+                    //intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                    startActivity(intent);
+                    finish();
+                }
                 else {
                 progressBar.setVisibility(View.GONE);
                     Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -102,8 +103,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void updateUI(Object o) {
     }
 
-    public void finish (){
-
-    }
 
 }
