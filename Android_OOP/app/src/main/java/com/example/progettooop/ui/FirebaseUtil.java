@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.progettooop.ui.user.ModifyUserInfo;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -34,51 +35,12 @@ public class FirebaseUtil  {
         this.context= context;
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
+        lastOperationResult=0;
     }
 
-    public int RegisterUser (String email, String password) {
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
 
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(context.getApplicationContext(), "success", Toast.LENGTH_SHORT).show();
-                            lastOperationResult = FirebaseUtil.SUCCESS;
-                            insertUserFromAuth();
 
-                        } else {
-                            if (task.getException() instanceof FirebaseAuthUserCollisionException){
-                                Toast.makeText(context.getApplicationContext(), "User already exist", Toast.LENGTH_SHORT).show();
-                            }
-                            else {
-                                Toast.makeText(context.getApplicationContext(), "User not Registered Correctly", Toast.LENGTH_SHORT).show();
-                            }
-                            lastOperationResult =FirebaseUtil.FAIL;
-                        }
-                    }
 
-    });
-        return this.lastOperationResult;
-    }
-
-    public int LogIn(String email, String password){
-        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    lastOperationResult=FirebaseUtil.SUCCESS;
-                    Toast.makeText(context, "success", Toast.LENGTH_SHORT).show();
-
-                } else {
-                    Toast.makeText(context, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                    lastOperationResult=FirebaseUtil.FAIL;
-                }
-
-            }
-        });
-        return this.lastOperationResult;
-    }
 
     public void insertUserFromAuth(){
         Map<String, Object> user = new HashMap<>();
@@ -92,7 +54,6 @@ public class FirebaseUtil  {
             public void onSuccess(Void aVoid) {
                 Toast.makeText(context,"correctly committed data to server",Toast.LENGTH_SHORT).show();
                 Log.d(TAG, "DocumentSnapshot" );
-
             }
         })
         .addOnFailureListener(new OnFailureListener() {
@@ -104,28 +65,7 @@ public class FirebaseUtil  {
     }
 
     public void addDataToUser(String phone,String username,String indirizzo){
-        Map<String, Object> user = new HashMap<>();
-        user.put("telefono", phone);
-        user.put("username",username);
-        user.put("indirizzo",indirizzo);
 
-
-        db.collection("utenti")
-                .document(Objects.requireNonNull(mAuth.getCurrentUser().getUid()))
-                .set(user,SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                Toast.makeText(context,"correctly committed data to server",Toast.LENGTH_SHORT).show();
-                Log.d(TAG, "DocumentSnapshot" );
-
-            }
-        })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error adding document", e);
-                    }
-                });
 
     }
 

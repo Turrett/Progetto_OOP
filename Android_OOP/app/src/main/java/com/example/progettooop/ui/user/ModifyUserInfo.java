@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
+
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,21 +17,25 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.progettooop.R;
-import com.example.progettooop.ui.FirebaseUtil;
-import com.google.android.gms.tasks.Continuation;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
+
+import com.example.progettooop.ui.mainDashboard;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+
+import com.google.firebase.auth.*;
+import com.google.firebase.firestore.*;
 
 
 import com.google.firebase.storage.*;
 import com.karumi.dexter.*;
-import com.karumi.dexter.listener.*;
-import com.karumi.dexter.listener.single.PermissionListener;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
-import java.util.UUID;
-import com.example.progettooop.ui.FirebaseUtil;
+
+
+import static android.content.ContentValues.TAG;
 
 public class ModifyUserInfo extends AppCompatActivity implements View.OnClickListener {
     private static final int CHOOSE_IMAGE = 101;
@@ -42,7 +46,8 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
     private Uri FilePropic; // contains the data of the image
     private String photoStringLink; // contains the download string from the firebase server after the file has been uploaded
     private StorageReference profileImageRef;//contains the reference of the uploaded file into the firebase server
-    private FirebaseUtil firebaseUtil;
+    private FirebaseAuth mAuth;
+    public FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +58,9 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
         phone = findViewById(R.id.modify_phone);
         imageView = findViewById(R.id.imageView);
         save = findViewById(R.id.save_changes_button);
-        firebaseUtil = new FirebaseUtil(getApplicationContext());
+
+        mAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
 
 
         imageView.setOnClickListener(new View.OnClickListener() {
@@ -71,8 +78,9 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
         });
 
     }
+    //TODO
 
-    private void openImageChooser() {
+   /* private void openImageChooser() {
         Dexter.withContext(getApplicationContext())
                 .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
                 .withListener(new PermissionListener() {
@@ -87,7 +95,7 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
                     }
 
                     @Override
-                    public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {/* ... */}
+                    public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {}
                 }).withErrorListener(new PermissionRequestErrorListener() {
             @Override
             public void onError(DexterError error) {
@@ -95,17 +103,17 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
             }
         }).check();
 
-    }
+    }*/
 
 
-    private void pickImage() {
+    /*private void pickImage() {
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");
         startActivityForResult(intent, CHOOSE_IMAGE);
 
-    }
+    }*/
 
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+  /*  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CHOOSE_IMAGE && requestCode == RESULT_OK)
             FilePropic = data.getData();
@@ -147,7 +155,7 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
             }
         });
 
-    }
+    }*/
 
     private void saveUserInfo() {
         String nick = username.getText().toString();
@@ -171,7 +179,32 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
             return;
         }
 
-        firebaseUtil.addDataToUser(numero,nick,indirizzo);
+        Map<String, Object> user = new HashMap<>();
+        user.put("telefono", numero);
+        user.put("username",nick);
+        user.put("indirizzo",indirizzo);
+
+
+        db.collection("utenti")
+                .document(Objects.requireNonNull(mAuth.getCurrentUser().getUid()))
+                .set(user,SetOptions.merge())
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Toast.makeText(getApplicationContext(),"correctly committed data to server",Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "DocumentSnapshot" );
+                Intent intent =new Intent(ModifyUserInfo.this, mainDashboard.class);
+                //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error adding document", e);
+                    }
+                });
+
     }
 
 
