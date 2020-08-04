@@ -34,8 +34,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:ems="10"
-                android:hint="@string/name"
-                android:importantForAutofill="yes"
+                android:importantForAutofill="no"
                 android:inputType="textPersonName"
                 android:textSize="18sp" />
 
@@ -52,7 +51,7 @@
                 tools:rating="1" />
 
             <TextView
-                android:id="@+id/E-mail"
+                android:id="@+id/User_email"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:autofillHints="yes"
@@ -62,7 +61,7 @@
                 android:textSize="18sp"/>
 
             <TextView
-                android:id="@+id/Personal_address"
+                android:id="@+id/User_address"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:ems="10"
@@ -72,7 +71,7 @@
                 android:textSize="18sp"/>
 
             <TextView
-                android:id="@+id/Personal_Phone_Number"
+                android:id="@+id/User_Phone_Number"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:ems="10"

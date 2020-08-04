@@ -181,9 +181,9 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
 
         Map<String, Object> user = new HashMap<>();
         user.put ("PhotoID",ref.getDownloadUrl().toString());
-        user.put("telefono", numero);
+        user.put("phone", numero);
         user.put("username", nick);
-        user.put("indirizzo", indirizzo);
+        user.put("address", indirizzo);
 
 
         db.collection("utenti")
