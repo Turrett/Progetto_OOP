@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +31,7 @@ import java.util.Objects;
 public class UserFragment extends Fragment implements View.OnClickListener {
 
     private TextView username,numero,indirizzo,email;
+    private ProgressBar user_progressbar;
     private UserViewModel userViewModel;
 
     private FirebaseFirestore db;
@@ -45,6 +47,7 @@ public class UserFragment extends Fragment implements View.OnClickListener {
         numero =root.findViewById(R.id.User_Phone_Number);
         indirizzo = root.findViewById(R.id.User_address);
         email = root.findViewById(R.id.User_email);
+        user_progressbar =root.findViewById(R.id.progressbar_user);
         getInfo();
         return root;
     }
@@ -59,6 +62,7 @@ public class UserFragment extends Fragment implements View.OnClickListener {
     }
 
     private void getInfo(){
+        user_progressbar.setVisibility(View.VISIBLE);
         DocumentReference doc = db.collection("utenti")
                 .document(Objects.requireNonNull(mAuth.getCurrentUser()).getUid());
         doc.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
@@ -81,7 +85,9 @@ public class UserFragment extends Fragment implements View.OnClickListener {
                 Toast.makeText(getContext(),"Fail Loading Data",Toast.LENGTH_SHORT);
 
             }
+
         });
+        user_progressbar.setVisibility(View.GONE);
     }
 }
 
