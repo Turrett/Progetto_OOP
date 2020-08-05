@@ -2,11 +2,14 @@ package com.example.progettooop.ui.user;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,16 +18,18 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+
+import com.bumptech.glide.Glide;
 import com.example.progettooop.R;
-import com.google.android.gms.tasks.OnCompleteListener;
+
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
+
 import com.google.firebase.firestore.*;
 import com.google.firebase.auth.*;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
 
 
@@ -33,21 +38,29 @@ public class UserFragment extends Fragment implements View.OnClickListener {
     private TextView username,numero,indirizzo,email;
     private ProgressBar user_progressbar;
     private UserViewModel userViewModel;
+    private ImageView userImage;
+    public String imageUrl;
 
     private FirebaseFirestore db;
     private FirebaseAuth mAuth;
+    StorageReference storageReference;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
         View root = inflater.inflate(R.layout.fragment_user, container, false);
         root.findViewById(R.id.modify_button).setOnClickListener(this);
-        db = FirebaseFirestore.getInstance();
-        mAuth = FirebaseAuth.getInstance();
+
         username = root.findViewById(R.id.user_username);
         numero =root.findViewById(R.id.User_Phone_Number);
         indirizzo = root.findViewById(R.id.User_address);
         email = root.findViewById(R.id.User_email);
+        userImage = root.findViewById(R.id.User_iv);
         user_progressbar =root.findViewById(R.id.progressbar_user);
+
+        db = FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+        storageReference = FirebaseStorage.getInstance().getReference();
         getInfo();
         return root;
     }
@@ -73,6 +86,7 @@ public class UserFragment extends Fragment implements View.OnClickListener {
                     email.setText(documentSnapshot.getString("email"));
                     indirizzo.setText(documentSnapshot.getString("address"));
                     numero.setText(documentSnapshot.getString("phone"));
+                    imageUrl = documentSnapshot.getString("PhotoID");
                 }
                 else {
                     Toast.makeText(getContext(),"empty document",Toast.LENGTH_SHORT);
@@ -87,6 +101,14 @@ public class UserFragment extends Fragment implements View.OnClickListener {
             }
 
         });
+
+        Glide.with(this)
+                .load(imageUrl)
+                .into(userImage);
+
+        //Todo correction
+
+
         user_progressbar.setVisibility(View.GONE);
     }
 }
