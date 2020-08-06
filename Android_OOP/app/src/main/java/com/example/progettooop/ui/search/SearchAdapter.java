@@ -17,10 +17,9 @@ public class SearchAdapter  extends RecyclerView.Adapter<SearchAdapter.ViewHolde
 
     private Product[] products;
 
-    public SearchAdapter(Product[] products) {
+    public void myListAdapter(Product[] products){
         this.products=products;
     }
-
 
     @NonNull
     @Override
