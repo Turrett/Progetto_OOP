@@ -59,16 +59,16 @@ public class SearchActivity extends AppCompatActivity {
                 firebaseUserSearch(searchText);*/
 
 
-                //  }
-                //});
+        //  }
+        //});
 
-            }
+    }
 
 
 
-   // private void firebaseUserSearch(String searchText) {
+    // private void firebaseUserSearch(String searchText) {
 
-       //Toast.makeText(SearchActivity.this, "Started Search", Toast.LENGTH_LONG).show();
+    //Toast.makeText(SearchActivity.this, "Started Search", Toast.LENGTH_LONG).show();
 
         /*Query firebaseSearchQuery = mUserDatabase
                 .orderByChild("username")
