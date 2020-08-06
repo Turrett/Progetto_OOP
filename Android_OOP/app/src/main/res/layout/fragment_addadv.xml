@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/addv_save"
+    android:id="@+id/fragment_addadv"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -13,7 +13,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:text="Compila i campi per inserire un nuovo annuncio"
+        android:text="@string/compila_i_campi_per_inserire_un_nuovo_annuncio"
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -27,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintBottom_toTopOf="@+id/addv_save"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_addadv">
@@ -36,21 +36,22 @@
             android:id="@+id/addv_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Name" />
+            android:inputType="text"
+            android:hint="product name" />
 
         <EditText
             android:id="@+id/addv_qty"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
-            android:text="Quantity" />
+            android:hint="product quantity" />
 
         <EditText
             android:id="@+id/addv_expiration"
             android:layout_width="308dp"
             android:layout_height="wrap_content"
             android:inputType="date"
-            android:text="Expiration" />
+            android:hint="expiration_date"/>
 
     </LinearLayout>
 
@@ -66,12 +67,12 @@
         app:layout_constraintTop_toTopOf="@+id/text_addadv" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/addv_save"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="126dp"
         android:layout_height="50dp"
         android:layout_marginBottom="72dp"
-        android:text="save"
+        android:text="@string/save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

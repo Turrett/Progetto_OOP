@@ -22,5 +22,7 @@
     <string name="go_to_sign_in">go to sign in</string>
     <string name="tbd">tbd</string>
     <string name="name">Name</string>
+    <string name="compila_i_campi_per_inserire_un_nuovo_annuncio">Compila i campi per inserire un nuovo annuncio</string>
+    <string name="save">save</string>
 
 </resources>
