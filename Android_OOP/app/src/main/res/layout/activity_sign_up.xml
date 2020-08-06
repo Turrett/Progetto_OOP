@@ -50,21 +50,15 @@
             android:id="@+id/button_sign_up"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/buttons"
-            android:fontFamily="@font/raleway"
             android:text="Sign up"
-            android:textColor="@color/color15" />
+            android:layout_gravity="center_horizontal"
+            />
 
         <Button
             android:id="@+id/button_go_to_sign_in"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="Go to sign in"
-            android:background="@drawable/buttons"
-            android:textColor="@color/color15"
-            android:layout_marginTop="10dp"
             android:layout_gravity="center_horizontal"
             />
 

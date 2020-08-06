@@ -21,7 +21,7 @@
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="match_parent"
-            android:layout_height="268dp"
+            android:layout_height="273dp"
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
         <EditText
@@ -51,9 +51,6 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="Log In "
-            android:layout_marginTop="30dp"
-            android:background="@drawable/buttons"
-            android:textColor="@color/color15"
             android:layout_gravity="center_horizontal"/>
 
         <Button
@@ -61,9 +58,6 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="Sign in"
-            android:background="@drawable/buttons"
-            android:layout_marginTop="10dp"
-            android:textColor="@color/color15"
             android:layout_gravity="center_horizontal"/>
 
     </LinearLayout>

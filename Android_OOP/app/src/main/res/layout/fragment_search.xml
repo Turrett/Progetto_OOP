@@ -8,30 +8,22 @@
 
     <EditText
         android:id="@+id/search_field"
-        android:layout_width="320dp"
+        android:layout_width="300dp"
         android:layout_height="50dp"
         android:background="@drawable/search_layout"
         android:ems="10"
-        android:layout_marginRight="20dp"
         android:inputType="textPersonName"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="15dp"
-        android:hint="Cerca un prodotto"
-        android:paddingBottom="10dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:paddingTop="10dp"
-        android:textSize="16sp"
-        />
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="5dp"
+        android:hint="Inserisci il prodotto da cercare" />
 
     <ImageButton
         android:id="@+id/search_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/search_field"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="-60dp"
-        android:background="@drawable/buttons"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="-70dp"
         android:src="@drawable/ic_baseline_search_24" />
 
     <androidx.recyclerview.widget.RecyclerView
