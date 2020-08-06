@@ -1,7 +1,4 @@
-package com.example.progettooop.ui.addadv;
-
-import java.text.DateFormat;
-import java.util.Date;
+package com.example.progettooop.ui.advertisement;
 
 public class Product {
     private String Name;

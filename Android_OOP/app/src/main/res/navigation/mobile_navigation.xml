@@ -27,11 +27,6 @@
         tools:layout="@layout/fragment_dashboard" />
 
     <!-- notifiche -->
-    <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.progettooop.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
 
     <!-- ricerca -->
     <fragment
@@ -54,7 +49,7 @@
     <!-- inserimento nuovo adv -->
     <fragment
         android:id="@+id/navigation_addadv"
-        android:name="com.example.progettooop.ui.addadv.AddAdvFragment"
+        android:name="com.example.progettooop.ui.advertisement.AddAdvFragment"
         android:label="Inserimento nuovo annuncio"
         tools:layout="@layout/fragment_addadv" >
         <action

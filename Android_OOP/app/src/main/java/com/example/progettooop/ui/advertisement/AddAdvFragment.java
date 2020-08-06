@@ -1,4 +1,4 @@
-package com.example.progettooop.ui.addadv;
+package com.example.progettooop.ui.advertisement;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -18,10 +18,12 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.progettooop.R;
 
+
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.*;
 import com.google.firebase.auth.*;
+
 
 
 import java.util.HashMap;
@@ -97,7 +99,7 @@ public class AddAdvFragment extends Fragment implements View.OnClickListener {
 
 
         db.collection("annuncio")
-                .document(Objects.requireNonNull(auth.getCurrentUser().getUid()))
+                .document()
                 .set(user, SetOptions.merge())
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override

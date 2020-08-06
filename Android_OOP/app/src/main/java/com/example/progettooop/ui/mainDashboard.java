@@ -21,7 +21,7 @@ public class mainDashboard extends AppCompatActivity implements View.OnClickList
         NavController navController;
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications,R.id.navigation_search, R.id.navigation_user)
+                R.id.navigation_home, R.id.navigation_dashboard,R.id.navigation_search, R.id.navigation_user)
                 .build();
         BottomNavigationView navView = findViewById(R.id.nav_view);
 

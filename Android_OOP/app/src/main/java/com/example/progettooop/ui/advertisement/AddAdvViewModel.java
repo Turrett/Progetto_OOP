@@ -1,4 +1,4 @@
-package com.example.progettooop.ui.addadv;
+package com.example.progettooop.ui.advertisement;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
