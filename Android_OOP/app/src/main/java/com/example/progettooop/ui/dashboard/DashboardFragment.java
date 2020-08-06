@@ -19,6 +19,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.widget.ViewPager2;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import com.example.progettooop.ui.dashboard.*;
+import java.lang.*;
 
 import com.example.progettooop.R;
 import com.example.progettooop.ui.home.HomeViewModel;
@@ -47,6 +48,9 @@ public class DashboardFragment extends Fragment {
         dashadapter = new DashAdapter(this);
         viewPager = view.findViewById(R.id.pager);
         viewPager.setAdapter(dashadapter);
+        String[] tabTitles = new String[2];
+        tabTitles[0] = new String("Annunci attivi");
+        tabTitles[1] = new String("Annunci preferiti");
 
        TabLayout tabLayout = view.findViewById(R.id.tab_layout);
        /* tabs.setupWithViewPager(viewPager);
@@ -56,7 +60,14 @@ public class DashboardFragment extends Fragment {
         tabs.getTabAt(1).setText(getResources().getText(R.string.tab2));*/
 
 
-        new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> tab.setText( "Object "+ (position + 1))).attach();
+        //new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> tab.setText( "Object "+ (position + 1))).attach();
+
+        new TabLayoutMediator(tabLayout, viewPager,
+                new TabLayoutMediator.TabConfigurationStrategy() {
+                    @Override public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+                        tab.setText(tabTitles[position]);
+                    }
+                }).attach();
     }
 }
 

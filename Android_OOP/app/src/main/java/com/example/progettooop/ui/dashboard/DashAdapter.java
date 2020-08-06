@@ -1,11 +1,13 @@
 package com.example.progettooop.ui.dashboard;
 
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+
+import com.google.android.material.tabs.TabLayoutMediator;
+
+//l'adapter cambia fragment di riferimento del tab in base alla posizione in cui scorro col dito
 
 public class DashAdapter extends FragmentStateAdapter {
     public DashAdapter(Fragment fragment) {
