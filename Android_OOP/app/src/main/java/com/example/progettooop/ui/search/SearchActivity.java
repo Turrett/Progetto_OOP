@@ -28,29 +28,33 @@ import com.google.firebase.database.Query;
 
 public class SearchActivity extends AppCompatActivity {
 
-    /*private EditText searchtxt;
-    private ImageButton searchbtn;
-    private RecyclerView resultlist;
-    private DatabaseReference db;
-    private FirebaseRecyclerAdapter adapter;
+    private EditText mSearchField;
+    private ImageButton mSearchBtn;
+
+    private RecyclerView mResultList;
+
+    private DatabaseReference mUserDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        db = FirebaseDatabase.getInstance().getReference("Users");
+        setContentView(R.layout.fragment_search);
+
+        mUserDatabase = FirebaseDatabase.getInstance().getReference("Users");
 
 
-        searchtxt = (EditText) findViewById(R.id.search_field);
-        searchbtn = (ImageButton) findViewById(R.id.search_btn);
-        resultlist = (RecyclerView) findViewById(R.id.result_list);
-        resultlist.setLayoutManager(new LinearLayoutManager(this));
-        resultlist.setHasFixedSize(true);
+        mSearchField = (EditText) findViewById(R.id.search_field);
+        mSearchBtn = (ImageButton) findViewById(R.id.search_btn);
 
-        searchbtn.setOnClickListener(new View.OnClickListener() {
+        mResultList = (RecyclerView) findViewById(R.id.result_list);
+        mResultList.setHasFixedSize(true);
+        mResultList.setLayoutManager(new LinearLayoutManager(this));
+
+        mSearchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                String searchText = searchtxt.getText().toString();
+                String searchText = mSearchField.getText().toString();
 
                 firebaseUserSearch(searchText);
 
@@ -59,50 +63,33 @@ public class SearchActivity extends AppCompatActivity {
 
     }
 
-
-
-
-    // View Holder Class
-
-    public class ElementsViewHolder extends RecyclerView.ViewHolder {
-
-        public TextView user_name;
-        public TextView product;
-
-
-        public ElementsViewHolder(View itemView) {
-            super(itemView);
-            user_name = (TextView) itemView.findViewById(R.id.name_text);
-            product = (TextView) itemView.findViewById(R.id.status_text);
-        }
-
-        public void setUsername(String string){
-            user_name.setText(string);
-        }
-
-        public void setProduct(String string){
-            product.setText(string);
-        }
-
-
-
-        private void firebaseUserSearch(String searchText) {
+    private void firebaseUserSearch(String searchText) {
 
         Toast.makeText(SearchActivity.this, "Started Search", Toast.LENGTH_LONG).show();
 
-        Query firebaseSearchQuery = db.orderByChild("name").startAt(searchText);
+        Query firebaseSearchQuery = mUserDatabase.orderByChild("name").startAt(searchText).endAt(searchText + "\uf8ff");
 
-        FirebaseRecyclerAdapter<Elements, ElementsViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Elements, UsersViewHolder>(
+        FirebaseRecyclerAdapter<Elements, UsersViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Elements, UsersViewHolder>(
 
                 Elements.class,
                 R.layout.annunci_per_search,
-                ElementsViewHolder.class,
+                UsersViewHolder.class,
                 firebaseSearchQuery
 
         ) {
+            @NonNull
+            @Override
+            public UsersViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                return null;
+            }
 
             @Override
-            protected void populateViewHolder(ElementsViewHolder viewHolder, Elements model, int position) {
+            protected void onBindViewHolder(@NonNull UsersViewHolder holder, int position, @NonNull Elements model) {
+
+            }
+
+            @Override
+            protected void populateViewHolder(UsersViewHolder viewHolder, Elements model, int position) {
 
 
                 viewHolder.setDetails(getApplicationContext(), model.getName(), model.getStatus(), model.getImage());
@@ -110,13 +97,46 @@ public class SearchActivity extends AppCompatActivity {
             }
         };
 
-        resultlist.setAdapter(firebaseRecyclerAdapter);
+        mResultList.setAdapter(firebaseRecyclerAdapter);
 
     }
 
 
+    // View Holder Class
 
-    }*/
+    public static class UsersViewHolder extends RecyclerView.ViewHolder {
+
+        View mView;
+
+        public UsersViewHolder(View itemView) {
+            super(itemView);
+
+            mView = itemView;
+
+        }
+
+        public void setDetails(Context ctx, String userName, String userStatus, String userImage){
+
+            TextView user_name = (TextView) mView.findViewById(R.id.name_text);
+            TextView user_status = (TextView) mView.findViewById(R.id.status_text);
+            ImageView user_image = (ImageView) mView.findViewById(R.id.profile_image);
+
+
+            user_name.setText(userName);
+            user_status.setText(userStatus);
+
+            Glide.with(ctx).load(userImage).into(user_image);
+
+
+        }
+
+
+
+
+    }
+
+
+    }
 
 
 
