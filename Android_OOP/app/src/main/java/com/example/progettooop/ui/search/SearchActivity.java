@@ -1,28 +1,19 @@
 package com.example.progettooop.ui.search;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.progettooop.R;
 import com.example.progettooop.ui.advertisement.Product;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 
-public class SearchActivity extends AppCompatActivity implements View.OnClickListener {
+
+public class SearchActivity extends AppCompatActivity {
 
     private EditText mSearchField;
     private ImageButton mSearchBtn;
@@ -31,7 +22,6 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
     private DatabaseReference mUserDatabase;
 
-    private FirebaseRecyclerAdapter<Product, ViewHolder> firebaseRecyclerAdapter;
     private Product[] products;
 
 
@@ -40,45 +30,71 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_search);
 
-        mUserDatabase = FirebaseDatabase.getInstance().getReference("annuncio");
+        //mUserDatabase = FirebaseDatabase.getInstance().getReference("annuncio");
 
 
-        mSearchField = (EditText) findViewById(R.id.search_field);
-        mSearchBtn = (ImageButton) findViewById(R.id.search_btn);
+        //mSearchField = (EditText) findViewById(R.id.search_field);
+        //mSearchBtn = (ImageButton) findViewById(R.id.search_btn);
 
-        mResultList = (RecyclerView) findViewById(R.id.result_list);
-        mResultList.setHasFixedSize(true);
-        mResultList.setLayoutManager(new LinearLayoutManager(this));
+        //mResultList = (RecyclerView) findViewById(R.id.result_list);
+        //mResultList.setHasFixedSize(true);
+        //mResultList.setLayoutManager(new LinearLayoutManager(this));
 
-        mSearchBtn.setOnClickListener(new View.OnClickListener() {
+        products[0]=new Product("latte","10","10/09/2020");
+        products[1]=new Product("latte uht ","5","10/09/2010");
+
+
+
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.result_list);
+        SearchAdapter adapter = new SearchAdapter(products);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
+
+        /*mSearchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                String searchText = mSearchField.getText().toString();
-                firebaseUserSearch(searchText);
+                /*String searchText = mSearchField.getText().toString();
+                firebaseUserSearch(searchText);*/
+
+
+                //  }
+                //});
 
             }
-        });
 
-    }
 
-    private void firebaseUserSearch(String searchText) {
 
-        Toast.makeText(SearchActivity.this, "Started Search", Toast.LENGTH_LONG).show();
+   // private void firebaseUserSearch(String searchText) {
 
-        Query firebaseSearchQuery = mUserDatabase
+       //Toast.makeText(SearchActivity.this, "Started Search", Toast.LENGTH_LONG).show();
+
+        /*Query firebaseSearchQuery = mUserDatabase
                 .orderByChild("username")
                 .startAt("\uf8ff" + searchText)
                 .endAt(searchText + "\uf8ff")
                 .limitToFirst(10);
 
 
+
         FirebaseRecyclerOptions<Product> options =
                 new FirebaseRecyclerOptions.Builder<Product>()
                         .setQuery(firebaseSearchQuery, Product.class)
-                        .build();
+                        .build();*/
+/*ì
+        products[0]=new Product("latte","10","10/09/2020");
+        products[0]=new Product("latte uht ","5","10/09/2010");
 
-        firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Product, ViewHolder>(options) {
+
+
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.result_list);
+        SearchAdapter adapter = new SearchAdapter(products);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);*/
+
+        /*firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Product, ViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull Product model) {
 
@@ -95,18 +111,11 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
             }
 
 
-        };
-
-        mResultList.setAdapter(firebaseRecyclerAdapter);
-
-    }
-
-    @Override
-    public void onClick(View view) {
-
-    }
+        };*/
 
 
+
+/*
     // View Holder Class
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -132,7 +141,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
             expire.setText(Expire);
 
         }
-    }
+    }*/
 }
 
 
