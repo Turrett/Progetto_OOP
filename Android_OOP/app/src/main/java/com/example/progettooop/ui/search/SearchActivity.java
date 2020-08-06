@@ -1,32 +1,29 @@
 package com.example.progettooop.ui.search;
 
-import android.app.SearchManager;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.ListFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.progettooop.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
-public class SearchActivity extends AppCompatActivity {
+public class SearchActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText mSearchField;
     private ImageButton mSearchBtn;
@@ -55,7 +52,6 @@ public class SearchActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 String searchText = mSearchField.getText().toString();
-
                 firebaseUserSearch(searchText);
 
             }
@@ -67,16 +63,18 @@ public class SearchActivity extends AppCompatActivity {
 
         Toast.makeText(SearchActivity.this, "Started Search", Toast.LENGTH_LONG).show();
 
-        Query firebaseSearchQuery = mUserDatabase.orderByChild("name").startAt(searchText).endAt(searchText + "\uf8ff");
+        Query firebaseSearchQuery = mUserDatabase
+                .orderByChild("username")
+                .startAt(searchText)
+                .endAt(searchText + "\uf8ff");
 
-        FirebaseRecyclerAdapter<Elements, UsersViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Elements, UsersViewHolder>(
 
-                Elements.class,
-                R.layout.annunci_per_search,
-                UsersViewHolder.class,
-                firebaseSearchQuery
+        FirebaseRecyclerOptions<Elements> options =
+                new FirebaseRecyclerOptions.Builder<Elements>()
+                        .setQuery(firebaseSearchQuery, Elements.class)
+                        .build();
 
-        ) {
+        FirebaseRecyclerAdapter<Elements, UsersViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Elements, UsersViewHolder>(options) {
             @NonNull
             @Override
             public UsersViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -88,16 +86,14 @@ public class SearchActivity extends AppCompatActivity {
 
             }
 
-            @Override
-            protected void populateViewHolder(UsersViewHolder viewHolder, Elements model, int position) {
-
-
-                viewHolder.setDetails(getApplicationContext(), model.getName(), model.getStatus(), model.getImage());
-
-            }
         };
 
         mResultList.setAdapter(firebaseRecyclerAdapter);
+
+    }
+
+    @Override
+    public void onClick(View view) {
 
     }
 
@@ -138,8 +134,5 @@ public class SearchActivity extends AppCompatActivity {
 
     }
 
-
-
-}
 
 
