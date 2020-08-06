@@ -1,12 +1,11 @@
 package com.example.progettooop.ui.search;
 
-import android.content.Context;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,8 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.example.progettooop.R;
+import com.example.progettooop.ui.advertisement.Product;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
@@ -32,12 +31,16 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
     private DatabaseReference mUserDatabase;
 
+    private FirebaseRecyclerAdapter<Product, ViewHolder> firebaseRecyclerAdapter;
+    private Product[] products;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_search);
 
-        mUserDatabase = FirebaseDatabase.getInstance().getReference("Users");
+        mUserDatabase = FirebaseDatabase.getInstance().getReference("annuncio");
 
 
         mSearchField = (EditText) findViewById(R.id.search_field);
@@ -65,26 +68,32 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
         Query firebaseSearchQuery = mUserDatabase
                 .orderByChild("username")
-                .startAt(searchText)
-                .endAt(searchText + "\uf8ff");
+                .startAt("\uf8ff" + searchText)
+                .endAt(searchText + "\uf8ff")
+                .limitToFirst(10);
 
 
-        FirebaseRecyclerOptions<Elements> options =
-                new FirebaseRecyclerOptions.Builder<Elements>()
-                        .setQuery(firebaseSearchQuery, Elements.class)
+        FirebaseRecyclerOptions<Product> options =
+                new FirebaseRecyclerOptions.Builder<Product>()
+                        .setQuery(firebaseSearchQuery, Product.class)
                         .build();
 
-        FirebaseRecyclerAdapter<Elements, UsersViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Elements, UsersViewHolder>(options) {
+        firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Product, ViewHolder>(options) {
+            @Override
+            protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull Product model) {
+
+
+            }
+
             @NonNull
             @Override
-            public UsersViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                return null;
+            public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+                View listItem= layoutInflater.inflate(R.layout.annunci_per_search, parent, false);
+                ViewHolder viewHolder = new ViewHolder(listItem);
+                return viewHolder;
             }
 
-            @Override
-            protected void onBindViewHolder(@NonNull UsersViewHolder holder, int position, @NonNull Elements model) {
-
-            }
 
         };
 
@@ -100,39 +109,31 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
     // View Holder Class
 
-    public static class UsersViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
         View mView;
 
-        public UsersViewHolder(View itemView) {
+        public ViewHolder(View itemView) {
             super(itemView);
 
             mView = itemView;
 
         }
 
-        public void setDetails(Context ctx, String userName, String userStatus, String userImage){
+        public void setDetails(String userName, String quantity, String Expire) {
 
             TextView user_name = (TextView) mView.findViewById(R.id.name_text);
-            TextView user_status = (TextView) mView.findViewById(R.id.status_text);
-            ImageView user_image = (ImageView) mView.findViewById(R.id.profile_image);
+            TextView qty = mView.findViewById(R.id.quantity_show);
+            TextView expire = mView.findViewById(R.id.expiration_show);
 
 
             user_name.setText(userName);
-            user_status.setText(userStatus);
-
-            Glide.with(ctx).load(userImage).into(user_image);
-
+            qty.setText(quantity);
+            expire.setText(Expire);
 
         }
-
-
-
-
     }
-
-
-    }
+}
 
 
 

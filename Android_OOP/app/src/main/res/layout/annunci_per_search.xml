@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/show_Rl"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -30,7 +31,20 @@
 
     <!--il prodotto-->
     <TextView
-        android:id="@+id/status_text"
+        android:id="@+id/quantity_show"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/name_text"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@+id/profile_image"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        android:textColor="#999999"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/expiration_show"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/name_text"
