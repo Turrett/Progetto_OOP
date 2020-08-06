@@ -90,13 +90,13 @@
 
             <GridLayout
                 android:id="@+id/gridl1"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:rowCount="7"
+                android:background="@drawable/borders"
                 android:columnCount="2"
-                android:paddingLeft="10dp"
+                android:layout_gravity="center_horizontal"
                 android:paddingTop="8dp"
-                >
+                android:rowCount="7">
 
                 <TextView
                     android:id="@+id/txtv1"
@@ -104,87 +104,91 @@
                     android:layout_height="wrap_content"
                     android:text="Lunedì"
                     android:textSize="18sp"
-                    />
+                    android:paddingLeft="2dp"/>
 
                 <TextView
                     android:id="@+id/txtv2"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="orario di lunedì"
-                    android:textSize="18sp"
-                    />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/txtv3"
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
+                    android:paddingTop="3dp"
                     android:text="Martedì"
                     android:textSize="18sp"
-                    android:paddingTop="3dp"/>
+                    android:paddingLeft="2dp"/>
 
                 <TextView
                     android:id="@+id/txtv4"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:paddingTop="3dp"
                     android:text="orario di martedì"
-                    android:textSize="18sp"
-                    android:paddingTop="3dp"/>
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/txtv5"
                     android:layout_width="130dp"
                     android:layout_height="match_parent"
+                    android:paddingTop="3dp"
                     android:text="Mercoledì"
                     android:textSize="18sp"
-                    android:paddingTop="3dp"/>
+                    android:paddingLeft="2dp"/>
 
                 <TextView
                     android:id="@+id/txtv6"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:paddingTop="3dp"
                     android:text="TextView"
-                    android:textSize="18sp"
-                    android:paddingTop="3dp"/>
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/txtv7"
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
+                    android:paddingTop="3dp"
                     android:text="Giovedì"
                     android:textSize="18sp"
-                    android:paddingTop="3dp"/>
+                    android:paddingLeft="2dp"/>
 
                 <TextView
                     android:id="@+id/txtv8"
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
+                    android:paddingTop="3dp"
                     android:text="TextView"
-                    android:textSize="18sp"
-                    android:paddingTop="3dp"/>
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/txtv9"
                     android:layout_width="130dp"
                     android:layout_height="match_parent"
+                    android:paddingTop="3dp"
                     android:text="Venerdì"
                     android:textSize="18sp"
-                    android:paddingTop="3dp"/>
+                    android:paddingLeft="2dp"/>
 
                 <TextView
                     android:id="@+id/txtv10"
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
+                    android:paddingTop="3dp"
                     android:text="TextView"
-                    android:textSize="18sp"
-                    android:paddingTop="3dp"/>
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/txtv11"
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
+                    android:paddingTop="3dp"
                     android:text="Sabato"
                     android:textSize="18sp"
-                    android:paddingTop="3dp"/>
+                    android:paddingLeft="2dp"/>
 
                 <TextView
                     android:id="@+id/txtv12"
@@ -198,7 +202,8 @@
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:text="Domenica"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:paddingLeft="2dp"/>
 
                 <TextView
                     android:id="@+id/txtv14"
