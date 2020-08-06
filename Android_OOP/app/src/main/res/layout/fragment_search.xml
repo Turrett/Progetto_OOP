@@ -5,8 +5,6 @@
     android:id="@+id/search_bar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color8"
-    android:backgroundTint="@color/color8"
     android:backgroundTintMode="src_in"
     android:forceDarkAllowed="false"
     android:layerType="hardware"
@@ -18,7 +16,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView" />
+        app:layout_constraintTop_toBottomOf="@+id/searchView"
+        android:background="@drawable/borders"/>
 
     <SearchView
         android:id="@+id/searchView"

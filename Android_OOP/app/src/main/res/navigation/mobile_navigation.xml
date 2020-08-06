@@ -26,8 +26,6 @@
         android:label="Dashboard"
         tools:layout="@layout/fragment_dashboard" />
 
-    <!-- notifiche -->
-
     <!-- ricerca -->
     <fragment
         android:id="@+id/navigation_search"
