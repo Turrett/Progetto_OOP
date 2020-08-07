@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_addadv"
@@ -11,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/raleway"
         android:text="@string/compila_i_campi_per_inserire_un_nuovo_annuncio"
@@ -25,34 +26,37 @@
         app:layout_constraintVertical_bias="0.011" />
 
     <LinearLayout
+        android:id="@+id/ll1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="400dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/addv_save"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_addadv">
+        app:layout_constraintStart_toStartOf="parent">
 
         <EditText
             android:id="@+id/addv_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"
-            android:hint="product name" />
+            android:hint="Inserisci il nome del prodotto"
+            android:inputType="text" />
 
         <EditText
             android:id="@+id/addv_qty"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
-            android:hint="product quantity" />
+            android:hint="Inserisci la quantità del prodotto"
+            android:inputType="numberDecimal" />
 
         <EditText
             android:id="@+id/addv_expiration"
             android:layout_width="308dp"
             android:layout_height="wrap_content"
-            android:inputType="date"
-            android:hint="expiration_date"/>
+            android:autofillHints="scadenza"
+            android:hint="Inserisci la scadenza del prodotto"
+            android:inputType="date" />
 
     </LinearLayout>
 
@@ -69,9 +73,10 @@
 
     <Button
         android:id="@+id/addv_save"
-        android:layout_width="126dp"
+        android:layout_width="200dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="72dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="250dp"
         android:background="@drawable/buttons"
         android:text="@string/save"
         android:textColor="@color/color15"

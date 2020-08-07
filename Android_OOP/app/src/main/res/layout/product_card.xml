@@ -3,42 +3,84 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="390dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginTop="5dp"
+    android:layout_marginStart="10dp">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="390dp"
+        android:layout_height="100dp"
+        android:backgroundTint="@color/color15"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_gravity="center_horizontal">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal">
+
+
+            <TextView
+                android:id="@+id/nomeprodotto"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="13dp"
+                android:layout_marginTop="13dp"
+                android:text="Prodotto:"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/quantita"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="13dp"
+                android:layout_marginTop="35dp"
+                android:text="Quantità:"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/scadenza"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="13dp"
+                android:layout_marginTop="57dp"
+                android:text="Scadenza:"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/card_product"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="130dp"
+                android:layout_marginTop="13dp"
                 android:text="TextView"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/nomeprodotto"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/card_expire"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="130dp"
+                android:layout_marginTop="57dp"
                 android:text="TextView"
-                app:layout_constraintStart_toEndOf="@+id/card_quantrity"
+                app:layout_constraintStart_toStartOf="@+id/quantita"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/card_quantrity"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="130dp"
+                android:layout_marginTop="35dp"
                 android:text="TextView"
-                app:layout_constraintStart_toEndOf="@+id/card_product"
+                app:layout_constraintStart_toStartOf="@+id/scadenza"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

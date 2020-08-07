@@ -34,15 +34,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:ems="10"
+                android:hint="Nome utente"
                 android:importantForAutofill="no"
                 android:inputType="textPersonName"
+                android:paddingTop="10dp"
                 android:textSize="18sp" />
 
             <RatingBar
                 android:id="@+id/rating_bar"
                 style="@style/Widget.AppCompat.RatingBar.Indicator"
                 android:layout_width="wrap_content"
-                android:layout_height="50dp"
+                android:layout_height="42dp"
                 android:isIndicator="true"
                 android:max="10"
                 android:numStars="10"
@@ -56,19 +58,21 @@
                 android:layout_height="50dp"
                 android:autofillHints="yes"
                 android:ems="10"
-                android:inputType="textEmailAddress"
                 android:hint="email"
-                android:textSize="18sp"/>
+                android:inputType="textEmailAddress"
+                android:paddingTop="8dp"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/User_address"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:ems="10"
+                android:hint="address"
                 android:importantForAutofill="no"
                 android:inputType="textPostalAddress"
-                android:hint="address"
-                android:textSize="18sp"/>
+                android:paddingTop="8dp"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/User_Phone_Number"
@@ -78,141 +82,153 @@
                 android:hint="telephone number"
                 android:importantForAutofill="no"
                 android:inputType="phone"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/labelorario"
-                android:layout_width="360dp"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/color10"
-                android:text="Orari di disponibilità"
-                android:textSize="18sp" />
-
-            <GridLayout
-                android:id="@+id/gridl1"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/borders"
-                android:columnCount="2"
-                android:layout_gravity="center_horizontal"
                 android:paddingTop="8dp"
-                android:rowCount="7">
+                android:textSize="18sp" />
+
+            <RelativeLayout
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/borders">
 
                 <TextView
-                    android:id="@+id/txtv1"
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
-                    android:text="Lunedì"
-                    android:textSize="18sp"
-                    android:paddingLeft="2dp"/>
+                    android:id="@+id/labelorario"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="7dp"
+                    android:backgroundTint="@color/color10"
+                    android:paddingLeft="87dp"
+                    android:text="Orari di disponibilità"
+                    android:textSize="18sp" />
 
-                <TextView
-                    android:id="@+id/txtv2"
+                <GridLayout
+                    android:id="@+id/gridl1"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="orario di lunedì"
-                    android:textSize="18sp" />
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="10dp"
+                    android:columnCount="2"
+                    android:paddingTop="8dp"
+                    android:rowCount="7">
 
-                <TextView
-                    android:id="@+id/txtv3"
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="3dp"
-                    android:text="Martedì"
-                    android:textSize="18sp"
-                    android:paddingLeft="2dp"/>
+                    <TextView
+                        android:id="@+id/txtv1"
+                        android:layout_width="130dp"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="8dp"
+                        android:text="Lunedì"
+                        android:textSize="18sp" />
 
-                <TextView
-                    android:id="@+id/txtv4"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingTop="3dp"
-                    android:text="orario di martedì"
-                    android:textSize="18sp" />
+                    <TextView
+                        android:id="@+id/txtv2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="orario di lunedì"
+                        android:textSize="18sp" />
 
-                <TextView
-                    android:id="@+id/txtv5"
-                    android:layout_width="130dp"
-                    android:layout_height="match_parent"
-                    android:paddingTop="3dp"
-                    android:text="Mercoledì"
-                    android:textSize="18sp"
-                    android:paddingLeft="2dp"/>
+                    <TextView
+                        android:id="@+id/txtv3"
+                        android:layout_width="130dp"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="8dp"
+                        android:paddingTop="3dp"
+                        android:text="Martedì"
+                        android:textSize="18sp" />
 
-                <TextView
-                    android:id="@+id/txtv6"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingTop="3dp"
-                    android:text="TextView"
-                    android:textSize="18sp" />
+                    <TextView
+                        android:id="@+id/txtv4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:paddingTop="3dp"
+                        android:text="orario di martedì"
+                        android:textSize="18sp" />
 
-                <TextView
-                    android:id="@+id/txtv7"
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="3dp"
-                    android:text="Giovedì"
-                    android:textSize="18sp"
-                    android:paddingLeft="2dp"/>
+                    <TextView
+                        android:id="@+id/txtv5"
+                        android:layout_width="130dp"
+                        android:layout_height="match_parent"
+                        android:paddingLeft="8dp"
+                        android:paddingTop="3dp"
+                        android:text="Mercoledì"
+                        android:textSize="18sp" />
 
-                <TextView
-                    android:id="@+id/txtv8"
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="3dp"
-                    android:text="TextView"
-                    android:textSize="18sp" />
+                    <TextView
+                        android:id="@+id/txtv6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:paddingTop="3dp"
+                        android:text="TextView"
+                        android:textSize="18sp" />
 
-                <TextView
-                    android:id="@+id/txtv9"
-                    android:layout_width="130dp"
-                    android:layout_height="match_parent"
-                    android:paddingTop="3dp"
-                    android:text="Venerdì"
-                    android:textSize="18sp"
-                    android:paddingLeft="2dp"/>
+                    <TextView
+                        android:id="@+id/txtv7"
+                        android:layout_width="130dp"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="8dp"
+                        android:paddingTop="3dp"
+                        android:text="Giovedì"
+                        android:textSize="18sp" />
 
-                <TextView
-                    android:id="@+id/txtv10"
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="3dp"
-                    android:text="TextView"
-                    android:textSize="18sp" />
+                    <TextView
+                        android:id="@+id/txtv8"
+                        android:layout_width="130dp"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:text="TextView"
+                        android:textSize="18sp" />
 
-                <TextView
-                    android:id="@+id/txtv11"
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="3dp"
-                    android:text="Sabato"
-                    android:textSize="18sp"
-                    android:paddingLeft="2dp"/>
+                    <TextView
+                        android:id="@+id/txtv9"
+                        android:layout_width="130dp"
+                        android:layout_height="match_parent"
+                        android:paddingLeft="8dp"
+                        android:paddingTop="3dp"
+                        android:text="Venerdì"
+                        android:textSize="18sp" />
 
-                <TextView
-                    android:id="@+id/txtv12"
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
-                    android:text="orario di sabato"
-                    android:textSize="18sp" />
+                    <TextView
+                        android:id="@+id/txtv10"
+                        android:layout_width="130dp"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:text="TextView"
+                        android:textSize="18sp" />
 
-                <TextView
-                    android:id="@+id/txtv13"
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
-                    android:text="Domenica"
-                    android:textSize="18sp"
-                    android:paddingLeft="2dp"/>
+                    <TextView
+                        android:id="@+id/txtv11"
+                        android:layout_width="130dp"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="8dp"
+                        android:paddingTop="3dp"
+                        android:text="Sabato"
+                        android:textSize="18sp" />
 
-                <TextView
-                    android:id="@+id/txtv14"
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
-                    android:text="TextView"
-                    android:textSize="18sp" />
-            </GridLayout>
+                    <TextView
+                        android:id="@+id/txtv12"
+                        android:layout_width="130dp"
+                        android:layout_height="wrap_content"
+                        android:text="orario di sabato"
+                        android:textSize="18sp" />
 
+                    <TextView
+                        android:id="@+id/txtv13"
+                        android:layout_width="130dp"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="8dp"
+                        android:text="Domenica"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/txtv14"
+                        android:layout_width="130dp"
+                        android:layout_height="wrap_content"
+                        android:text="TextView"
+                        android:textSize="18sp" />
+                </GridLayout>
+            </RelativeLayout>
         </LinearLayout>
     </ScrollView>
 
@@ -246,6 +262,7 @@
         android:layout_marginTop="40dp"
         android:layout_marginEnd="36dp"
         android:clickable="true"
+        android:background="@drawable/buttons"
         android:src="@android:drawable/ic_menu_edit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.991"
