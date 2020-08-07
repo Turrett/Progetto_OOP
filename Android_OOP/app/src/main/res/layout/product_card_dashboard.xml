@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="390dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="5dp"
+    android:layout_gravity="center_horizontal">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="390dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        android:backgroundTint="@color/color15"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:layout_width="90dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="300dp">
+
+            <Button
+                android:id="@+id/btndelete"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/buttons"
+                android:text="Elimina"
+                android:textColor="@color/color15"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            >
+
+
+            <TextView
+                android:id="@+id/txtnameprod"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="13dp"
+                android:layout_marginTop="13dp"
+                android:text="Prodotto:"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txtqtaprod"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="13dp"
+                android:layout_marginTop="35dp"
+                android:text="Quantità:"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txtexprod"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="13dp"
+                android:layout_marginTop="57dp"
+                android:text="Scadenza:"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/prod_dash"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="130dp"
+                android:layout_marginTop="13dp"
+                android:text="TextView"
+                app:layout_constraintStart_toStartOf="@+id/txtnameprod"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/exp_dash"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="130dp"
+                android:layout_marginTop="57dp"
+                android:text="TextView"
+                app:layout_constraintStart_toStartOf="@+id/txtexprod"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/qta_dash"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="130dp"
+                android:layout_marginTop="35dp"
+                android:text="TextView"
+                app:layout_constraintStart_toStartOf="@+id/txtexprod"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
