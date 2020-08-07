@@ -33,7 +33,6 @@ public class FavouriteAdvFragment extends Fragment {
     @SuppressLint("SetTextI18n")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        Bundle args = getArguments();
-        ((TextView) view.findViewById(R.id.text2dash)).setText(Integer.toString(args.getInt(ARG_OBJECT)));
+
     }
 }
