@@ -1,4 +1,4 @@
-package com.example.progettooop.ui.search;
+/*package com.example.progettooop.ui.search;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -24,4 +24,4 @@ public class SearchFragment extends Fragment{
         View root = inflater.inflate(R.layout.fragment_search, container, false);
         return root;
     }
-}
+}*/
