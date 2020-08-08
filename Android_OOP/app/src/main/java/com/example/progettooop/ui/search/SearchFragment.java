@@ -64,7 +64,9 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
     private void searchProductsToRecycleview(View v, ArrayList<Product> prod, Editable search) {
         db = FirebaseFirestore.getInstance();
         db.collection("annuncio")
-                .whereEqualTo("search_name", search.toString())
+                .orderBy("search_name")
+                .startAt(search.toString())
+                .endAt(search.toString()+"\uf8ff")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
