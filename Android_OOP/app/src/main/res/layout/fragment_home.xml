@@ -7,6 +7,41 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBaseline_toBaselineOf="parent"
+        >
+
+        <TextView
+            android:id="@+id/lblhomewelcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="8dp"
+            android:text="Benvenuto, "
+            android:textSize="19sp" />
+
+        <TextView
+            android:id="@+id/lblnomeutentelog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="130dp"
+            android:layout_marginTop="8dp"
+            android:textSize="19sp"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/lblinfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="36dp"
+            android:text="Questi sono tutti gli annunci disponibili per te!"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"
         android:layout_width="50dp"
@@ -25,7 +60,8 @@
         android:id="@+id/list_home"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="60dp"/>
+        android:layout_marginBottom="60dp"
+        android:layout_marginTop="65dp"/>
 
 
 
