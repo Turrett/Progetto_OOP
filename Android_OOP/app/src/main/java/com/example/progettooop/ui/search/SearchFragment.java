@@ -53,6 +53,9 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
             public void onClick(View view) {
                 ArrayList <Product> products  = new ArrayList<Product>();
                 searchProductsToRecycleview(root,products,mSearchField.getText());
+                if (products.size()<=0){
+                    Toast.makeText(getContext(), "Nessun prodotto disponibile", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
