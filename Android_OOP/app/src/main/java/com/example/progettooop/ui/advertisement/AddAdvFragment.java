@@ -96,6 +96,7 @@ public class AddAdvFragment extends Fragment implements View.OnClickListener {
         user.put("name", product.getName());
         user.put("quantity", product.getQuantity());
         user.put("expiration", product.getExpiration());
+        user.put("search_name",product.getName().toLowerCase());
 
 
         db.collection("annuncio")

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -19,7 +20,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -33,58 +33,59 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
     private FirebaseFirestore db;
     private EditText mSearchField;
     private ImageButton mSearchBtn;
-    private ArrayList < Product> products ;
-    private Product product;
+    ArrayList <Product> products  = new ArrayList<Product>();
 
     public SearchFragment() {
+
     }
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        products = new ArrayList<Product>();
-        product =new Product (null,null,null,null);
-
         searchViewModel = new ViewModelProvider(this).get(SearchViewModel.class);
-
         View root = inflater.inflate(R.layout.fragment_search, container, false);
 
         mSearchField = (EditText) root.findViewById(R.id.search_field);
         mSearchBtn = (ImageButton) root.findViewById(R.id.search_btn);
-        db=FirebaseFirestore.getInstance();
 
-// Create a query against the collection.
-        Query query = db.collection("annuncio").whereEqualTo("name", "latte uht parzialmente scremato 1litro");
-            query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                    if (task.isSuccessful()) {
-                        for (QueryDocumentSnapshot document : task.getResult()) {
-                            product.setName(document.get("name").toString());
-                            product.setExpiration(document.get("quantity").toString());
-                            product.setQuantity(document.get("expiration").toString());
-                            product.setUserId(document.get("UId").toString());
-                            products.add(product);
+        searchProductsToRecycleview(root,products,"Uova");
+
+        return root;
+    }
+
+
+    private void searchProductsToRecycleview(View v, ArrayList<Product> prod, String search) {
+        db = FirebaseFirestore.getInstance();
+        db.collection("annuncio")
+                .whereEqualTo("search_name", search.toLowerCase())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+
+                                prod.add(new Product(document.getString("name"),
+                                        document.getString("expiration"),
+                                        document.getString("quantity"),
+                                        document.getString("UId")));
+                            }
+                            recyclerView = v.findViewById(R.id.result_list);
+                            MyAdapter myAdapter = new MyAdapter(v.getContext(),prod);
+                            recyclerView.setAdapter(myAdapter);
+                            recyclerView.setLayoutManager(new LinearLayoutManager(v.getContext()));
+
+                        } else {
+                            Toast.makeText(getContext(), "task not successfull", Toast.LENGTH_SHORT).show();
                         }
-                    } else {
-
-                        return;
-
                     }
-                }
-            });
+                });
+
+    }
 
 
-            recyclerView = root.findViewById(R.id.result_list);
-            MyAdapter myAdapter = new MyAdapter(root.getContext(), products);
-            recyclerView.setAdapter(myAdapter);
-            recyclerView.setLayoutManager(new LinearLayoutManager(root.getContext()));
-            return root;
-        }
-
-        @Override
-        public void onClick (View view){
-
-        }
-
+    @Override
+    public void onClick(View view) {
+    }
 }
