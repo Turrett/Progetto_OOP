@@ -12,13 +12,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.progettooop.R;
 import com.example.progettooop.ui.advertisement.Product;
 
+import java.util.ArrayList;
+
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
-    Product products[];
+    private ArrayList< Product> products;
     Context context;
 
-    public MyAdapter(Context ct , Product Prodotti[]){
+    public MyAdapter(Context ct , ArrayList < Product> prodotti){
 
-        products=Prodotti;
+        products=prodotti;
         context=ct;
 
     }
@@ -33,24 +35,26 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-      holder.name.setText(products[position].getName());
-      holder.quantity.setText(products[position].getQuantity());
-      holder.expire.setText(products[position].getExpiration());
+      holder.name.setText(products.get(position).getName());
+      holder.quantity.setText(products.get(position).getQuantity());
+      holder.expire.setText(products.get(position).getExpiration());
+      holder.userid.setText(products.get(position).getUserId());
 
     }
 
     @Override
     public int getItemCount() {
-        return products.length;
+        return products.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView name,quantity,expire;
+        TextView name,quantity,expire,userid;
        public MyViewHolder(@NonNull View itemView) {
            super(itemView);
            expire = itemView.findViewById(R.id.card_expire);
            name = itemView.findViewById(R.id.card_product);
            quantity =  itemView.findViewById(R.id.card_quantrity);
+           userid = itemView.findViewById(R.id.card_username);
        }
    }
 

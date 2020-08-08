@@ -4,12 +4,22 @@ public class Product {
     private String Name;
     private String Quantity;
     private String Expiration;
+    private String UserId;
 
 
-    public Product(String name, String quantity, String expiration) {
+    public Product(String name, String quantity, String expiration,String Uid) {
         Name = name;
         Quantity = quantity;
         Expiration = expiration;
+        UserId = Uid;
+    }
+
+    public String getUserId() {
+        return UserId;
+    }
+
+    public void setUserId(String userId) {
+        UserId = userId;
     }
 
     public String getQuantity() {
