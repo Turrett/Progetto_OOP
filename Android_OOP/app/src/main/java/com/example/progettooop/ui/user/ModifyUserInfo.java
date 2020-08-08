@@ -110,7 +110,7 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
 
     private void FileChooser(){
         Intent intent = new Intent();
-        intent.setType("image/jpeg");
+        intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(intent, 1);
     }

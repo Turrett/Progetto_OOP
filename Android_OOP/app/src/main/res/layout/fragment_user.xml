@@ -241,7 +241,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@tools:sample/avatars"
-        android:contentDescription="@string/tbd" />
+        android:contentDescription="@string/tbd"
+        android:visibility="visible"/>
 
     <ProgressBar
         android:id="@+id/progressbar_user"

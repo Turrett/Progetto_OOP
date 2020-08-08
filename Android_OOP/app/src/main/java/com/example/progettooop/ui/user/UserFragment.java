@@ -2,6 +2,7 @@ package com.example.progettooop.ui.user;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.progettooop.R;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -29,6 +31,7 @@ import com.google.firebase.firestore.*;
 import com.google.firebase.auth.*;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import java.util.Objects;
 
@@ -86,10 +89,30 @@ public class UserFragment extends Fragment implements View.OnClickListener {
                     email.setText(documentSnapshot.getString("email"));
                     indirizzo.setText(documentSnapshot.getString("address"));
                     numero.setText(documentSnapshot.getString("phone"));
+
                     imageUrl = documentSnapshot.getString("PhotoID");
+                    /*Glide.with(UserFragment.this)
+                            .load(imageUrl)
+                            .diskCacheStrategy(DiskCacheStrategy.ALL)
+                            .into(userImage);*/
+
+                    assert imageUrl != null;
+                    storageReference.child(imageUrl).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            Glide.with(UserFragment.this).load(uri.toString()).diskCacheStrategy(DiskCacheStrategy.ALL).into(userImage);
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception exception) {
+                            Toast.makeText(getContext(),"non ci sono riuscito",Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+
                 }
                 else {
-                    Toast.makeText(getContext(),"empty document",Toast.LENGTH_SHORT);
+                    Toast.makeText(getContext(),"empty document",Toast.LENGTH_SHORT).show();
                 }
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -102,11 +125,6 @@ public class UserFragment extends Fragment implements View.OnClickListener {
 
         });
 
-        Glide.with(this)
-                .load(imageUrl)
-                .into(userImage);
-
-        //Todo correction
 
 
         user_progressbar.setVisibility(View.GONE);
