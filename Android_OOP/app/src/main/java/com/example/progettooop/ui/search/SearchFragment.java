@@ -1,6 +1,7 @@
 package com.example.progettooop.ui.search;
 
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,17 +48,22 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
 
         mSearchField = (EditText) root.findViewById(R.id.search_field);
         mSearchBtn = (ImageButton) root.findViewById(R.id.search_btn);
+        mSearchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                searchProductsToRecycleview(root,products,mSearchField.getText());
+            }
+        });
 
-        searchProductsToRecycleview(root,products,"Uova");
 
         return root;
     }
 
 
-    private void searchProductsToRecycleview(View v, ArrayList<Product> prod, String search) {
+    private void searchProductsToRecycleview(View v, ArrayList<Product> prod, Editable search) {
         db = FirebaseFirestore.getInstance();
         db.collection("annuncio")
-                .whereEqualTo("search_name", search.toLowerCase())
+                .whereEqualTo("search_name", search.toString())
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
