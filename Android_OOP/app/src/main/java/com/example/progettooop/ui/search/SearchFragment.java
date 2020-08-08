@@ -79,8 +79,8 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
                             for (QueryDocumentSnapshot document : task.getResult()) {
 
                                 prod.add(new Product(document.getString("name"),
-                                        document.getString("expiration"),
                                         document.getString("quantity"),
+                                        document.getString("expiration"),
                                         document.getString("UId")));
 
                             }
@@ -101,6 +101,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
         });
 
     }
+
 
 
     @Override

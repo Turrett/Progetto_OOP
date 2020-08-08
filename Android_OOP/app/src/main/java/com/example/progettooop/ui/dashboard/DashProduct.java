@@ -33,7 +33,6 @@ public class DashProduct {
 
     public void setExpiration(String expiration) {
         Expirationdash = expiration;
-
     }
 
 }

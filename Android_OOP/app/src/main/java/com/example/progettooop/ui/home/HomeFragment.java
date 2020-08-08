@@ -68,8 +68,8 @@ public class HomeFragment extends Fragment {
                             for (QueryDocumentSnapshot document : task.getResult()) {
 
                                 prod.add(new Product(document.getString("name"),
-                                        document.getString("expiration"),
                                         document.getString("quantity"),
+                                        document.getString("expiration"),
                                         document.getString("UId")));
 
                             }

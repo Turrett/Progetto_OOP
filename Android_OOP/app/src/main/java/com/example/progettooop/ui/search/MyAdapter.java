@@ -26,7 +26,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater =LayoutInflater.from(context);
-        View view =inflater.inflate(R.layout.product_card,parent,false);
+        View view =inflater.inflate(R.layout.home_card,parent,false);
         return  new MyViewHolder(view);
     }
 
@@ -48,10 +48,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         TextView name,quantity,expire,userid;
        public MyViewHolder(@NonNull View itemView) {
            super(itemView);
-           expire = itemView.findViewById(R.id.card_expire);
-           name = itemView.findViewById(R.id.card_product);
-           quantity =  itemView.findViewById(R.id.card_quantrity);
-           userid = itemView.findViewById(R.id.card_username);
+           expire = itemView.findViewById(R.id.productexpire);
+           name = itemView.findViewById(R.id.productname);
+           quantity =  itemView.findViewById(R.id.productquantity);
+           userid = itemView.findViewById(R.id.productauthor);
        }
    }
 

@@ -6,73 +6,90 @@
     android:layout_width="390dp"
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
-    android:layout_marginTop="5dp"
     android:layout_marginStart="10dp">
 
     <androidx.cardview.widget.CardView
         android:layout_width="390dp"
-        android:layout_height="150dp"
+        android:layout_height="170dp"
         android:layout_gravity="center_horizontal"
         android:backgroundTint="@color/color15"
+        android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp">
+            android:layout_height="100dp">
 
             <TextView
-                android:id="@+id/txt1_card"
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="18dp"
-                android:text="TextView" />
-
-            <TextView
-                android:id="@+id/txt2_card"
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="48dp"
-                android:text="TextView" />
-
-            <TextView
-                android:id="@+id/txt3_card"
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:layout_marginStart="200dp"
-                android:layout_marginTop="18dp"
-                android:text="TextView" />
-
-            <TextView
-                android:id="@+id/txt4_card"
+                android:id="@+id/lblnomeprod"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="200dp"
-                android:layout_marginTop="48dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="12dp"
+                android:text="Prodotto:" />
+
+            <TextView
+                android:id="@+id/lblquantita"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="40dp"
+                android:text="Quantità:" />
+
+            <TextView
+                android:id="@+id/lblscadenza"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="68dp"
+                android:text="Scadenza:" />
+
+            <TextView
+                android:id="@+id/productname"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="150dp"
+                android:layout_marginTop="12dp"
                 android:text="TextView" />
+
+            <TextView
+                android:id="@+id/productquantity"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="150dp"
+                android:layout_marginTop="40dp"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/productexpire"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="150dp"
+                android:layout_marginTop="68dp"
+                android:text="TextView" />
+
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:layout_marginTop="80dp">
+            android:layout_marginTop="100dp">
 
             <TextView
-                android:id="@+id/txt5_card"
-                android:layout_width="wrap_content"
+                android:id="@+id/productauthor"
+                android:layout_width="200dp"
                 android:layout_height="20dp"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="27dp"
                 android:text="TextView" />
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/btngotouser"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
-                android:layout_marginStart="200dp"
+                android:layout_marginStart="240dp"
                 android:layout_marginTop="17dp"
                 android:background="@drawable/buttons"
                 android:text="Vai all'utente"
