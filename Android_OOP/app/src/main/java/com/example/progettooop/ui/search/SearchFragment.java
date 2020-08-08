@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.progettooop.R;
 import com.example.progettooop.ui.advertisement.Product;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -34,7 +35,6 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
     private FirebaseFirestore db;
     private EditText mSearchField;
     private ImageButton mSearchBtn;
-    ArrayList <Product> products  = new ArrayList<Product>();
 
     public SearchFragment() {
 
@@ -51,6 +51,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
         mSearchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ArrayList <Product> products  = new ArrayList<Product>();
                 searchProductsToRecycleview(root,products,mSearchField.getText());
             }
         });
@@ -76,6 +77,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
                                         document.getString("expiration"),
                                         document.getString("quantity"),
                                         document.getString("UId")));
+
                             }
                             recyclerView = v.findViewById(R.id.result_list);
                             MyAdapter myAdapter = new MyAdapter(v.getContext(),prod);
@@ -86,7 +88,12 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
                             Toast.makeText(getContext(), "task not successfull", Toast.LENGTH_SHORT).show();
                         }
                     }
-                });
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
