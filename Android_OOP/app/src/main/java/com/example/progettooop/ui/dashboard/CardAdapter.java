@@ -32,9 +32,9 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.DashViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull CardAdapter.DashViewHolder holder, int position) {
-        holder.name.setText(prodotti.get(position).getName());
-        holder.quantity.setText(prodotti.get(position).getQuantity());
-        holder.expire.setText(prodotti.get(position).getExpiration());
+        holder.name.setText(prodotti.get(position).getNamedash());
+        holder.quantity.setText(prodotti.get(position).getQuantitydash());
+        holder.expire.setText(prodotti.get(position).getExpirationdash());
 
     }
 

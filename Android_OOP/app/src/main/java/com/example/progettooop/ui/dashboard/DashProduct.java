@@ -5,34 +5,33 @@ public class DashProduct {
     private String Quantitydash;
     private String Expirationdash;
 
-    public DashProduct(String name, String quantity, String expiration, String Uid) {
+    public DashProduct(String name, String quantity, String expiration) {
         Namedash = name;
         Quantitydash = quantity;
         Expirationdash = expiration;
     }
 
-    public String getQuantity() {
-        return Quantitydash;
-    }
-
-    public String getExpiration() {
-        return Expirationdash;
-    }
-
-    public String getName() {
+    public String getNamedash() {
         return Namedash;
     }
 
-    public void setName(String name) {
-        Namedash = name;
+    public String getQuantitydash() {
+        return Quantitydash;
     }
 
-    public void setQuantity(String quantity) {
-        Quantitydash = quantity;
+    public String getExpirationdash() {
+        return Expirationdash;
     }
 
-    public void setExpiration(String expiration) {
-        Expirationdash = expiration;
+    public void setNamedash(String namedash) {
+        Namedash = namedash;
     }
 
+    public void setQuantitydash(String quantitydash) {
+        Quantitydash = quantitydash;
+    }
+
+    public void setExpirationdash(String expirationdash) {
+        Expirationdash = expirationdash;
+    }
 }
