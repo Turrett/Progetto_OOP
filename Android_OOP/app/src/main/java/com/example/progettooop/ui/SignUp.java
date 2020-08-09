@@ -1,8 +1,5 @@
 package com.example.progettooop.ui;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,18 +8,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.Switch;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.progettooop.R;
-
 import com.example.progettooop.ui.user.ModifyUserInfo;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.*;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -54,17 +53,6 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         btnsignup.setOnClickListener(this);
     }
 
-    /*public void onViewCreated(){
-        btngoto = (Button) findViewById(R.id.button_go_to_sign_in);
-        btngoto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(SignUp.this, MainActivity.class));
-            }
-        });
-    }*/
-
-
     @Override
     public void onClick(View view) {
         switch(view.getId()){
@@ -79,13 +67,6 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         }
 
     }
-
-
-
-
-
-
-
 
 
     //@Override
