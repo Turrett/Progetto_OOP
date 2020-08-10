@@ -16,11 +16,13 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.progettooop.R;
 
 
+import com.example.progettooop.ui.home.HomeFragment;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.*;
@@ -65,15 +67,6 @@ public class AddAdvFragment extends Fragment implements View.OnClickListener {
                 addData();
             }
         });
-
-
-        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
-            @Override
-            public void handleOnBackPressed() {
-                NavHostFragment.findNavController(AddAdvFragment.this)
-                        .navigate(R.id.addadvhome);
-            }
-        };
 
         return root;
 
@@ -136,7 +129,15 @@ public class AddAdvFragment extends Fragment implements View.OnClickListener {
 
 
 
-
+/* OnBackPressedCallback callback = new OnBackPressedCallback(true) {
+        @Override
+        public void handleOnBackPressed() {
+            NavHostFragment.findNavController(AddAdvFragment.this)
+                    .navigate(R.id.addadvhome);
+            Toast.makeText(getContext(), "great!", Toast.LENGTH_LONG).show();
+        }
+    };
+*/
 
 
 
@@ -158,6 +159,19 @@ public class AddAdvFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
 
+    }
+
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        NavController navc;
+
+        OnBackPressedCallback callback = new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                NavHostFragment.findNavController(AddAdvFragment.this)
+                        .navigate(R.id.addadvhome);
+                Toast.makeText(getContext(), "great!", Toast.LENGTH_LONG).show();
+            }
+        };
     }
 
 

@@ -79,7 +79,7 @@
                 android:backgroundTint="@color/color15"
                 android:background="@color/color15"
                 android:layout_marginStart="315dp"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginTop="30dp"/>
 
 
         </RelativeLayout>
