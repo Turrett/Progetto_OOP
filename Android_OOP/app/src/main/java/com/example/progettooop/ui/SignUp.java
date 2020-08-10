@@ -32,7 +32,7 @@ import java.util.Objects;
 import static android.content.ContentValues.TAG;
 
 public class SignUp extends AppCompatActivity implements View.OnClickListener {
-    private EditText EditTextPassword,EditTextEmail;
+    private EditText EditTextPassword,EditTextEmail, EditTextPasswordCheck;
     private ProgressBar progressBar;
     private FirebaseAuth mAuth;
     public FirebaseFirestore db;
@@ -45,6 +45,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
         EditTextPassword=(EditText) findViewById(R.id.edit_text_register_password);
         EditTextEmail=(EditText) findViewById(R.id.edit_text_registration_email);
+        EditTextPasswordCheck = (EditText) findViewById(R.id.edit_text_confirm_password);
         progressBar = (ProgressBar) findViewById(R.id.progressbar_sign_up);
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
@@ -104,6 +105,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
         String email =  EditTextEmail.getText().toString().trim();
         String password =  EditTextPassword.getText().toString().trim();
+        String passwordcheck = EditTextPasswordCheck.getText().toString().trim();
         //mail cannot be empty
         if (email.isEmpty()){
             EditTextEmail.setError("Email is required");
@@ -126,6 +128,12 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         if (password.isEmpty()){
             EditTextPassword.setError("Password is required");
             EditTextPassword.requestFocus();
+            return;
+        }
+
+        if(!password.equals(passwordcheck)){
+            EditTextPasswordCheck.setError("Doesn't match password");
+            EditTextPasswordCheck.requestFocus();
             return;
         }
 

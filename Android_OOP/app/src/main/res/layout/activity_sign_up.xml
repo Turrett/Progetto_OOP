@@ -10,10 +10,8 @@
         android:id="@+id/linearLayout"
         android:layout_width="409dp"
         android:layout_height="729dp"
-        android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
-        android:layout_marginBottom="1dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,10 +19,12 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/imageView2"
             android:layout_width="match_parent"
-            android:layout_height="268dp"
-            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+            android:layout_height="228dp"
+            android:visibility="visible"
+            tools:srcCompat="@tools:sample/backgrounds/scenic"
+            tools:visibility="visible" />
 
         <EditText
             android:id="@+id/edit_text_registration_email"
@@ -42,9 +42,19 @@
             android:layout_height="wrap_content"
             android:contentDescription="Insert account password"
             android:ems="10"
-            android:inputType="textEmailAddress"
+            android:inputType="textPassword"
             android:hint="Insert password"
             android:layout_gravity="center_horizontal" />
+
+        <EditText
+            android:id="@+id/edit_text_confirm_password"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:hint="Insert password once again"
+            android:layout_gravity="center_horizontal"
+            />
 
         <Button
             android:id="@+id/button_sign_up"
