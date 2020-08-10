@@ -13,8 +13,10 @@ import android.widget.Toast;
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
@@ -42,6 +44,7 @@ public class AddAdvFragment extends Fragment implements View.OnClickListener {
     private EditText name,quantity,expiration;
     private Button saveButton;
     private ProgressBar progressBar;
+    private NavController navctrl;
 
     private FirebaseAuth auth;
     private FirebaseFirestore db;
@@ -57,6 +60,7 @@ public class AddAdvFragment extends Fragment implements View.OnClickListener {
         expiration = root.findViewById(R.id.addv_expiration);
         saveButton =root.findViewById(R.id.addv_save);
         progressBar = root.findViewById(R.id.addv_progressbar);
+
 
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
@@ -126,53 +130,13 @@ public class AddAdvFragment extends Fragment implements View.OnClickListener {
     }
 
 
-
-
-
-/* OnBackPressedCallback callback = new OnBackPressedCallback(true) {
-        @Override
-        public void handleOnBackPressed() {
-            NavHostFragment.findNavController(AddAdvFragment.this)
-                    .navigate(R.id.addadvhome);
-            Toast.makeText(getContext(), "great!", Toast.LENGTH_LONG).show();
-        }
-    };
-*/
-
-
-
-
-
-        /*devo lavorare sul tasto che si crea nella appbarconfigurator
-        ma non so minimamente come si faccia
-        google aiutami tu*/
-
-
-        /*view.findViewById(R.id.floatingActionButton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(AddAdvFragment.this)
-                        .navigate(R.id.homeaddadv);
-            }
-        });*/
-
     @Override
     public void onClick(View view) {
-
     }
 
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        NavController navc;
 
-        OnBackPressedCallback callback = new OnBackPressedCallback(true) {
-            @Override
-            public void handleOnBackPressed() {
-                NavHostFragment.findNavController(AddAdvFragment.this)
-                        .navigate(R.id.addadvhome);
-                Toast.makeText(getContext(), "great!", Toast.LENGTH_LONG).show();
-            }
-        };
-    }
+
+
 
 
 }
