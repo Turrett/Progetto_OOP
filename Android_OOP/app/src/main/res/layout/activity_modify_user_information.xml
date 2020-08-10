@@ -85,7 +85,7 @@
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/modifytxtv2"
+                    android:id="@+id/modify_monday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="nuovo orario"
@@ -101,7 +101,7 @@
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/modifytxtv4"
+                    android:id="@+id/modify_tuesday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="nuovo orario"
@@ -117,7 +117,7 @@
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/modifytxtv6"
+                    android:id="@+id/modify_wednesday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="nuovo orario"
@@ -133,7 +133,7 @@
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/modifytxtv8"
+                    android:id="@+id/modify_thursday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="nuovo orario"
@@ -149,7 +149,7 @@
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/modifytxtv10"
+                    android:id="@+id/modify_friday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="nuovo orario"
@@ -165,7 +165,7 @@
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/modifytxtv12"
+                    android:id="@+id/modify_saturday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="nuovo orario"
@@ -181,7 +181,7 @@
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/modifytxtv14"
+                    android:id="@+id/modify_sunday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="nuovo orario"

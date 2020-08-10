@@ -45,7 +45,8 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
 
     private final static String TAG = "Upload user";
     private ImageView image;
-    private EditText username, address, phone, imageName;
+    private EditText username, address, phone;
+    private EditText monday,tuesday,wednesday,thursday,friday,saturday,sunday;
     private Button save;
     private ProgressBar loadingBar;
 
@@ -72,6 +73,15 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
         image = (ImageView) findViewById(R.id.imageView);
         save = (Button) findViewById(R.id.save_changes_button);
         loadingBar = (ProgressBar) findViewById(R.id.User_progressbar) ;
+
+        monday = findViewById(R.id.modify_monday);
+        tuesday = findViewById(R.id.modify_tuesday);
+        thursday = findViewById(R.id.modify_thursday);
+        wednesday = findViewById(R.id.modify_wednesday);
+        friday = findViewById(R.id.modify_friday);
+        saturday = findViewById(R.id.modify_saturday);
+        sunday = findViewById(R.id.modify_sunday);
+
         loadingBar.setVisibility(View.GONE);
 
         pathArray = new ArrayList<>();
