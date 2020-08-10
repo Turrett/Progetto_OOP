@@ -10,11 +10,13 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 
 import androidx.fragment.app.Fragment;
 
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.progettooop.R;
 
@@ -48,7 +50,6 @@ public class AddAdvFragment extends Fragment implements View.OnClickListener {
                              ViewGroup container, Bundle savedInstanceState) {
         addadvViewModel = new ViewModelProvider(this).get(AddAdvViewModel.class);;
         View root = inflater.inflate(R.layout.fragment_addadv, container, false);
-
         name = root.findViewById(R.id.addv_name);
         quantity =root.findViewById(R.id.addv_qty);
         expiration = root.findViewById(R.id.addv_expiration);
@@ -65,6 +66,14 @@ public class AddAdvFragment extends Fragment implements View.OnClickListener {
             }
         });
 
+
+        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+            @Override
+            public void handleOnBackPressed() {
+                NavHostFragment.findNavController(AddAdvFragment.this)
+                        .navigate(R.id.addadvhome);
+            }
+        };
 
         return root;
 
@@ -150,4 +159,6 @@ public class AddAdvFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
 
     }
+
+
 }
