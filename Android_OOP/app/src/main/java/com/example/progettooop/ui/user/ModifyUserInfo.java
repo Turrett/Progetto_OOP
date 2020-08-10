@@ -1,5 +1,6 @@
 package com.example.progettooop.ui.user;
 
+import android.annotation.SuppressLint;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
@@ -154,7 +155,7 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
             return;
         }
 
-        ;
+
         // loading the image , if it fails return, else it goes on
         if (imguri != null) {
             loadingBar.setVisibility(View.VISIBLE);
@@ -179,7 +180,13 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
         user.put("phone", numero);
         user.put("username", nick);
         user.put("address", indirizzo);
-
+        user.put("monday",monday);
+        user.put("tuesday",tuesday);
+        user.put("wednesday",wednesday);
+        user.put("thursday",thursday);
+        user.put("friday",friday);
+        user.put("saturday",saturday);
+        user.put("sunday",sunday);
 
         db.collection("utenti")
                 .document(Objects.requireNonNull(mAuth.getCurrentUser().getUid()))
@@ -209,6 +216,31 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
             return;
         }
 
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void check_date(){
+        if (monday.getText().equals("") || monday.getText() == null){
+            monday.setText("Not Available");
+        }
+        if (tuesday.getText().equals("") || tuesday.getText() == null){
+            tuesday.setText("Not Available");
+        }
+        if (wednesday.getText().equals("") || wednesday.getText() == null){
+            wednesday.setText("Not Available");
+        }
+        if (thursday.getText().equals("") || monday.getText() == null){
+            monday.setText("Not Available");
+        }
+        if (friday.getText().equals("") || friday.getText() == null){
+            friday.setText("Not Available");
+        }
+        if (saturday.getText().equals("") || saturday.getText() == null){
+            saturday.setText("Not Available");
+        }
+        if (sunday.getText().equals("") || sunday.getText() == null){
+            sunday.setText("Not Available");
+        }
     }
 
     @Override
