@@ -148,7 +148,8 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
         // loading the image , if it fails return, else it goes on
         if (imguri != null) {
             loadingBar.setVisibility(View.VISIBLE);
-            ref = mStorageRef.child(System.currentTimeMillis() + "." + getExtension(imguri));
+            String datapath = System.currentTimeMillis() + "." + getExtension(imguri);
+            ref = mStorageRef.child(datapath);
 
             UploadTask uploadTask =  ref.putFile(imguri);
             Task<Uri>  uriTask = uploadTask.continueWithTask((task) -> {
@@ -161,41 +162,10 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
                             imguri = task.getResult();
                         }
             });
-            /*ref.putFile(imguri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    // Get a URL to the uploaded content
-                    ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                        @Override
-                        public void onSuccess(Uri uri) {
-                            imguri = uri;
-                            Log.wtf(TAG, "download image path : "+uri.toString() );
-                            //now you have path to the uploaded file save this path to your database
 
-
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                             //TODO
-                            return;
-                        }
-                    });
-                    loadingBar.setVisibility(View.GONE);
-                    Toast.makeText(ModifyUserInfo.this, "image uploaded correctly", Toast.LENGTH_LONG).show();
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-
-                        @Override
-                        public void onFailure(@NonNull Exception exception) {
-                            // Handle unsuccessful uploads
-                            // ...
-                            loadingBar.setVisibility(View.GONE);
-                        }
-                    });*/
 
         Map<String, Object> user = new HashMap<>();
-        user.put ("PhotoID",imguri.toString());
+        user.put ("PhotoID",datapath);
         user.put("phone", numero);
         user.put("username", nick);
         user.put("address", indirizzo);
