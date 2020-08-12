@@ -36,6 +36,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.DashViewHolder
         holder.quantity.setText(prodotti.get(position).getQuantitydash());
         holder.expire.setText(prodotti.get(position).getExpirationdash());
 
+
     }
 
     @Override
