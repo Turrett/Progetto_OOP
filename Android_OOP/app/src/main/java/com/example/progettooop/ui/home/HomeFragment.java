@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,22 +35,19 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class HomeFragment extends Fragment implements View.OnClickListener {
+public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
     private RecyclerView recyclerView;
     private FirebaseAuth auth;
     private FirebaseFirestore db;
     private TextView txtloggeduser;
-    private Button btngotouser;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
         ArrayList<Product> products  = new ArrayList<Product>();
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         txtloggeduser =(TextView) root.findViewById(R.id.lblnomeutentelog);
-        btngotouser = (Button) root.findViewById(R.id.btngotouser);
-        btngotouser.setOnClickListener(this);
         searchProductsToRecycleview(root,products);
         getInfo();
         return root;
@@ -132,16 +128,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.btngotouser:
 
-                break;
-            default:
-                break;
-        }
-
-    }
 }
 
