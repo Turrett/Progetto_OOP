@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="390dp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_gravity="center_horizontal"
-    android:layout_marginStart="10dp">
+    android:layout_gravity="center_horizontal">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="390dp"
+        android:layout_width="match_parent"
         android:layout_height="170dp"
         android:layout_gravity="center_horizontal"
-        android:backgroundTint="@color/color15"
         android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:backgroundTint="@color/color15"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -49,7 +49,7 @@
             <TextView
                 android:id="@+id/productname"
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="150dp"
                 android:layout_marginTop="12dp"
                 android:text="TextView" />
@@ -57,7 +57,7 @@
             <TextView
                 android:id="@+id/productquantity"
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="150dp"
                 android:layout_marginTop="40dp"
                 android:text="TextView" />
@@ -65,7 +65,7 @@
             <TextView
                 android:id="@+id/productexpire"
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="150dp"
                 android:layout_marginTop="68dp"
                 android:text="TextView" />
@@ -74,12 +74,12 @@
                 android:id="@+id/floatingActionButton3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:clickable="true"
-                app:srcCompat="@drawable/ic_baseline_favorite_15"
-                android:backgroundTint="@color/color15"
-                android:background="@color/color15"
                 android:layout_marginStart="315dp"
-                android:layout_marginTop="30dp"/>
+                android:layout_marginTop="30dp"
+                android:background="@color/color15"
+                android:backgroundTint="@color/color15"
+                android:clickable="true"
+                app:srcCompat="@drawable/ic_baseline_favorite_15" />
 
 
         </RelativeLayout>
@@ -91,8 +91,8 @@
 
             <TextView
                 android:id="@+id/productauthor"
-                android:layout_width="200dp"
-                android:layout_height="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="27dp"
                 android:text="TextView" />

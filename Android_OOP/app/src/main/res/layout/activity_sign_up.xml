@@ -28,33 +28,38 @@
 
         <EditText
             android:id="@+id/edit_text_registration_email"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:contentDescription="Insert account mail"
             android:ems="10"
-            android:inputType="textEmailAddress"
             android:hint="Insert e-mail address"
-            android:layout_gravity="center_horizontal" />
+            android:inputType="textEmailAddress"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"/>
 
         <EditText
             android:id="@+id/edit_text_register_password"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:contentDescription="Insert account password"
             android:ems="10"
-            android:inputType="textPassword"
             android:hint="Insert password"
-            android:layout_gravity="center_horizontal" />
+            android:inputType="textPassword"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"/>
 
         <EditText
             android:id="@+id/edit_text_confirm_password"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPassword"
-            android:hint="Insert password once again"
             android:layout_gravity="center_horizontal"
-            />
+            android:ems="10"
+            android:hint="Insert password once again"
+            android:inputType="textPassword"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"/>
 
         <Button
             android:id="@+id/button_sign_up"

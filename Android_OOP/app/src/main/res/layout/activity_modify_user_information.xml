@@ -10,20 +10,16 @@
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="370dp"
-        android:layout_height="476dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="280dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/save_changes_button">
 
         <LinearLayout
-            android:layout_width="360dp"
-            android:layout_height="700dp"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginEnd="1dp"
-            android:layout_marginBottom="1dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -33,19 +29,26 @@
             <EditText
                 android:id="@+id/modify_username"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:ems="10"
-                android:hint="Inserisci un nuovo username"
+                android:hint="Inserisci lo username"
                 android:importantForAutofill="yes"
                 android:inputType="textPersonName"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
                 android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/modify_address"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Inserisci un nuovo indirizzo"
+                android:layout_gravity="center_horizontal"
+                android:hint="Inserisci l'indirizzo"
+                android:autofillHints="Inserisci un nuovo indirizzo"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
                 android:importantForAutofill="no"
                 android:inputType="textPostalAddress"
                 android:textSize="18sp" />
@@ -53,18 +56,24 @@
             <EditText
                 android:id="@+id/modify_phone"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Inserisci un nuovo numero di telefono"
+                android:layout_gravity="center_horizontal"
+                android:hint="Inserisci il numero telefono"
                 android:importantForAutofill="no"
                 android:inputType="phone"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
+                />
 
             <TextView
                 android:id="@+id/labelorario1"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:paddingTop="5dp"
+                android:layout_marginTop="10dp"
                 android:text="Modifica gli orari di disponibilità"
                 android:textSize="19sp" />
 
@@ -73,13 +82,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:columnCount="2"
-                android:paddingTop="8dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
                 android:rowCount="7">
 
                 <TextView
                     android:id="@+id/modifytxtv1"
-                    android:layout_width="130dp"
-                    android:layout_height="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:paddingTop="3dp"
                     android:text="Lunedì"
                     android:textSize="18sp" />
@@ -94,8 +104,8 @@
 
                 <TextView
                     android:id="@+id/modifytxtv3"
-                    android:layout_width="130dp"
-                    android:layout_height="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:paddingTop="3dp"
                     android:text="Martedì"
                     android:textSize="18sp" />
@@ -110,8 +120,8 @@
 
                 <TextView
                     android:id="@+id/modifytxtv5"
-                    android:layout_width="130dp"
-                    android:layout_height="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:paddingTop="3dp"
                     android:text="Mercoledì"
                     android:textSize="18sp" />
@@ -126,8 +136,8 @@
 
                 <TextView
                     android:id="@+id/modifytxtv7"
-                    android:layout_width="130dp"
-                    android:layout_height="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:paddingTop="3dp"
                     android:text="Giovedì"
                     android:textSize="18sp" />
@@ -142,8 +152,8 @@
 
                 <TextView
                     android:id="@+id/modifytxtv9"
-                    android:layout_width="130dp"
-                    android:layout_height="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:paddingTop="3dp"
                     android:text="Venerdì"
                     android:textSize="18sp" />
@@ -158,8 +168,8 @@
 
                 <TextView
                     android:id="@+id/modifytxtv11"
-                    android:layout_width="130dp"
-                    android:layout_height="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:paddingTop="3dp"
                     android:text="Sabato"
                     android:textSize="18sp" />
@@ -174,8 +184,8 @@
 
                 <TextView
                     android:id="@+id/modifytxtv13"
-                    android:layout_width="130dp"
-                    android:layout_height="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:paddingTop="3dp"
                     android:text="Domenica"
                     android:textSize="18sp" />
@@ -202,17 +212,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars" />
+        tools:src="@tools:sample/avatars"
+        />
 
     <Button
         android:id="@+id/save_changes_button"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_marginTop="12dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/buttons"
         android:text="Save"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.897"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
