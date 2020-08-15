@@ -31,7 +31,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -40,8 +39,6 @@ import java.util.Objects;
 
 public class ModifyUserInfo extends AppCompatActivity implements View.OnClickListener {
 
-    private static final int CHOOSE_IMAGE = 101;
-    private static final int PERMISSION_CODE = 102;
 
     private final static String TAG = "Upload user";
     private ImageView image;
@@ -50,10 +47,6 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
     private Button save;
     private ProgressBar loadingBar;
 
-    private final static int mWidth = 30;
-    private final static int mLenght = 30;
-    private ArrayList<String> pathArray; //verrà salvato il percorso dell'immagine
-    private int array_position;
 
     private StorageReference mStorageRef;
     private FirebaseAuth mAuth;
@@ -84,7 +77,7 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
 
         loadingBar.setVisibility(View.GONE);
 
-        pathArray = new ArrayList<>();
+
 
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
@@ -154,6 +147,8 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
             return;
         }
 
+        check_date();
+
         ;
         // loading the image , if it fails return, else it goes on
         if (imguri != null) {
@@ -172,38 +167,8 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
                             imguri = task.getResult();
                         }
             });
-            /*ref.putFile(imguri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    // Get a URL to the uploaded content
-                    ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                        @Override
-                        public void onSuccess(Uri uri) {
-                            imguri = uri;
-                            Log.wtf(TAG, "download image path : "+uri.toString() );
-                            //now you have path to the uploaded file save this path to your database
 
 
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                             //TODO
-                            return;
-                        }
-                    });
-                    loadingBar.setVisibility(View.GONE);
-                    Toast.makeText(ModifyUserInfo.this, "image uploaded correctly", Toast.LENGTH_LONG).show();
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-
-                        @Override
-                        public void onFailure(@NonNull Exception exception) {
-                            // Handle unsuccessful uploads
-                            // ...
-                            loadingBar.setVisibility(View.GONE);
-                        }
-                    });*/
 
         Map<String, Object> user = new HashMap<>();
         user.put ("PhotoID",datapath);
@@ -248,7 +213,7 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
 
     }
 
-    @SuppressLint("SetTextI18n")
+
     private void check_date(){
         if (monday.getText().equals("") || monday.getText() == null){
             monday.setText("Not Available");

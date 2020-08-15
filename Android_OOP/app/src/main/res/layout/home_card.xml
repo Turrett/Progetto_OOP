@@ -71,7 +71,7 @@
                 android:text="TextView" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/floatingActionButton3"
+                android:id="@+id/add_to_fav_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="315dp"

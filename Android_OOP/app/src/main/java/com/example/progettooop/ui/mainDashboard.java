@@ -2,18 +2,16 @@ package com.example.progettooop.ui;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.progettooop.R;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-public class mainDashboard extends AppCompatActivity implements View.OnClickListener {
+import com.example.progettooop.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+public class mainDashboard extends AppCompatActivity implements View.OnClickListener,comunicator {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +19,10 @@ public class mainDashboard extends AppCompatActivity implements View.OnClickList
         NavController navController;
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_dashboard,R.id.navigation_search, R.id.navigation_user)
+                R.id.navigation_home,
+                R.id.navigation_dashboard,
+                R.id.navigation_search,
+                R.id.navigation_user)
                 .build();
         BottomNavigationView navView = findViewById(R.id.nav_view);
 

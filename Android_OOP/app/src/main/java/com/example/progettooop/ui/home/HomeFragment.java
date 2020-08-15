@@ -1,7 +1,6 @@
 package com.example.progettooop.ui.home;
 
 import android.annotation.SuppressLint;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,11 +15,9 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.example.progettooop.R;
 import com.example.progettooop.ui.advertisement.Product;
 import com.example.progettooop.ui.search.MyAdapter;
-import com.example.progettooop.ui.user.UserFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;

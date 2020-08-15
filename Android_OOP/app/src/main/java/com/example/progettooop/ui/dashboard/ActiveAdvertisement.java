@@ -26,7 +26,6 @@ import java.util.ArrayList;
 public class ActiveAdvertisement extends Fragment{
 
     public static final String ARG_OBJECT = "object1";
-    private RecyclerView recview;
     private FirebaseAuth mauth ;
     private FirebaseFirestore db;
     private RecyclerView recyclerView;
