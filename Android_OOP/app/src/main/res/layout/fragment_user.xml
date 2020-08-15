@@ -1,38 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/toplayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.user.UserFragment">
 
+
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="356dp"
-        android:layout_height="727dp"
-        android:layout_marginTop="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/User_iv">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:layout_marginBottom="60dp"
+
+        >
 
         <LinearLayout
-            android:layout_width="360dp"
-            android:layout_height="700dp"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginEnd="1dp"
-            android:layout_marginBottom="1dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
+            <ImageView
+                android:id="@+id/User_iv"
+                android:layout_width="168dp"
+                android:layout_height="167dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="32dp"
+                android:contentDescription="@string/tbd"
+                android:visibility="visible"
+                tools:src="@tools:sample/avatars" />
+
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/modify_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="170dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/buttons"
+                android:clickable="true"
+                android:focusable="true"
+                android:src="@android:drawable/ic_menu_edit" />
+
+            <ProgressBar
+                android:id="@+id/progressbar_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="150dp"
+                android:visibility="invisible" />
+
             <TextView
                 android:id="@+id/user_username"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
                 android:ems="10"
                 android:hint="Nome utente"
                 android:importantForAutofill="no"
@@ -45,6 +75,7 @@
                 style="@style/Widget.AppCompat.RatingBar.Indicator"
                 android:layout_width="wrap_content"
                 android:layout_height="42dp"
+                android:layout_gravity="center_horizontal"
                 android:isIndicator="true"
                 android:max="10"
                 android:numStars="10"
@@ -54,8 +85,9 @@
 
             <TextView
                 android:id="@+id/User_email"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginStart="30dp"
                 android:autofillHints="yes"
                 android:ems="10"
                 android:hint="email"
@@ -65,8 +97,9 @@
 
             <TextView
                 android:id="@+id/User_address"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginStart="30dp"
                 android:ems="10"
                 android:hint="address"
                 android:importantForAutofill="no"
@@ -76,8 +109,9 @@
 
             <TextView
                 android:id="@+id/User_Phone_Number"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginStart="30dp"
                 android:ems="10"
                 android:hint="telephone number"
                 android:importantForAutofill="no"
@@ -86,9 +120,11 @@
                 android:textSize="18sp" />
 
             <RelativeLayout
-                android:layout_width="350dp"
-                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_height="250dp"
+                android:layout_marginStart="30dp"
                 android:layout_marginTop="25dp"
+                android:layout_marginEnd="30dp"
                 android:background="@drawable/borders">
 
                 <TextView
@@ -98,20 +134,19 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="7dp"
                     android:backgroundTint="@color/color10"
-                    android:paddingLeft="87dp"
+                    android:paddingLeft="20dp"
                     android:text="Orari di disponibilità"
                     android:textSize="18sp" />
 
                 <GridLayout
                     android:id="@+id/gridl1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginStart="40dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
                     android:columnCount="2"
+                    android:paddingStart="5dp"
                     android:paddingTop="8dp"
+                    android:paddingEnd="20dp"
                     android:rowCount="7">
 
                     <TextView
@@ -230,43 +265,9 @@
                 </GridLayout>
             </RelativeLayout>
         </LinearLayout>
+
     </ScrollView>
 
-    <ImageView
-        android:id="@+id/User_iv"
-        android:layout_width="168dp"
-        android:layout_height="167dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars"
-        android:contentDescription="@string/tbd"
-        android:visibility="visible"/>
 
-    <ProgressBar
-        android:id="@+id/progressbar_user"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/modify_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="36dp"
-        android:clickable="true"
-        android:background="@drawable/buttons"
-        android:src="@android:drawable/ic_menu_edit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.991"
-        app:layout_constraintStart_toEndOf="@+id/User_iv"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+

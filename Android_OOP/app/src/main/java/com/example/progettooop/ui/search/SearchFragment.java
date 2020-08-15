@@ -52,7 +52,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onClick(View view) {
                 ArrayList <Product> products  = new ArrayList<Product>();
-                searchProductsToRecycleview(root,products,mSearchField.getText());
+                searchProductsToRecycleview(root,products,mSearchField.getText().toString().toLowerCase());
                 if (products.size()<=0){
                     Toast.makeText(getContext(), "Nessun prodotto disponibile", Toast.LENGTH_SHORT).show();
                 }
@@ -64,7 +64,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
     }
 
 
-    private void searchProductsToRecycleview(View v, ArrayList<Product> prod, Editable search) {
+    private void searchProductsToRecycleview(View v, ArrayList<Product> prod, String search) {
         db = FirebaseFirestore.getInstance();
         db.collection("annuncio")
                 .orderBy("search_name")

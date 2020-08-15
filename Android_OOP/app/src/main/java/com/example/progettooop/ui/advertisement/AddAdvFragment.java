@@ -10,15 +10,21 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.progettooop.R;
 
 
+import com.example.progettooop.ui.home.HomeFragment;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.*;
@@ -38,6 +44,7 @@ public class AddAdvFragment extends Fragment implements View.OnClickListener {
     private EditText name,quantity,expiration;
     private Button saveButton;
     private ProgressBar progressBar;
+    private NavController navctrl;
 
     private FirebaseAuth auth;
     private FirebaseFirestore db;
@@ -48,12 +55,12 @@ public class AddAdvFragment extends Fragment implements View.OnClickListener {
                              ViewGroup container, Bundle savedInstanceState) {
         addadvViewModel = new ViewModelProvider(this).get(AddAdvViewModel.class);;
         View root = inflater.inflate(R.layout.fragment_addadv, container, false);
-
         name = root.findViewById(R.id.addv_name);
         quantity =root.findViewById(R.id.addv_qty);
         expiration = root.findViewById(R.id.addv_expiration);
         saveButton =root.findViewById(R.id.addv_save);
         progressBar = root.findViewById(R.id.addv_progressbar);
+
 
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
@@ -64,7 +71,6 @@ public class AddAdvFragment extends Fragment implements View.OnClickListener {
                 addData();
             }
         });
-
 
         return root;
 
@@ -124,30 +130,13 @@ public class AddAdvFragment extends Fragment implements View.OnClickListener {
     }
 
 
-
-
-
-
-
-
-
-
-
-        /*devo lavorare sul tasto che si crea nella appbarconfigurator
-        ma non so minimamente come si faccia
-        google aiutami tu*/
-
-
-        /*view.findViewById(R.id.floatingActionButton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(AddAdvFragment.this)
-                        .navigate(R.id.homeaddadv);
-            }
-        });*/
-
     @Override
     public void onClick(View view) {
-
     }
+
+
+
+
+
+
 }

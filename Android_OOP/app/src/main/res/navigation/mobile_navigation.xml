@@ -52,7 +52,8 @@
         tools:layout="@layout/fragment_addadv" >
         <action
             android:id="@+id/addadvhome"
-            app:destination="@id/navigation_home" />
+            app:destination="@id/navigation_home"
+            app:popUpTo="@id/navigation_home" />
     </fragment>
 
 
