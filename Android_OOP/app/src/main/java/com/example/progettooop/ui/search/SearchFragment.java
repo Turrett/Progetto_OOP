@@ -1,7 +1,6 @@
 package com.example.progettooop.ui.search;
 
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +15,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.progettooop.R;
-import com.example.progettooop.ui.advertisement.Product;
+import com.example.progettooop.ui.Objects.*;
+import com.example.progettooop.ui.recycleViewAdapters.MyAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -68,8 +68,8 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
         db = FirebaseFirestore.getInstance();
         db.collection("annuncio")
                 .orderBy("search_name")
-                .startAt(search.toString())
-                .endAt(search.toString()+"\uf8ff")
+                .startAt(search)
+                .endAt(search+"\uf8ff")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -81,7 +81,8 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
                                 prod.add(new Product(document.getString("name"),
                                         document.getString("quantity"),
                                         document.getString("expiration"),
-                                        document.getString("UId")));
+                                        document.getString("UId"),
+                                        document.getId()));
 
                             }
                             recyclerView = v.findViewById(R.id.result_list);

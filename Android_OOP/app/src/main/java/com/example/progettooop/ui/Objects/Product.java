@@ -1,4 +1,4 @@
-package com.example.progettooop.ui.advertisement;
+package com.example.progettooop.ui.Objects;
 
 public class Product {
     private String Name;

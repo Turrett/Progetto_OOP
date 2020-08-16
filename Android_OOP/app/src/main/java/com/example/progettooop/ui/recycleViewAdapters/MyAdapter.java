@@ -1,4 +1,4 @@
-package com.example.progettooop.ui.search;
+package com.example.progettooop.ui.recycleViewAdapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,7 +13,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.progettooop.R;
-import com.example.progettooop.ui.advertisement.Product;
+import com.example.progettooop.ui.Objects.*;
 import com.example.progettooop.ui.user.UserFragment;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -21,7 +21,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,7 +31,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
     private ArrayList< Product> products;
     Context context;
 
-    public MyAdapter(Context ct , ArrayList < Product> prodotti){
+    public MyAdapter(Context ct , ArrayList<Product> prodotti){
 
         products=prodotti;
         context=ct;
@@ -82,10 +84,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
                @Override
                public void onClick(View view) {
                    FirebaseFirestore db = FirebaseFirestore.getInstance();
+                   Date date = new Date();
+                   SimpleDateFormat ft =
+                           new SimpleDateFormat ("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
+
                    Map<String, Object> prod = new HashMap<>();
                    prod.put("User",userid.getText());
                    prod.put("Product",productId);
-                   prod.put("date",System.currentTimeMillis());
+                   prod.put("date",ft.format(date));
 
                    db.collection("watchlist")
                            .document()

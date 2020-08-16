@@ -1,4 +1,4 @@
-package com.example.progettooop.ui.dashboard;
+package com.example.progettooop.ui.Objects;
 
 public class DashProduct {
     private String Namedash;
