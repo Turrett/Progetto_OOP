@@ -10,27 +10,17 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
-
-import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
-
-import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
-import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.progettooop.R;
-
-
-import com.example.progettooop.ui.home.HomeFragment;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.*;
-import com.google.firebase.auth.*;
-
-
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -78,7 +68,7 @@ public class AddAdvFragment extends Fragment implements View.OnClickListener {
 
     private void addData () {
         progressBar.setVisibility(View.VISIBLE);
-        product = new Product(name.getText().toString(), quantity.getText().toString(), expiration.getText().toString(),Objects.requireNonNull(auth.getCurrentUser()).getUid());
+        product = new Product(name.getText().toString(), quantity.getText().toString(), expiration.getText().toString(),Objects.requireNonNull(auth.getCurrentUser()).getUid(),null);
         if (product.getName().isEmpty()) {
             name.requestFocus();
             name.setError("name required");

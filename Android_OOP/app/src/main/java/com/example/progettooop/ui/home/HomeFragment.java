@@ -78,7 +78,8 @@ public class HomeFragment extends Fragment {
                                 prod.add(new Product(document.getString("name"),
                                         document.getString("quantity"),
                                         document.getString("expiration"),
-                                        document.getString("UId")));
+                                        document.getString("UId"),
+                                        document.getId()));
 
                             }
                             recyclerView = v.findViewById(R.id.list_home);

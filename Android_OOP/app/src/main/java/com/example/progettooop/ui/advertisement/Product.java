@@ -5,13 +5,23 @@ public class Product {
     private String Quantity;
     private String Expiration;
     private String UserId;
+    private String product;
 
 
-    public Product(String name, String quantity, String expiration,String Uid) {
+    public Product(String name, String quantity, String expiration,String Uid, String productId) {
         Name = name;
         Quantity = quantity;
         Expiration = expiration;
         UserId = Uid;
+        product = productId;
+    }
+
+    public String getProduct() {
+        return product;
+    }
+
+    public void setProduct(String product) {
+        this.product = product;
     }
 
     public String getUserId() {
