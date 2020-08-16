@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/result_annunci"
         android:layout_width="match_parent"
@@ -15,4 +14,19 @@
         android:layout_marginBottom="60dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="100dp"
+        android:clickable="true"
+        android:clipChildren="false"
+        android:focusable="true"
+        app:backgroundTint="@color/color11"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_add" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

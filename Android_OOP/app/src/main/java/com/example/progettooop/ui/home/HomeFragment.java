@@ -51,18 +51,6 @@ public class HomeFragment extends Fragment {
 
     }
 
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        view.findViewById(R.id.floatingActionButton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(HomeFragment.this)
-                        .navigate(R.id.homeaddadv);
-            }
-        });
-
-
-    }
 
     private void searchProductsToRecycleview (View v, ArrayList < Product > prod){
         db = FirebaseFirestore.getInstance();

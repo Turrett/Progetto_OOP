@@ -5,13 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.progettooop.R;
 import com.example.progettooop.ui.Objects.DashProduct;
 import com.example.progettooop.ui.recycleViewAdapters.CardAdapter;
@@ -25,17 +23,20 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
-public class ActiveAdvertisement extends Fragment{
+public class ActiveAdvertisement extends Fragment implements View.OnClickListener{
 
     public static final String ARG_OBJECT = "object1";
     private FirebaseAuth mauth ;
     private FirebaseFirestore db;
     private RecyclerView recyclerView;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mauth = FirebaseAuth.getInstance();
         View root =inflater.inflate(R.layout.fragment_activeadv, container, false);
+
+
         ArrayList<DashProduct> prodotti = new ArrayList<DashProduct>();
         searchProductsToRecycleview(root,prodotti);
         return root;
@@ -73,5 +74,10 @@ public class ActiveAdvertisement extends Fragment{
                 Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    public void onClick(View view) {
+
     }
 }

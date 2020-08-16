@@ -10,14 +10,7 @@
         android:id="@+id/navigation_home"
         android:name="com.example.progettooop.ui.home.HomeFragment"
         android:label="Home"
-        tools:layout="@layout/fragment_home" >
-        <!--<action
-            android:id="@+id/homesearch"
-            app:destination="@id/navigation_search" />-->
-        <action
-            android:id="@+id/homeaddadv"
-            app:destination="@id/navigation_addadv" />
-    </fragment>
+        tools:layout="@layout/fragment_home" />
 
     <!-- dashboard -->
     <fragment
@@ -51,9 +44,19 @@
         android:label="Inserimento nuovo annuncio"
         tools:layout="@layout/fragment_addadv" >
         <action
-            android:id="@+id/addadvhome"
-            app:destination="@id/navigation_home"
-            app:popUpTo="@id/navigation_home" />
+            android:id="@+id/adv_active"
+            app:destination="@id/navigation_activeadv" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_activeadv"
+        android:name="com.example.progettooop.ui.dashboard.ActiveAdvertisement"
+        android:label="annunciattivi"
+        android:layout="@layout/fragment_activeadv"
+        >
+        <action
+            android:id="@+id/active_adv"
+            app:destination="@id/navigation_addadv" />
     </fragment>
 
 

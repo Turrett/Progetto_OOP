@@ -9,12 +9,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
-
 import com.example.progettooop.R;
 import com.example.progettooop.ui.Objects.Product;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -22,7 +20,6 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -36,7 +33,6 @@ public class AddAdvFragment extends Fragment implements View.OnClickListener {
     private Button saveButton;
     private ProgressBar progressBar;
     private NavController navctrl;
-
     private FirebaseAuth auth;
     private FirebaseFirestore db;
     private Product product;
@@ -51,8 +47,6 @@ public class AddAdvFragment extends Fragment implements View.OnClickListener {
         expiration = root.findViewById(R.id.addv_expiration);
         saveButton =root.findViewById(R.id.addv_save);
         progressBar = root.findViewById(R.id.addv_progressbar);
-
-
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
@@ -62,7 +56,6 @@ public class AddAdvFragment extends Fragment implements View.OnClickListener {
                 addData();
             }
         });
-
         return root;
 
     }
@@ -123,11 +116,6 @@ public class AddAdvFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
+
     }
-
-
-
-
-
-
 }
