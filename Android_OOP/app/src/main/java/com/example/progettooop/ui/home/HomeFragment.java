@@ -16,8 +16,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.progettooop.R;
-import com.example.progettooop.ui.advertisement.Product;
-import com.example.progettooop.ui.search.MyAdapter;
+import com.example.progettooop.ui.Objects.Product;
+import com.example.progettooop.ui.recycleViewAdapters.*;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
