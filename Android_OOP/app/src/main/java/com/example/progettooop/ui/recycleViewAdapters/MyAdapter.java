@@ -65,7 +65,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
               holder.userid.setText(document.get("username").toString());
           }
       });
-      holder.userid.setText(products.get(position).getUserId());
       holder.productId =products.get(position).getProduct();
 
     }
