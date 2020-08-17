@@ -64,7 +64,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
               DocumentSnapshot document=task.getResult();
               holder.userid.setText(document.get("username").toString());
           }
-      });
+      });//TODO
       holder.productId =products.get(position).getProduct();
 
     }
