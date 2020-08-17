@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
@@ -27,25 +28,25 @@ import java.util.Objects;
 import static android.content.ContentValues.TAG;
 
 
-public class AddAdvFragment extends Fragment implements View.OnClickListener {
+public class AddAdvFragment extends AppCompatActivity implements View.OnClickListener {
     private AddAdvViewModel addadvViewModel;
     private EditText name,quantity,expiration;
     private Button saveButton;
     private ProgressBar progressBar;
-    private NavController navctrl;
     private FirebaseAuth auth;
     private FirebaseFirestore db;
     private Product product;
 
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        addadvViewModel = new ViewModelProvider(this).get(AddAdvViewModel.class);;
-        View root = inflater.inflate(R.layout.fragment_addadv, container, false);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        addadvViewModel = new ViewModelProvider(this).get(AddAdvViewModel.class);
+        View root = getLayoutInflater().inflate(R.layout.fragment_addadv,null);
+        setContentView(root);
         name = root.findViewById(R.id.addv_name);
-        quantity =root.findViewById(R.id.addv_qty);
+        quantity = root.findViewById(R.id.addv_qty);
         expiration = root.findViewById(R.id.addv_expiration);
-        saveButton =root.findViewById(R.id.addv_save);
+        saveButton = root.findViewById(R.id.addv_save);
         progressBar = root.findViewById(R.id.addv_progressbar);
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
@@ -56,7 +57,7 @@ public class AddAdvFragment extends Fragment implements View.OnClickListener {
                 addData();
             }
         });
-        return root;
+
 
     }
 
@@ -96,7 +97,7 @@ public class AddAdvFragment extends Fragment implements View.OnClickListener {
                     @Override
                     public void onSuccess(Void aVoid) {
                         progressBar.setVisibility(View.GONE);
-                        Toast.makeText(getContext(), "Saved!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AddAdvFragment.this, "Saved!", Toast.LENGTH_SHORT).show();
                         Log.d(TAG, "DocumentSnapshot");
                         name.setText("");
                         quantity.setText("");

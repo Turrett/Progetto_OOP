@@ -1,5 +1,6 @@
 package com.example.progettooop.ui.dashboard;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,10 +13,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.progettooop.R;
 import com.example.progettooop.ui.Objects.DashProduct;
+import com.example.progettooop.ui.SignUp;
+import com.example.progettooop.ui.advertisement.AddAdvFragment;
 import com.example.progettooop.ui.recycleViewAdapters.CardAdapter;
+import com.example.progettooop.ui.user.ModifyUserInfo;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -29,6 +34,7 @@ public class ActiveAdvertisement extends Fragment implements View.OnClickListene
     private FirebaseAuth mauth ;
     private FirebaseFirestore db;
     private RecyclerView recyclerView;
+    private FloatingActionButton fab;
 
     @Nullable
     @Override
@@ -36,6 +42,8 @@ public class ActiveAdvertisement extends Fragment implements View.OnClickListene
         mauth = FirebaseAuth.getInstance();
         View root =inflater.inflate(R.layout.fragment_activeadv, container, false);
 
+        fab = (FloatingActionButton) root.findViewById(R.id.floatingActionButton);
+        fab.setOnClickListener(this);
 
         ArrayList<DashProduct> prodotti = new ArrayList<DashProduct>();
         searchProductsToRecycleview(root,prodotti);
@@ -78,6 +86,16 @@ public class ActiveAdvertisement extends Fragment implements View.OnClickListene
 
     @Override
     public void onClick(View view) {
+        switch(view.getId()){
+            case R.id.floatingActionButton:
+               addadv();
+               break;
 
+        }
+    }
+
+    public void addadv(){
+        Intent intent = new Intent(getActivity(), AddAdvFragment.class);
+        startActivity(intent);
     }
 }
