@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="170dp"
                 android:layout_marginTop="15dp"
-                android:background="@drawable/buttons"
+                android:backgroundTint="@color/color11"
                 android:clickable="true"
                 android:focusable="true"
                 android:src="@android:drawable/ic_menu_edit" />
@@ -55,6 +55,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="150dp"
+                android:backgroundTint="@color/color12"
                 android:visibility="invisible" />
 
             <TextView
