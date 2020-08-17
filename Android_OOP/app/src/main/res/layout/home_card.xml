@@ -106,26 +106,27 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/add_to_fav_btn"
+                <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="25dp"
-                    android:background="@color/color15"
-                    android:backgroundTint="@color/color15"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:paddingStart="2dp"
-                    android:paddingLeft="2dp"
-                    android:paddingRight="2dp"
-                    android:paddingBottom="2dp"
-                    app:srcCompat="@drawable/ic_baseline_favorite_15" />
+                    android:paddingEnd="10dp">
 
-            </RelativeLayout>
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/add_to_fav_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="25dp"
+                        android:background="@color/color15"
+                        android:backgroundTint="@color/color15"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:paddingStart="2dp"
+                        android:paddingLeft="2dp"
+                        android:paddingRight="2dp"
+                        android:paddingBottom="2dp"
+                        app:srcCompat="@drawable/ic_baseline_favorite_15" />
+
+                </RelativeLayout>
 
             </LinearLayout>
 
@@ -144,16 +145,24 @@
                     android:layout_marginTop="10dp"
                     android:text="TextView" />
 
-                <Button
-                    android:id="@+id/btngotouser"
+                <RelativeLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="36dp"
-                    android:layout_marginStart="22dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@drawable/buttons"
-                    android:text="Vai all'utente"
-                    android:textColor="@color/color15"
-                    android:textSize="15sp" />
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="10dp">
+
+                    <Button
+                        android:id="@+id/btngotouser"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/buttons"
+                        android:paddingEnd="10dp"
+                        android:layout_marginStart="25dp"
+                        android:text="Vai all'utente"
+                        android:textColor="@color/color15"
+                        android:textSize="15sp" />
+                </RelativeLayout>
+
             </LinearLayout>
 
         </LinearLayout>
