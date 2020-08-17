@@ -15,9 +15,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.progettooop.R;
 import com.example.progettooop.ui.Objects.*;
 import com.example.progettooop.ui.user.UserFragment;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 
@@ -54,6 +57,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
       holder.name.setText(products.get(position).getName());
       holder.quantity.setText(products.get(position).getQuantity());
       holder.expire.setText(products.get(position).getExpiration());
+      FirebaseFirestore db =FirebaseFirestore.getInstance();
+      db.collection("utenti").document(products.get(position).getUserId()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+          @Override
+          public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+              DocumentSnapshot document=task.getResult();
+              holder.userid.setText(document.get("username").toString());
+          }
+      });
       holder.userid.setText(products.get(position).getUserId());
       holder.productId =products.get(position).getProduct();
 
