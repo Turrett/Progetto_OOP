@@ -116,8 +116,9 @@
 
                     <com.google.android.material.floatingactionbutton.FloatingActionButton
                         android:id="@+id/add_to_fav_btn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        app:fabCustomSize="50dp"
                         android:layout_marginTop="25dp"
                         android:background="@color/color15"
                         android:backgroundTint="@color/color15"
