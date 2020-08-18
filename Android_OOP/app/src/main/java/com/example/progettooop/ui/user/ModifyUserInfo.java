@@ -60,6 +60,7 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modify_user_information);
+        setTitle("Inserisci i nuovi dati");
         username = (EditText) findViewById(R.id.modify_username);
         address = (EditText) findViewById(R.id.modify_address);
         phone =  (EditText) findViewById(R.id.modify_phone);

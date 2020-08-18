@@ -1,7 +1,6 @@
 package com.example.progettooop.ui.dashboard;
 
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.annotation.NonNull;

@@ -2,18 +2,14 @@ package com.example.progettooop.ui.advertisement;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavController;
 import com.example.progettooop.R;
 import com.example.progettooop.ui.Objects.Product;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -43,6 +39,7 @@ public class AddAdvFragment extends AppCompatActivity implements View.OnClickLis
         addadvViewModel = new ViewModelProvider(this).get(AddAdvViewModel.class);
         View root = getLayoutInflater().inflate(R.layout.fragment_addadv,null);
         setContentView(root);
+        setTitle("Inserimento nuovo articolo");
         name = root.findViewById(R.id.addv_name);
         quantity = root.findViewById(R.id.addv_qty);
         expiration = root.findViewById(R.id.addv_expiration);
