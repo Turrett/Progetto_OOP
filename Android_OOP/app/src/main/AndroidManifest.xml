@@ -5,10 +5,9 @@
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="18" />
-
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.STORAGE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -17,25 +16,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.user.ModifyUserInfo"/>
+        <activity android:name=".ui.user.ViewUserData"></activity>
+        <activity android:name=".ui.user.ModifyUserInfo" />
         <activity android:name=".ui.SignUp" />
         <activity android:name=".ui.mainDashboard" />
         <activity android:name=".ui.search.Searchmod">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
-            <meta-data android:name="android.app.searchable"
-                android:resource="@layout/fragment_search"/>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@layout/fragment_search" />
         </activity>
         <activity
             android:name=".ui.MainActivity"
             android:label="No Waste.">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.advertisement.AddAdvFragment"/>
+        <activity android:name=".ui.advertisement.AddAdvFragment" />
     </application>
 
 </manifest>

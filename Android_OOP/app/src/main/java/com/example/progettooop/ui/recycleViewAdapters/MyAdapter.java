@@ -13,7 +13,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.progettooop.R;
-import com.example.progettooop.ui.Objects.*;
+import com.example.progettooop.ui.Objects.Product;
 import com.example.progettooop.ui.user.UserFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -64,8 +64,50 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
               DocumentSnapshot document=task.getResult();
               holder.userid.setText(document.get("username").toString());
           }
-      });//TODO
+      });//TODO adding a calculated field into product to reduce accesses to the server
+
+        holder.addToFavorite.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                Date date = new Date();
+                SimpleDateFormat ft = new SimpleDateFormat ("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
+
+                Map<String, Object> prod = new HashMap<>();
+                prod.put("User",holder.userid.getText());
+                prod.put("Product",holder.productId);
+                prod.put("date",ft.format(date));
+
+                db.collection("watchlist")
+                        .document()
+                        .set(prod, SetOptions.merge())
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(view.getContext(),"added to favourites",Toast.LENGTH_SHORT).show();
+
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(view.getContext(),"cannot add to favourites",Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+            }
+        });
       holder.productId =products.get(position).getProduct();
+        holder.goToUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(view.getContext(),"bla",Toast.LENGTH_SHORT).show();
+                UserFragment userFragment = new UserFragment();
+                FragmentManager fragmentManager = new FragmentManager(){} ;
+                fragmentManager.beginTransaction().replace(R.id.list_home,userFragment);
+            }
+        });
 
     }
 
@@ -89,50 +131,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
            userid = itemView.findViewById(R.id.productauthor);
 
            addToFavorite = itemView.findViewById(R.id.add_to_fav_btn);
-           addToFavorite.setOnClickListener(new View.OnClickListener() {
-
-               @Override
-               public void onClick(View view) {
-                   FirebaseFirestore db = FirebaseFirestore.getInstance();
-                   Date date = new Date();
-                   SimpleDateFormat ft =
-                           new SimpleDateFormat ("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
-
-                   Map<String, Object> prod = new HashMap<>();
-                   prod.put("User",userid.getText());
-                   prod.put("Product",productId);
-                   prod.put("date",ft.format(date));
-
-                   db.collection("watchlist")
-                           .document()
-                           .set(prod, SetOptions.merge())
-                           .addOnSuccessListener(new OnSuccessListener<Void>() {
-                               @Override
-                               public void onSuccess(Void aVoid) {
-                                   Toast.makeText(view.getContext(),"added to favourites",Toast.LENGTH_SHORT).show();
-
-                               }
-                           })
-                   .addOnFailureListener(new OnFailureListener() {
-                       @Override
-                       public void onFailure(@NonNull Exception e) {
-                           Toast.makeText(view.getContext(),"cannot add to favourites",Toast.LENGTH_SHORT).show();
-                       }
-                   });
-
-               }
-           });
 
            goToUser =itemView.findViewById(R.id.btngotouser);
-           goToUser.setOnClickListener(new View.OnClickListener() {
-               @Override
-               public void onClick(View view) {
-                   Toast.makeText(view.getContext(),"bla",Toast.LENGTH_SHORT).show();
-                   UserFragment userFragment = new UserFragment();
-                   FragmentManager fragmentManager = new FragmentManager(){} ;
-                   fragmentManager.beginTransaction().replace(R.id.list_home,userFragment);
-               }
-           });
+
 
 
 

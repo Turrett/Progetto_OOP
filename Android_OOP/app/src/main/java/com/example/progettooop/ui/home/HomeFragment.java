@@ -11,13 +11,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.progettooop.R;
 import com.example.progettooop.ui.Objects.Product;
-import com.example.progettooop.ui.recycleViewAdapters.*;
+import com.example.progettooop.ui.recycleViewAdapters.MyAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -54,6 +53,7 @@ public class HomeFragment extends Fragment {
 
     private void searchProductsToRecycleview (View v, ArrayList < Product > prod){
         db = FirebaseFirestore.getInstance();
+        auth = FirebaseAuth.getInstance();
         db.collection("annuncio")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -63,11 +63,14 @@ public class HomeFragment extends Fragment {
 
                             for (QueryDocumentSnapshot document : task.getResult()) {
 
-                                prod.add(new Product(document.getString("name"),
-                                        document.getString("quantity"),
-                                        document.getString("expiration"),
-                                        document.getString("UId"),
-                                        document.getId()));
+                                if (!document.getString("UId").equals(auth.getUid())) {
+                                    prod.add(new Product(
+                                            document.getString("name"),
+                                            document.getString("quantity"),
+                                            document.getString("expiration"),
+                                            document.getString("UId"),
+                                            document.getId()));
+                                }
 
                             }
                             recyclerView = v.findViewById(R.id.list_home);

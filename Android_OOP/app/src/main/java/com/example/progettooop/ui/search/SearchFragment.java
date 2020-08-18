@@ -66,6 +66,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
 
     private void searchProductsToRecycleview(View v, ArrayList<Product> prod, String search) {
         db = FirebaseFirestore.getInstance();
+        auth =FirebaseAuth.getInstance();
         db.collection("annuncio")
                 .orderBy("search_name")
                 .startAt(search)
@@ -77,12 +78,14 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
                         if (task.isSuccessful()) {
 
                             for (QueryDocumentSnapshot document : task.getResult()) {
-
-                                prod.add(new Product(document.getString("name"),
-                                        document.getString("quantity"),
-                                        document.getString("expiration"),
-                                        document.getString("UId"),
-                                        document.getId()));
+                                if (!document.getString("UId").equals(auth.getUid())) {
+                                    prod.add(new Product(
+                                            document.getString("name"),
+                                            document.getString("quantity"),
+                                            document.getString("expiration"),
+                                            document.getString("UId"),
+                                            document.getId()));
+                                }
 
                             }
                             recyclerView = v.findViewById(R.id.result_list);

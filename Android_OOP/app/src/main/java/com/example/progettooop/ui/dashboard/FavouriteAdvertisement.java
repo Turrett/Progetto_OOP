@@ -43,18 +43,18 @@ public class FavouriteAdvertisement extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_favourite, container, false);
-        products  = new ArrayList<Product>();
-       favouriteProductsToRecycleview(root,products);
+
         return root;
     }
 
     @SuppressLint("SetTextI18n")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-
+        products  = new ArrayList<Product>();
+        favouriteProductsToRecycleview(view);
     }
 
-    private void favouriteProductsToRecycleview(View v, ArrayList<Product>prod) {
+    private void favouriteProductsToRecycleview(View v) {
 
         FirebaseFirestore db;
         FirebaseAuth auth;
@@ -88,7 +88,7 @@ public class FavouriteAdvertisement extends Fragment {
                                                     return;
                                                 }
                                                 doc2 = task.getResult();
-                                                prod.add(new Product(doc2.getString("name"),
+                                                products.add(new Product(doc2.getString("name"),
                                                         doc2.getString("quantity"),
                                                         doc2.getString("expiration"),
                                                         doc2.getString("UId"),
@@ -99,7 +99,7 @@ public class FavouriteAdvertisement extends Fragment {
                             }
 
                                 recyclerView = v.findViewById(R.id.result_favourite);
-                                MyAdapter myAdapter = new MyAdapter(v.getContext(), prod);
+                                MyAdapter myAdapter = new MyAdapter(v.getContext(), products);
                                 recyclerView.setAdapter(myAdapter);
                                 recyclerView.setLayoutManager(new LinearLayoutManager(v.getContext()));
                         }
