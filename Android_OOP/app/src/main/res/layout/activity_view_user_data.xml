@@ -1,9 +1,256 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/toplayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.user.ViewUserData">
+    tools:context=".ui.user.UserFragment">
 
-</ConstraintLayout>
+
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/User_iv_alt"
+                android:layout_width="168dp"
+                android:layout_height="167dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="32dp"
+                android:contentDescription="@string/tbd"
+                android:visibility="visible"
+                tools:src="@tools:sample/avatars" />
+
+
+            <ProgressBar
+                android:id="@+id/progressbar_user_alt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_horizontal"
+                android:backgroundTint="@color/color12"
+                android:visibility="invisible" />
+
+            <TextView
+                android:id="@+id/user_username_alt"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                android:ems="10"
+                android:hint="Nome utente"
+                android:importantForAutofill="no"
+                android:inputType="textPersonName"
+                android:paddingTop="10dp"
+                android:textSize="18sp" />
+
+            <RatingBar
+                android:id="@+id/rating_bar_alt"
+                style="@style/Widget.AppCompat.RatingBar.Indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="42dp"
+                android:layout_gravity="center_horizontal"
+                android:isIndicator="true"
+                android:max="10"
+                android:numStars="10"
+                android:scaleX="0.7"
+                android:scaleY="0.7"
+                tools:rating="1" />
+
+            <TextView
+                android:id="@+id/User_email_alt"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginStart="30dp"
+                android:autofillHints="yes"
+                android:ems="10"
+                android:hint="email"
+                android:inputType="textEmailAddress"
+                android:paddingTop="8dp"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/User_address_alt"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginStart="30dp"
+                android:ems="10"
+                android:hint="address"
+                android:importantForAutofill="no"
+                android:inputType="textPostalAddress"
+                android:paddingTop="8dp"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/User_Phone_Number_alt"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginStart="30dp"
+                android:ems="10"
+                android:hint="telephone number"
+                android:importantForAutofill="no"
+                android:inputType="phone"
+                android:paddingTop="8dp"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/labelorario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="7dp"
+                android:backgroundTint="@color/color10"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="Orari di disponibilità"
+                android:textSize="18sp" />
+
+            <GridLayout
+                android:id="@+id/gridl1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:columnCount="2"
+                android:paddingStart="5dp"
+                android:rowCount="7"
+                android:layout_gravity="center_horizontal">
+
+                <TextView
+                    android:id="@+id/monday_alt"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="8dp"
+                    android:text="Lunedì"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/monday_hour_alt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="orario di lunedì"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tuesday_alt"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="3dp"
+                    android:text="Martedì"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tuesday_hour_alt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingTop="3dp"
+                    android:text="orario di martedì"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/wednesday_alt"
+                    android:layout_width="130dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="3dp"
+                    android:text="Mercoledì"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/wednesday_hour_alt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingTop="3dp"
+                    android:text="TextView"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/thursday_alt"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="3dp"
+                    android:text="Giovedì"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/thursday_hour_alt"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="3dp"
+                    android:text="TextView"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/friday_alt"
+                    android:layout_width="130dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="3dp"
+                    android:text="Venerdì"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/friday_hour_alt"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="3dp"
+                    android:text="TextView"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/saturday_alt"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="3dp"
+                    android:text="Sabato"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/saturday_hour_alt"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:text="orario di sabato"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/sunday_alt"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="8dp"
+                    android:text="Domenica"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/sunday_hour_alt"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textSize="18sp" />
+            </GridLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

@@ -1,6 +1,7 @@
 package com.example.progettooop.ui.recycleViewAdapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,12 +10,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.progettooop.R;
 import com.example.progettooop.ui.Objects.Product;
-import com.example.progettooop.ui.user.UserFragment;
+import com.example.progettooop.ui.user.ViewUserData;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -103,9 +103,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
             @Override
             public void onClick(View view) {
                 Toast.makeText(view.getContext(),"bla",Toast.LENGTH_SHORT).show();
-                UserFragment userFragment = new UserFragment();
-                FragmentManager fragmentManager = new FragmentManager(){} ;
-                fragmentManager.beginTransaction().replace(R.id.list_home,userFragment);
+                Intent i = new Intent(view.getContext(), ViewUserData.class);
+                i.putExtra("UserId",products.get(position).getUserId());
+                context.startActivity(i);
             }
         });
 
