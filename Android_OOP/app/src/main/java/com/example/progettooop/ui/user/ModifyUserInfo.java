@@ -127,6 +127,8 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
 
 
     private void saveUserInfo() {
+
+        //check the user data if they are empty doesn't save
         String nick = username.getText().toString();
         if (nick.isEmpty()) {
             username.setError("Name Required");
@@ -170,19 +172,19 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
             });
 
 
-
+//insert the data
         Map<String, Object> user = new HashMap<>();
-        user.put ("PhotoID",datapath);
+        user.put ("PhotoID","immagini/"+datapath);
         user.put("phone", numero);
         user.put("username", nick);
         user.put("address", indirizzo);
-        user.put("monday",monday);
-        user.put("tuesday",tuesday);
-        user.put("wednesday",wednesday);
-        user.put("thursday",thursday);
-        user.put("friday",friday);
-        user.put("saturday",saturday);
-        user.put("sunday",sunday);
+        user.put("monday",monday.getText().toString());
+        user.put("tuesday",tuesday.getText().toString());
+        user.put("wednesday",wednesday.getText().toString());
+        user.put("thursday",thursday.getText().toString());
+        user.put("friday",friday.getText().toString());
+        user.put("saturday",saturday.getText().toString());
+        user.put("sunday",sunday.getText().toString());
 
         db.collection("utenti")
                 .document(Objects.requireNonNull(mAuth.getCurrentUser().getUid()))
