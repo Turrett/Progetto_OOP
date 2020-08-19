@@ -19,12 +19,16 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.progettooop.R;
 import com.example.progettooop.ui.mainDashboard;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.storage.FirebaseStorage;
@@ -46,6 +50,7 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
     private EditText monday,tuesday,wednesday,thursday,friday,saturday,sunday;
     private Button save;
     private ProgressBar loadingBar;
+    private String imagePath;
 
 
     private StorageReference mStorageRef;
@@ -82,6 +87,8 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
 
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
+        setCurrentData();
+
         mStorageRef = FirebaseStorage.getInstance().getReference("immagini");
 
         image.setClickable(true);
@@ -124,6 +131,104 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
         }
     }
 
+    private void check_date(){
+        if (monday.getText().equals("") || monday.getText() == null){
+            monday.setText("Not Available");
+        }
+        if (tuesday.getText().equals("") || tuesday.getText() == null){
+            tuesday.setText("Not Available");
+        }
+        if (wednesday.getText().equals("") || wednesday.getText() == null){
+            wednesday.setText("Not Available");
+        }
+        if (thursday.getText().equals("") || monday.getText() == null){
+            monday.setText("Not Available");
+        }
+        if (friday.getText().equals("") || friday.getText() == null){
+            friday.setText("Not Available");
+        }
+        if (saturday.getText().equals("") || saturday.getText() == null){
+            saturday.setText("Not Available");
+        }
+        if (sunday.getText().equals("") || sunday.getText() == null){
+            sunday.setText("Not Available");
+        }
+    }
+
+    private void setPhoto(DocumentSnapshot document){
+        //set the image file path
+        //if not empty set the imagepath to the old photo;
+        if(!document.getString("PhotoID").isEmpty()){
+            imagePath=document.getString("PhotoID");
+        }
+        //if is empty then the user can upload or not a new photo
+        else {return;}
+        assert imagePath != null;
+        //creates an instance of Firebase Storage
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference();
+        //i choose the file from Firebase
+        storageReference.child(imagePath).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Glide.with(ModifyUserInfo.this)
+                        .load(uri.toString())
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .into(image);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                Toast.makeText(getApplicationContext(),"non ci sono riuscito",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void setCurrentData(){
+        Bundle extras = getIntent().getExtras();
+        if (!extras.getString("type").equals("SignUp")) {
+            db.collection("utenti")
+                    .document(mAuth.getUid().toString())
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            DocumentSnapshot document = task.getResult();
+                            if (!document.getString("username").isEmpty())
+                                username.setText(document.getString("username"));
+
+                            if (!document.getString("phone").isEmpty())
+                                phone.setText(document.getString("phone"));
+
+                            if (!document.getString("address").isEmpty())
+                                address.setText(document.getString("address"));
+
+                            if (!document.getString("monday").isEmpty())
+                                monday.setText(document.getString("monday"));
+
+                            if (!document.getString("tuesday").isEmpty())
+                                tuesday.setText(document.getString("tuesday"));
+
+                            if (!document.getString("wednesday").isEmpty())
+                                wednesday.setText(document.getString("wednesday"));
+
+                            if (!document.getString("thursday").isEmpty())
+                                thursday.setText(document.getString("thursday"));
+
+                            if (!document.getString("friday").isEmpty())
+                                friday.setText(document.getString("friday"));
+
+                            if (!document.getString("saturday").isEmpty())
+                                saturday.setText(document.getString("saturday"));
+
+                            if (!document.getString("sunday").isEmpty())
+                                sunday.setText(document.getString("sunday"));
+
+                            setPhoto(document);
+                        }
+                    });
+        }
+    }
+
 
 
     private void saveUserInfo() {
@@ -150,31 +255,33 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
             return;
         }
 
+        //checks if the dates are null or empty
         check_date();
 
-        ;
-        // loading the image , if it fails return, else it goes on
-        if (imguri != null) {
+        // Uploading the new image to the server , saves the datapath
+        if (imguri != null ) {
             loadingBar.setVisibility(View.VISIBLE);
-            String datapath = System.currentTimeMillis() + "." + getExtension(imguri);
-            ref = mStorageRef.child(datapath);
+            imagePath = System.currentTimeMillis() + "." + getExtension(imguri);
+            ref = mStorageRef.child(imagePath);
 
-            UploadTask uploadTask =  ref.putFile(imguri);
-            Task<Uri>  uriTask = uploadTask.continueWithTask((task) -> {
+            UploadTask uploadTask = ref.putFile(imguri);
+            Task<Uri> uriTask = uploadTask.continueWithTask((task) -> {
                 if (!task.isSuccessful()) {
                     throw task.getException();
                 }
                 return ref.getDownloadUrl();
-                    }).addOnCompleteListener((task) -> {
-                        if (task.isSuccessful()){
-                            imguri = task.getResult();
-                        }
+            }).addOnCompleteListener((task) -> {
+                if (task.isSuccessful()) {
+                    imguri = task.getResult();
+                }
             });
+            imagePath="immagini/"+imagePath;
+        }
 
 
 //insert the data
         Map<String, Object> user = new HashMap<>();
-        user.put ("PhotoID","immagini/"+datapath);
+        user.put ("PhotoID",imagePath);
         user.put("phone", numero);
         user.put("username", nick);
         user.put("address", indirizzo);
@@ -208,46 +315,14 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
                         return;
                     }
                 });
-    }
-        else {
-            Toast.makeText(getApplicationContext(), "insert a Profile Image", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-    }
 
 
-    private void check_date(){
-        if (monday.getText().equals("") || monday.getText() == null){
-            monday.setText("Not Available");
-        }
-        if (tuesday.getText().equals("") || tuesday.getText() == null){
-            tuesday.setText("Not Available");
-        }
-        if (wednesday.getText().equals("") || wednesday.getText() == null){
-            wednesday.setText("Not Available");
-        }
-        if (thursday.getText().equals("") || monday.getText() == null){
-            monday.setText("Not Available");
-        }
-        if (friday.getText().equals("") || friday.getText() == null){
-            friday.setText("Not Available");
-        }
-        if (saturday.getText().equals("") || saturday.getText() == null){
-            saturday.setText("Not Available");
-        }
-        if (sunday.getText().equals("") || sunday.getText() == null){
-            sunday.setText("Not Available");
-        }
+
     }
 
     @Override
     public void onClick(View view) {
 
     }
-
-
-
-
 
 }
