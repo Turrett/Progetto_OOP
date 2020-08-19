@@ -55,7 +55,6 @@ public class UserFragment extends Fragment implements View.OnClickListener {
         email = root.findViewById(R.id.User_email);
         userImage = root.findViewById(R.id.User_iv);
         user_progressbar =root.findViewById(R.id.progressbar_user);
-
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
         storageReference = FirebaseStorage.getInstance().getReference();
@@ -116,13 +115,9 @@ public class UserFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onFailure(@NonNull Exception e) {
                 Toast.makeText(getContext(),"Fail Loading Data",Toast.LENGTH_SHORT);
-
             }
 
         });
-
-
-
         user_progressbar.setVisibility(View.GONE);
     }
 }

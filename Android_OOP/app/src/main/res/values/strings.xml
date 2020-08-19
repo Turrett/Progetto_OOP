@@ -38,12 +38,6 @@
     <string name="modifica_gli_orari_di_disponibilit">Modifica gli orari di disponibilità</string>
     <string name="lunedi">Lunedì</string>
     <string name="nuovo_orario">nuovo orario</string>
-    <string name="marted">Martedì</string>
-    <string name="mercoled">Mercoledì</string>
-    <string name="gioved">Giovedì</string>
-    <string name="venerd">Venerdì</string>
-    <string name="sabato">Sabato</string>
-    <string name="domenica">Domenica</string>
     <string name="insert_password_once_again">Insert password once again</string>
     <string name="sign_up">Sign up</string>
     <string name="inserisci_il_nome_del_prodotto">Inserisci il nome del prodotto</string>
@@ -65,5 +59,25 @@
     <string name="elimina">Elimina</string>
     <string name="ricerca">Ricerca</string>
     <string name="utente">Utente</string>
+    <string name="scrivi_qui_la_tua_recensione">Scrivi qui la tua recensione</string>
+    <string name="recensisci">Recensisci</string>
+    <string name="orario_di_luned">orario di lunedì</string>
+    <string name="marted">Martedì</string>
+    <string name="mercoled">Mercoledì</string>
+    <string name="orario_di_marted">orario di martedì</string>
+    <string name="orario_di_mercoled">orario di mercoledì</string>
+    <string name="gioved">Giovedì</string>
+    <string name="orario_di_venerd">orario di venerdì</string>
+    <string name="venerd">Venerdì</string>
+    <string name="orario_di_gioved">orario di giovedì</string>
+    <string name="sabato">Sabato</string>
+    <string name="orario_di_sabato">orario di sabato</string>
+    <string name="domenica">Domenica</string>
+    <string name="orario_di_domenica">orario di domenica</string>
+    <string name="richieste">Richieste totali:</string>
+    <string name="vedi_tutte">Vedi tutte</string>
+    <string name="ordina">Ordina</string>
+    <string name="accetta">Accetta</string>
+    <string name="nome_del_cliente">nome del cliente</string>
 
 </resources>

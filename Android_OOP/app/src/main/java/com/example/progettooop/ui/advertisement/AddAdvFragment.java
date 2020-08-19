@@ -25,25 +25,22 @@ import static android.content.ContentValues.TAG;
 
 
 public class AddAdvFragment extends AppCompatActivity implements View.OnClickListener {
-    private AddAdvViewModel addadvViewModel;
     private EditText name,quantity,expiration;
-    private Button saveButton;
     private ProgressBar progressBar;
     private FirebaseAuth auth;
     private FirebaseFirestore db;
-    private Product product;
 
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        addadvViewModel = new ViewModelProvider(this).get(AddAdvViewModel.class);
+        AddAdvViewModel addadvViewModel = new ViewModelProvider(this).get(AddAdvViewModel.class);
         View root = getLayoutInflater().inflate(R.layout.fragment_addadv,null);
         setContentView(root);
-        setTitle("Inserimento nuovo articolo");
+        setTitle("Inserisci un nuovo annuncio");
         name = root.findViewById(R.id.addv_name);
         quantity = root.findViewById(R.id.addv_qty);
         expiration = root.findViewById(R.id.addv_expiration);
-        saveButton = root.findViewById(R.id.addv_save);
+        Button saveButton = root.findViewById(R.id.addv_save);
         progressBar = root.findViewById(R.id.addv_progressbar);
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
@@ -60,7 +57,7 @@ public class AddAdvFragment extends AppCompatActivity implements View.OnClickLis
 
     private void addData () {
         progressBar.setVisibility(View.VISIBLE);
-        product = new Product(name.getText().toString(), quantity.getText().toString(), expiration.getText().toString(),Objects.requireNonNull(auth.getCurrentUser()).getUid(),null);
+        Product product = new Product(name.getText().toString(), quantity.getText().toString(), expiration.getText().toString(), Objects.requireNonNull(auth.getCurrentUser()).getUid(), null);
         if (product.getName().isEmpty()) {
             name.requestFocus();
             name.setError("name required");
@@ -84,7 +81,7 @@ public class AddAdvFragment extends AppCompatActivity implements View.OnClickLis
         user.put("name", product.getName());
         user.put("quantity", product.getQuantity());
         user.put("expiration", product.getExpiration());
-        user.put("search_name",product.getName().toLowerCase());
+        user.put("search_name", product.getName().toLowerCase());
 
 
         db.collection("annuncio")
@@ -108,7 +105,6 @@ public class AddAdvFragment extends AppCompatActivity implements View.OnClickLis
                         progressBar.setVisibility(View.GONE);
                     }
                 });
-        return;
     }
 
 
