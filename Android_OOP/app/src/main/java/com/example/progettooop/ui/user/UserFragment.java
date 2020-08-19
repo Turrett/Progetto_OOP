@@ -134,13 +134,9 @@ public class UserFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onFailure(@NonNull Exception e) {
                 Toast.makeText(getContext(),"Fail Loading Data",Toast.LENGTH_SHORT);
-
             }
 
         });
-
-
-
         user_progressbar.setVisibility(View.GONE);
     }
 }

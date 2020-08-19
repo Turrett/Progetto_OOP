@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/txtrecensione"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="70dp"
+            android:layout_marginEnd="25dp"
+            android:autofillHints="@string/scrivi_qui_la_tua_recensione"
+            android:ems="10"
+            android:hint="@string/scrivi_qui_la_tua_recensione"
+            android:inputType="textPersonName" />
+
+        <RatingBar
+            android:id="@+id/rating_recensione"
+            style="@style/Widget.AppCompat.RatingBar.Indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="65dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="40dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:isIndicator="true"
+            android:max="10"
+            android:numStars="10"
+            android:paddingTop="20dp"
+            android:scaleX="1"
+            android:scaleY="1"
+            tools:rating="0.5" />
+
+        <Button
+            android:id="@+id/btnrecensione"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/buttons"
+            android:text="@string/recensisci"
+            android:textColor="@color/color15" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
