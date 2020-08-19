@@ -92,7 +92,7 @@ public class UserFragment extends Fragment implements View.OnClickListener {
                             .diskCacheStrategy(DiskCacheStrategy.ALL)
                             .into(userImage);*/
 
-                    assert imageUrl != null;
+                    if( imageUrl != null){
                     storageReference.child(imageUrl).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
@@ -103,7 +103,7 @@ public class UserFragment extends Fragment implements View.OnClickListener {
                         public void onFailure(@NonNull Exception exception) {
                             Toast.makeText(getContext(),"non ci sono riuscito",Toast.LENGTH_SHORT).show();
                         }
-                    });
+                    });}
 
 
                 }

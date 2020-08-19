@@ -172,6 +172,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
     private void changeUi(){
 
         Intent intent =new Intent(SignUp.this, ModifyUserInfo.class);
+        intent.putExtra("type","SignUp");
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
