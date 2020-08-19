@@ -155,7 +155,7 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/txtv2"
+                    android:id="@+id/monday_hrs"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="orario di lunedì"
@@ -171,7 +171,7 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/txtv4"
+                    android:id="@+id/tuesday_hrs"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:paddingTop="3dp"
@@ -188,7 +188,7 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/txtv6"
+                    android:id="@+id/wednesday_hrs"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:paddingTop="3dp"
@@ -205,7 +205,7 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/txtv8"
+                    android:id="@+id/thursday_hrs"
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:paddingTop="3dp"
@@ -222,7 +222,7 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/txtv10"
+                    android:id="@+id/friday_hrs"
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:paddingTop="3dp"
@@ -239,7 +239,7 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/txtv12"
+                    android:id="@+id/saturday_hrs"
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:text="orario di sabato"
@@ -254,7 +254,7 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/txtv14"
+                    android:id="@+id/sunday_hrs"
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:text="TextView"

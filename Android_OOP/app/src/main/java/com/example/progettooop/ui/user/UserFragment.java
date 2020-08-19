@@ -37,6 +37,7 @@ public class UserFragment extends Fragment implements View.OnClickListener {
     private ProgressBar user_progressbar;
     private UserViewModel userViewModel;
     private ImageView userImage;
+    private TextView monday,tuesday,wednesday,thursday,friday,saturday,sunday;
     public String imageUrl;
 
     private FirebaseFirestore db;
@@ -56,6 +57,14 @@ public class UserFragment extends Fragment implements View.OnClickListener {
         userImage = root.findViewById(R.id.User_iv);
         user_progressbar =root.findViewById(R.id.progressbar_user);
 
+        monday = root.findViewById(R.id.monday_hrs);
+        tuesday = root.findViewById(R.id.tuesday_hrs);
+        thursday = root.findViewById(R.id.thursday_hrs);
+        wednesday = root.findViewById(R.id.wednesday_hrs);
+        friday = root.findViewById(R.id.friday_hrs);
+        saturday = root.findViewById(R.id.saturday_hrs);
+        sunday = root.findViewById(R.id.sunday_hrs);
+
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
         storageReference = FirebaseStorage.getInstance().getReference();
@@ -69,7 +78,9 @@ public class UserFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.modify_button);
-        startActivity(new Intent(getContext(), ModifyUserInfo.class));
+        Intent intent  = new Intent(getContext(), ModifyUserInfo.class);
+        intent.putExtra("type","user");
+        startActivity(intent);
     }
 
     private void getInfo(){
@@ -85,6 +96,13 @@ public class UserFragment extends Fragment implements View.OnClickListener {
                     email.setText(documentSnapshot.getString("email"));
                     indirizzo.setText(documentSnapshot.getString("address"));
                     numero.setText(documentSnapshot.getString("phone"));
+                    monday.setText(documentSnapshot.getString("monday"));
+                    tuesday.setText(documentSnapshot.getString("tuesday"));
+                    wednesday.setText(documentSnapshot.getString("wednesday"));
+                    thursday.setText(documentSnapshot.getString("thursday"));
+                    friday.setText(documentSnapshot.getString("friday"));
+                    saturday.setText(documentSnapshot.getString("saturday"));
+                    sunday.setText(documentSnapshot.getString("sunday"));
 
                     imageUrl = documentSnapshot.getString("PhotoID");
                     /*Glide.with(UserFragment.this)

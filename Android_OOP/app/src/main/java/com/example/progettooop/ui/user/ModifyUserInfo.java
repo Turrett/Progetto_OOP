@@ -72,6 +72,7 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
         image = (ImageView) findViewById(R.id.imageView);
         save = (Button) findViewById(R.id.save_changes_button);
         loadingBar = (ProgressBar) findViewById(R.id.User_progressbar) ;
+        imagePath = "immagini/template.png";
 
         monday = findViewById(R.id.modify_monday);
         tuesday = findViewById(R.id.modify_tuesday);
@@ -87,7 +88,9 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
 
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
-        setCurrentData();
+        Bundle extras = getIntent().getExtras();
+
+        if (Objects.equals(Objects.requireNonNull(extras).getString("type"), "user")) setCurrentData();
 
         mStorageRef = FirebaseStorage.getInstance().getReference("immagini");
 
@@ -158,11 +161,8 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
     private void setPhoto(DocumentSnapshot document){
         //set the image file path
         //if not empty set the imagepath to the old photo;
-        if(!document.getString("PhotoID").isEmpty()){
             imagePath=document.getString("PhotoID");
-        }
         //if is empty then the user can upload or not a new photo
-        else {return;}
         assert imagePath != null;
         //creates an instance of Firebase Storage
         StorageReference storageReference = FirebaseStorage.getInstance().getReference();
@@ -184,8 +184,7 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
     }
 
     private void setCurrentData(){
-        Bundle extras = getIntent().getExtras();
-        if (!extras.getString("type").equals("SignUp")) {
+
             db.collection("utenti")
                     .document(mAuth.getUid().toString())
                     .get()
@@ -193,40 +192,20 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
                         @Override
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                             DocumentSnapshot document = task.getResult();
-                            if (!document.getString("username").isEmpty())
                                 username.setText(document.getString("username"));
-
-                            if (!document.getString("phone").isEmpty())
                                 phone.setText(document.getString("phone"));
-
-                            if (!document.getString("address").isEmpty())
                                 address.setText(document.getString("address"));
-
-                            if (!document.getString("monday").isEmpty())
                                 monday.setText(document.getString("monday"));
-
-                            if (!document.getString("tuesday").isEmpty())
                                 tuesday.setText(document.getString("tuesday"));
-
-                            if (!document.getString("wednesday").isEmpty())
                                 wednesday.setText(document.getString("wednesday"));
-
-                            if (!document.getString("thursday").isEmpty())
                                 thursday.setText(document.getString("thursday"));
-
-                            if (!document.getString("friday").isEmpty())
                                 friday.setText(document.getString("friday"));
-
-                            if (!document.getString("saturday").isEmpty())
                                 saturday.setText(document.getString("saturday"));
-
-                            if (!document.getString("sunday").isEmpty())
                                 sunday.setText(document.getString("sunday"));
 
                             setPhoto(document);
                         }
                     });
-        }
     }
 
 
