@@ -41,8 +41,6 @@
                 android:id="@+id/progressbar_user_alt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
                 android:layout_gravity="center_horizontal"
                 android:backgroundTint="@color/color12"
                 android:visibility="invisible" />
@@ -54,9 +52,8 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="20dp"
                 android:ems="10"
-                android:hint="Nome utente"
+                android:hint="@string/nome_utente"
                 android:importantForAutofill="no"
-                android:inputType="textPersonName"
                 android:paddingTop="10dp"
                 android:textSize="18sp" />
 
@@ -80,7 +77,7 @@
                 android:layout_marginStart="30dp"
                 android:autofillHints="yes"
                 android:ems="10"
-                android:hint="email"
+                android:hint="@string/email"
                 android:inputType="textEmailAddress"
                 android:paddingTop="8dp"
                 android:textSize="18sp" />
@@ -91,7 +88,7 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="30dp"
                 android:ems="10"
-                android:hint="address"
+                android:hint="@string/address"
                 android:importantForAutofill="no"
                 android:inputType="textPostalAddress"
                 android:paddingTop="8dp"
@@ -103,7 +100,7 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="30dp"
                 android:ems="10"
-                android:hint="telephone number"
+                android:hint="@string/telephone_number"
                 android:importantForAutofill="no"
                 android:inputType="phone"
                 android:paddingTop="8dp"
@@ -119,7 +116,7 @@
                 android:backgroundTint="@color/color10"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
-                android:text="Orari di disponibilità"
+                android:text="@string/orari_di_disponibilit"
                 android:textSize="18sp" />
 
             <GridLayout

@@ -44,8 +44,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/buttons"
-
-                android:text="Save" />
+                android:text="@string/save_info" />
 
             <ProgressBar
                 android:id="@+id/User_progressbar"
@@ -64,10 +63,11 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="40dp"
                 android:ems="10"
-                android:hint="Inserisci lo username"
+                android:hint="@string/inserisci_lo_username"
                 android:importantForAutofill="yes"
                 android:inputType="textPersonName"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:autofillHints="@string/inserisci_lo_username" />
 
             <EditText
                 android:id="@+id/modify_address"
@@ -75,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:layout_gravity="center_horizontal"
-                android:hint="Inserisci l'indirizzo"
+                android:hint="@string/inserisci_l_indirizzo"
                 android:autofillHints="Inserisci un nuovo indirizzo"
                 android:layout_marginStart="40dp"
                 android:layout_marginEnd="40dp"
@@ -89,7 +89,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:layout_gravity="center_horizontal"
-                android:hint="Inserisci il numero telefono"
+                android:hint="@string/inserisci_il_numero_telefono"
                 android:importantForAutofill="no"
                 android:inputType="phone"
                 android:textSize="18sp"
@@ -104,7 +104,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
                 android:paddingTop="5dp"
-                android:text="Modifica gli orari di disponibilità"
+                android:text="@string/modifica_gli_orari_di_disponibilit"
                 android:textSize="19sp" />
 
             <GridLayout
@@ -121,109 +121,121 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingTop="3dp"
-                    android:text="Lunedì"
+                    android:text="@string/lunedi"
                     android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/modify_monday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="nuovo orario"
+                    android:hint="@string/nuovo_orario"
                     android:paddingTop="3dp"
                     android:textSize="18sp"
-                    android:layout_marginStart="10dp"/>
+                    android:layout_marginStart="10dp"
+                    tools:ignore="TextFields"
+                    android:autofillHints="@string/nuovo_orario"/>
 
                 <TextView
                     android:id="@+id/modifytxtv3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingTop="3dp"
-                    android:text="Martedì"
+                    android:text="@string/marted"
                     android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/modify_tuesday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="nuovo orario"
+                    android:hint="@string/nuovo_orario"
                     android:paddingTop="3dp"
                     android:textSize="18sp"
-                    android:layout_marginStart="10dp"/>
+                    android:layout_marginStart="10dp"
+                    tools:ignore="TextFields"
+                    android:autofillHints="@string/nuovo_orario"/>
 
                 <TextView
                     android:id="@+id/modifytxtv5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingTop="3dp"
-                    android:text="Mercoledì"
+                    android:text="@string/mercoled"
                     android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/modify_wednesday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="nuovo orario"
+                    android:hint="@string/nuovo_orario"
                     android:paddingTop="3dp"
                     android:textSize="18sp"
-                    android:layout_marginStart="10dp"/>
+                    android:layout_marginStart="10dp"
+                    tools:ignore="TextFields"
+                    android:autofillHints="@string/nuovo_orario"/>
 
                 <TextView
                     android:id="@+id/modifytxtv7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingTop="3dp"
-                    android:text="Giovedì"
+                    android:text="@string/gioved"
                     android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/modify_thursday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="nuovo orario"
+                    android:hint="@string/nuovo_orario"
                     android:paddingTop="3dp"
                     android:textSize="18sp"
-                    android:layout_marginStart="10dp"/>
+                    android:layout_marginStart="10dp"
+                    tools:ignore="TextFields"
+                    android:autofillHints="@string/nuovo_orario"/>
 
                 <TextView
                     android:id="@+id/modifytxtv9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingTop="3dp"
-                    android:text="Venerdì"
+                    android:text="@string/venerd"
                     android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/modify_friday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="nuovo orario"
+                    android:hint="@string/nuovo_orario"
                     android:paddingTop="3dp"
                     android:textSize="18sp"
-                    android:layout_marginStart="10dp"/>
+                    android:layout_marginStart="10dp"
+                    tools:ignore="TextFields"
+                    android:autofillHints="@string/nuovo_orario" />
 
                 <TextView
                     android:id="@+id/modifytxtv11"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingTop="3dp"
-                    android:text="Sabato"
+                    android:text="@string/sabato"
                     android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/modify_saturday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="nuovo orario"
+                    android:hint="@string/nuovo_orario"
                     android:paddingTop="3dp"
                     android:textSize="18sp"
-                    android:layout_marginStart="10dp"/>
+                    android:layout_marginStart="10dp"
+                    android:autofillHints="@string/nuovo_orario"
+                    tools:ignore="TextFields" />
 
                 <TextView
                     android:id="@+id/modifytxtv13"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingTop="3dp"
-                    android:text="Domenica"
+                    android:text="@string/domenica"
                     android:textSize="18sp" />
 
                 <EditText
@@ -231,9 +243,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:hint="nuovo orario"
+                    android:hint="@string/nuovo_orario"
                     android:paddingTop="3dp"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:autofillHints="@string/nuovo_orario"
+                    tools:ignore="TextFields" />
             </GridLayout>
 
         </LinearLayout>

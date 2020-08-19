@@ -24,31 +24,32 @@
             android:layout_height="228dp"
             android:visibility="visible"
             tools:srcCompat="@tools:sample/backgrounds/scenic"
-            tools:visibility="visible" />
+            tools:visibility="visible"
+            tools:ignore="ContentDescription" />
 
         <EditText
             android:id="@+id/edit_text_registration_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:contentDescription="Insert account mail"
             android:ems="10"
-            android:hint="Insert e-mail address"
+            android:hint="@string/insert_e_mail_address"
             android:inputType="textEmailAddress"
             android:layout_marginStart="40dp"
-            android:layout_marginEnd="40dp"/>
+            android:layout_marginEnd="40dp"
+            android:autofillHints="@string/insert_account_mail" />
 
         <EditText
             android:id="@+id/edit_text_register_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:contentDescription="Insert account password"
             android:ems="10"
-            android:hint="Insert password"
+            android:hint="@string/insert_password"
             android:inputType="textPassword"
             android:layout_marginStart="40dp"
-            android:layout_marginEnd="40dp"/>
+            android:layout_marginEnd="40dp"
+            android:autofillHints="@string/insert_password" />
 
         <EditText
             android:id="@+id/edit_text_confirm_password"
@@ -56,10 +57,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:ems="10"
-            android:hint="Insert password once again"
+            android:hint="@string/insert_password_once_again"
             android:inputType="textPassword"
             android:layout_marginStart="40dp"
-            android:layout_marginEnd="40dp"/>
+            android:layout_marginEnd="40dp"
+            tools:ignore="Autofill" />
 
         <Button
             android:id="@+id/button_sign_up"
@@ -68,14 +70,14 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="30dp"
             android:background="@drawable/buttons"
-            android:text="Sign up"
+            android:text="@string/sign_up"
             android:textColor="@color/color15" />
 
         <Button
             android:id="@+id/button_go_to_sign_in"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:text="Go to sign in"
+            android:text="@string/go_to_sign_in"
             android:background="@drawable/buttons"
             android:textColor="@color/color15"
             android:layout_marginTop="10dp"
