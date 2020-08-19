@@ -79,5 +79,8 @@
     <string name="ordina">Ordina</string>
     <string name="accetta">Accetta</string>
     <string name="nome_del_cliente">nome del cliente</string>
+    <string name="invia_ordine">Invia ordine</string>
+    <string name="inserisci_qui_quando_vuoi_ritirare_il_prodotto">Inserisci qui quando vuoi ritirare il prodotto</string>
+    <string name="inserisci_qui_un_messaggio_per_il_venditore">Inserisci qui un messaggio per il venditore</string>
 
 </resources>

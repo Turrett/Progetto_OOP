@@ -33,7 +33,7 @@
                 android:hint="@string/nome_del_cliente" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/txtwhen"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -41,7 +41,7 @@
                 android:hint="quando ritirare" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/txtmessage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -49,7 +49,7 @@
                 android:hint="messaggio al venditore" />
 
             <Button
-                android:id="@+id/button5"
+                android:id="@+id/btnaccept"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_gravity="center_horizontal"
