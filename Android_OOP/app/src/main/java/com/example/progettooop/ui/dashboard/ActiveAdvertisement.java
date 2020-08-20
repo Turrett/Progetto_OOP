@@ -62,7 +62,8 @@ public class ActiveAdvertisement extends Fragment implements View.OnClickListene
 
                                 prod.add(new DashProduct(document.getString("name"),
                                         document.getString("quantity"),
-                                        document.getString("expiration")));
+                                        document.getString("expiration"),
+                                        document.getId()));
 
                             }
                             recyclerView = v.findViewById(R.id.result_annunci);
@@ -91,6 +92,7 @@ public class ActiveAdvertisement extends Fragment implements View.OnClickListene
 
         }
     }
+
 
     public void addadv(){
         Intent intent = new Intent(getActivity(), AddAdvFragment.class);
