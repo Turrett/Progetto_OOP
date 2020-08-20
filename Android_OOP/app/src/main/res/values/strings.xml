@@ -82,5 +82,8 @@
     <string name="invia_ordine">Invia ordine</string>
     <string name="inserisci_qui_quando_vuoi_ritirare_il_prodotto">Inserisci qui quando vuoi ritirare il prodotto</string>
     <string name="inserisci_qui_un_messaggio_per_il_venditore">Inserisci qui un messaggio per il venditore</string>
+    <string name="riepilogo_della_richiesta">Riepilogo della richiesta:</string>
+    <string name="ritirato">Ritirato!</string>
+    <string name="usufruitore">Usufruitore:</string>
 
 </resources>
