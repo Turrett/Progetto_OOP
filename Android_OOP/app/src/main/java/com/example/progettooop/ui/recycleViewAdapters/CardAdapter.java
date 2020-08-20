@@ -40,24 +40,27 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.DashViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull CardAdapter.DashViewHolder holder, int position) {
+
         holder.name.setText(prodotti.get(position).getNamedash());
         holder.quantity.setText(prodotti.get(position).getQuantitydash());
         holder.expire.setText(prodotti.get(position).getExpirationdash());
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseFirestore db = FirebaseFirestore.getInstance();
-                db.collection("annunci")
+                holder.db.collection("annuncio")
                         .document(prodotti.get(position).getProductId())
                         .delete()
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 Toast.makeText(context,"product eliminated",Toast.LENGTH_SHORT).show();
+                                prodotti.remove(position);
+                                notifyItemRemoved(position);
+                                notifyItemRangeChanged(position, getItemCount());
+                                holder.itemView.setVisibility(View.GONE);
                             }
                         });
-                prodotti.remove(position);
-                notifyItemRemoved(position);
+
             }
 
         });
@@ -70,6 +73,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.DashViewHolder
         });
     }
 
+
     @Override
     public int getItemCount() {
         return prodotti.size();
@@ -79,6 +83,8 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.DashViewHolder
     public static class DashViewHolder extends RecyclerView.ViewHolder{
         TextView name,quantity,expire;
         Button delete,seeAll;
+        FirebaseFirestore db;
+
 
         public DashViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -86,6 +92,8 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.DashViewHolder
             quantity =  itemView.findViewById(R.id.qta_dash);
             expire = itemView.findViewById(R.id.exp_dash);
             delete = itemView.findViewById(R.id.btndelete);
+            seeAll =itemView.findViewById(R.id.btnshowall);
+            db = FirebaseFirestore.getInstance();
 
         }
     }
