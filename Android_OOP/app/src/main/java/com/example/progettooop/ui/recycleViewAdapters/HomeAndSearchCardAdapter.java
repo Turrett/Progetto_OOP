@@ -30,11 +30,11 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>  {
+public class HomeAndSearchCardAdapter extends RecyclerView.Adapter<HomeAndSearchCardAdapter.MyViewHolder>  {
     private ArrayList< Product> products;
     Context context;
 
-    public MyAdapter(Context ct , ArrayList<Product> prodotti){
+    public HomeAndSearchCardAdapter(Context ct , ArrayList<Product> prodotti){
 
         products=prodotti;
         context=ct;

@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.progettooop.R;
 import com.example.progettooop.ui.Objects.*;
-import com.example.progettooop.ui.recycleViewAdapters.MyAdapter;
+import com.example.progettooop.ui.recycleViewAdapters.HomeAndSearchCardAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -89,8 +89,8 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
 
                             }
                             recyclerView = v.findViewById(R.id.result_list);
-                            MyAdapter myAdapter = new MyAdapter(v.getContext(),prod);
-                            recyclerView.setAdapter(myAdapter);
+                            HomeAndSearchCardAdapter homeAndSearchCardAdapter = new HomeAndSearchCardAdapter(v.getContext(),prod);
+                            recyclerView.setAdapter(homeAndSearchCardAdapter);
                             recyclerView.setLayoutManager(new LinearLayoutManager(v.getContext()));
 
                         } else {

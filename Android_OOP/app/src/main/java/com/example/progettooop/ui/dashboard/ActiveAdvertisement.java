@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.progettooop.R;
 import com.example.progettooop.ui.Objects.DashProduct;
 import com.example.progettooop.ui.advertisement.AddAdvFragment;
-import com.example.progettooop.ui.recycleViewAdapters.CardAdapter;
+import com.example.progettooop.ui.recycleViewAdapters.PostedProductsCardAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -67,7 +67,7 @@ public class ActiveAdvertisement extends Fragment implements View.OnClickListene
 
                             }
                             recyclerView = v.findViewById(R.id.result_annunci);
-                            CardAdapter myAdapter = new CardAdapter(v.getContext(), prod);
+                            PostedProductsCardAdapter myAdapter = new PostedProductsCardAdapter(v.getContext(), prod);
                             recyclerView.setAdapter(myAdapter);
                             recyclerView.setLayoutManager(new LinearLayoutManager(v.getContext()));
 
