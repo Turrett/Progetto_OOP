@@ -70,7 +70,7 @@ public class FavouriteAdvertisement extends Fragment {
         //first query that gets every favourite item of the user
 
         db.collection("watchlist")
-                .whereEqualTo("User", auth.getUid())
+                .whereEqualTo("UserAddingId", auth.getUid())
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -81,7 +81,7 @@ public class FavouriteAdvertisement extends Fragment {
                                 products.add( new Product(document.getString("name"),
                                         document.getString("quantity"),
                                         document.getString("expire"),
-                                        document.getString("UserAddingId"),
+                                        document.getString("UserPostingId"),
                                         document.getString("Product")));
                             }
                             HomeAndSearchCardAdapter homeAndSearchCardAdapter = new HomeAndSearchCardAdapter(v.getContext(), prod);

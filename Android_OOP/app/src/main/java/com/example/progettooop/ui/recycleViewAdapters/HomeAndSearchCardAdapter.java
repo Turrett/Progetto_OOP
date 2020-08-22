@@ -78,6 +78,7 @@ public class HomeAndSearchCardAdapter extends RecyclerView.Adapter<HomeAndSearch
 
                 Map<String, Object> prod = new HashMap<>();
                 prod.put("UserAddingId",auth.getUid());
+                prod.put("UserPostingId",products.get(position).getUserId());
                 prod.put("ProductId",products.get(position).getProductId());
                 prod.put("date",ft.format(date));
                 prod.put("quantity",products.get(position).getQuantity());
