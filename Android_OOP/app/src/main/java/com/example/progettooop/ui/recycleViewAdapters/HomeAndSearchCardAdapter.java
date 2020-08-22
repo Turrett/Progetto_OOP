@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
@@ -71,12 +72,13 @@ public class HomeAndSearchCardAdapter extends RecyclerView.Adapter<HomeAndSearch
             @Override
             public void onClick(View view) {
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
+                FirebaseAuth auth = FirebaseAuth.getInstance();
                 Date date = new Date();
                 SimpleDateFormat ft = new SimpleDateFormat ("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
 
                 Map<String, Object> prod = new HashMap<>();
-                prod.put("User",holder.userid.getText());
-                prod.put("Product",holder.productId);
+                prod.put("User",auth.getUid());
+                prod.put("Product",products.get(position).getProductId());
                 prod.put("date",ft.format(date));
 
                 db.collection("watchlist")
@@ -98,11 +100,10 @@ public class HomeAndSearchCardAdapter extends RecyclerView.Adapter<HomeAndSearch
 
             }
         });
-      holder.productId =products.get(position).getProduct();
+      holder.productId =products.get(position).getProductId();
         holder.goToUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(view.getContext(),"bla",Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(view.getContext(), ViewUserData.class);
                 i.putExtra("UserId",products.get(position).getUserId());
                 context.startActivity(i);

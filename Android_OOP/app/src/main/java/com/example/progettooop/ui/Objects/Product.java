@@ -5,7 +5,7 @@ public class Product {
     private String Quantity;
     private String Expiration;
     private String UserId;
-    private String product;
+    private String productId;
 
 
     public Product(String name, String quantity, String expiration,String Uid, String productId) {
@@ -13,15 +13,15 @@ public class Product {
         Quantity = quantity;
         Expiration = expiration;
         UserId = Uid;
-        product = productId;
+        this.productId = productId;
     }
 
-    public String getProduct() {
-        return product;
+    public String getProductId() {
+        return productId;
     }
 
-    public void setProduct(String product) {
-        this.product = product;
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
 
     public String getUserId() {

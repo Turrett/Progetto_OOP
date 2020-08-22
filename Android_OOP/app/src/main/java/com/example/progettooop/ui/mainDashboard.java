@@ -11,7 +11,7 @@ import androidx.navigation.ui.NavigationUI;
 import com.example.progettooop.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class mainDashboard extends AppCompatActivity implements View.OnClickListener,comunicator {
+public class mainDashboard extends AppCompatActivity implements View.OnClickListener {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
