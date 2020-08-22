@@ -22,7 +22,12 @@ import java.util.ArrayList;
 
 public class ProductRequestAdapter extends RecyclerView.Adapter<ProductRequestAdapter.RequestViewHolder> {
     private ArrayList<Request> requests;
-    Context context;
+    private Context context;
+
+    public ProductRequestAdapter(ArrayList<Request> requests, Context context) {
+        this.requests = requests;
+        this.context = context;
+    }
 
     public static class RequestViewHolder extends RecyclerView.ViewHolder{
         TextView message,when,userId;
