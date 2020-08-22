@@ -74,12 +74,15 @@ public class HomeAndSearchCardAdapter extends RecyclerView.Adapter<HomeAndSearch
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
                 FirebaseAuth auth = FirebaseAuth.getInstance();
                 Date date = new Date();
-                SimpleDateFormat ft = new SimpleDateFormat ("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
+                SimpleDateFormat ft = new SimpleDateFormat ("E dd.MM.yyyy 'at' hh:mm:ss a zzz");
 
                 Map<String, Object> prod = new HashMap<>();
-                prod.put("User",auth.getUid());
-                prod.put("Product",products.get(position).getProductId());
+                prod.put("UserAddingId",auth.getUid());
+                prod.put("ProductId",products.get(position).getProductId());
                 prod.put("date",ft.format(date));
+                prod.put("quantity",products.get(position).getQuantity());
+                prod.put("expire",products.get(position).getExpiration());
+                prod.put("name",products.get(position).getName());
 
                 db.collection("watchlist")
                         .document()
