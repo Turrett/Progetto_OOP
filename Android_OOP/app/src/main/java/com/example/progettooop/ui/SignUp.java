@@ -41,7 +41,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-
+        setTitle("Inizia la tua registrazione qui");
         EditTextPassword=(EditText) findViewById(R.id.edit_text_register_password);
         EditTextEmail=(EditText) findViewById(R.id.edit_text_registration_email);
         EditTextPasswordCheck = (EditText) findViewById(R.id.edit_text_confirm_password);

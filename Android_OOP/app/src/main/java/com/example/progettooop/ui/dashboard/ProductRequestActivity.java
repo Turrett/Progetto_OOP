@@ -29,6 +29,7 @@ public class ProductRequestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_ordine);
+        setTitle("Ordina il prodotto");
         when = findViewById(R.id.editorder);
         message =findViewById(R.id.editmessage);
         send=findViewById(R.id.btnsend);
@@ -43,7 +44,7 @@ public class ProductRequestActivity extends AppCompatActivity {
     }
 
     private void save(){
-        String When =when.getText().toString();
+        String When = when.getText().toString();
         if (When.isEmpty()){
             when.setError("inserisci una possibile data di ritiro");
             when.requestFocus();
@@ -73,6 +74,7 @@ public class ProductRequestActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         Toast.makeText(getApplicationContext(),"correctly requested",Toast.LENGTH_SHORT).show();
+                        ProductRequestActivity.this.finish();
                     }
                 });
 

@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        setTitle("No Waste. Effettua il login");
         findViewById(R.id.sign_in_button).setOnClickListener(this);
         findViewById(R.id.login_button).setOnClickListener(this);
 

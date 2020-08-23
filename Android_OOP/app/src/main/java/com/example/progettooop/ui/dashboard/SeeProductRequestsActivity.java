@@ -27,7 +27,7 @@ public class SeeProductRequestsActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recycler_watchlist);
-
+        setTitle("Richieste ricevute");
         requests=new ArrayList<>();
         recyclerView = findViewById(R.id.rec_cardrequest);
 

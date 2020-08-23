@@ -12,23 +12,25 @@
 
         <EditText
             android:id="@+id/editorder"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="200dp"
             android:ems="10"
             android:hint="@string/inserisci_qui_quando_vuoi_ritirare_il_prodotto"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:autofillHints="@string/inserisci_qui_quando_vuoi_ritirare_il_prodotto" />
 
         <EditText
             android:id="@+id/editmessage"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
             android:ems="10"
             android:hint="@string/inserisci_qui_un_messaggio_per_il_venditore"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:autofillHints="@string/inserisci_qui_un_messaggio_per_il_venditore" />
 
         <Button
             android:id="@+id/btnsend"
