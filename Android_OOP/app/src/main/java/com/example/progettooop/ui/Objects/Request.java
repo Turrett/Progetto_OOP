@@ -3,7 +3,7 @@ package com.example.progettooop.ui.Objects;
 public class Request {
     String productId,userId,message,requestId,when;
 
-    public Request(String productId, String userId, String message,String requestId,String when) {
+    public Request(String productId, String userId, String message,String when,String requestId) {
         this.productId = productId;
         this.userId = userId;
         this.message = message;

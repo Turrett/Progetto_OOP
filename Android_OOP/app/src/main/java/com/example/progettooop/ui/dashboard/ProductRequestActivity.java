@@ -63,7 +63,7 @@ public class ProductRequestActivity extends AppCompatActivity {
         request.put("userId",auth.getUid());
         request.put("productId",extra.get("productId"));
         request.put("when",When);
-        request.put("Message",Message);
+        request.put("message",Message);
         request.put("status","requested");
 
         db.collection("richieste")
