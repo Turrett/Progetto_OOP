@@ -39,11 +39,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-
-
 public class ModifyUserInfo extends AppCompatActivity implements View.OnClickListener {
-
-
     private final static String TAG = "Upload user";
     private ImageView image;
     private EditText username, address, phone;
@@ -51,7 +47,6 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
     private Button save;
     private ProgressBar loadingBar;
     private String imagePath;
-
 
     private StorageReference mStorageRef;
     private FirebaseAuth mAuth;

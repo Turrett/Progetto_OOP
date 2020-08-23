@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +40,7 @@ public class UserFragment extends Fragment implements View.OnClickListener {
     private ImageView userImage;
     private TextView monday,tuesday,wednesday,thursday,friday,saturday,sunday;
     public String imageUrl;
+    private RatingBar rate;
 
     private FirebaseFirestore db;
     private FirebaseAuth mAuth;
@@ -56,6 +58,8 @@ public class UserFragment extends Fragment implements View.OnClickListener {
         email = root.findViewById(R.id.User_email);
         userImage = root.findViewById(R.id.User_iv);
         user_progressbar =root.findViewById(R.id.progressbar_user);
+        rate = (RatingBar) root.findViewById(R.id.rating_bar);
+
 
         monday = root.findViewById(R.id.monday_hrs);
         tuesday = root.findViewById(R.id.tuesday_hrs);

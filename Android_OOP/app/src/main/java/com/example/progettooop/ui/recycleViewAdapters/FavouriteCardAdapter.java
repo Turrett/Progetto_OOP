@@ -37,14 +37,12 @@ public class FavouriteCardAdapter extends RecyclerView.Adapter<FavouriteCardAdap
         TextView prod,qty,exp,username;
         Button delete,order,gotouser;
 
-
         public FavouriteViewHolder(@NonNull View itemView) {
             super(itemView);
             prod=itemView.findViewById(R.id.prodname);
             qty=itemView.findViewById(R.id.prodqta);
             exp=itemView.findViewById(R.id.prodexp);
             username=itemView.findViewById(R.id.productauthor);
-
             delete=itemView.findViewById(R.id.btnelimina);
             order=itemView.findViewById(R.id.btninvia);
             gotouser=itemView.findViewById(R.id.btngotouser);
