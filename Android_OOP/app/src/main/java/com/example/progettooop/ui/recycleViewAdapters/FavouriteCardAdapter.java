@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.progettooop.R;
 import com.example.progettooop.ui.Objects.wishedProd;
+import com.example.progettooop.ui.dashboard.ProductRequestActivity;
 import com.example.progettooop.ui.user.ViewUserData;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -80,8 +81,8 @@ public class FavouriteCardAdapter extends RecyclerView.Adapter<FavouriteCardAdap
         holder.order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(view.getContext(), ViewUserData.class);
-                i.putExtra("UserId",products.get(position).getUserId());
+                Intent i = new Intent(view.getContext(), ProductRequestActivity.class);
+                i.putExtra("productId",products.get(position).getProductId());
                 context.startActivity(i);
             }
         });

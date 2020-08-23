@@ -1,4 +1,4 @@
-<?xml version="1.1" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.progettooop">
 
@@ -16,13 +16,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.user.ViewUserData"/>
+        <activity android:name=".ui.dashboard.ProductRequestActivity"></activity>
+        <activity android:name=".ui.user.ViewUserData" />
         <activity android:name=".ui.user.ModifyUserInfo" />
-        <activity android:name=".ui.dashboard.SeeProductRequestsActivity"/>
+        <activity android:name=".ui.dashboard.SeeProductRequestsActivity" />
         <activity android:name=".ui.SignUp" />
         <activity android:name=".ui.mainDashboard" />
         <activity android:name=".ui.search.Searchmod">
-
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
