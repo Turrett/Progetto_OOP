@@ -83,7 +83,7 @@ public class FavouriteAdvertisement extends Fragment {
                                         document.getString("quantity"),
                                         document.getString("expire"),
                                         document.getString("UserPostingId"),
-                                        document.getString("Product"),
+                                        document.getString("ProductId"),
                                         document.getString("UserAddingId"),
                                         document.getId()));
                             }
