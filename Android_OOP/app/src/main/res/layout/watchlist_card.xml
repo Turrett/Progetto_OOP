@@ -121,7 +121,8 @@
                         android:layout_marginTop="5dp"
                         android:background="@drawable/buttons"
                         android:text="@string/elimina"
-                        android:textColor="@color/color15" />
+                        android:textColor="@color/color15"
+                        android:textSize="15sp" />
 
                     <Button
                         android:id="@+id/btninvia"
@@ -130,7 +131,8 @@
                         android:layout_marginTop="15dp"
                         android:background="@drawable/buttons"
                         android:text="@string/ordina"
-                        android:textColor="@color/color15" />
+                        android:textColor="@color/color15"
+                        android:textSize="15sp" />
                 </LinearLayout>
 
 
