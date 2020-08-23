@@ -78,7 +78,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
                         if (task.isSuccessful()) {
 
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                if (!document.getString("UId").equals(auth.getUid())) {
+                                if (!document.getString("UId").equals(auth.getUid())&&document.getString("state").equals("posted")) {
                                     prod.add(new Product(
                                             document.getString("name"),
                                             document.getString("quantity"),
