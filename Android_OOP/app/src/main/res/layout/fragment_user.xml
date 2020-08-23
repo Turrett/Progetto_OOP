@@ -59,10 +59,11 @@
 
             <TextView
                 android:id="@+id/user_username"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="30dp"
+                android:layout_marginEnd="30dp"
                 android:ems="10"
                 android:hint="@string/nome_utente"
                 android:importantForAutofill="no"
@@ -77,6 +78,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="42dp"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
                 android:isIndicator="true"
                 android:max="10"
                 android:numStars="10"
@@ -86,9 +88,11 @@
 
             <TextView
                 android:id="@+id/User_email"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp"
                 android:autofillHints="yes"
                 android:ems="10"
                 android:hint="@string/email"
@@ -99,9 +103,11 @@
 
             <TextView
                 android:id="@+id/User_address"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp"
                 android:ems="10"
                 android:hint="@string/address"
                 android:importantForAutofill="no"
@@ -112,9 +118,11 @@
 
             <TextView
                 android:id="@+id/User_Phone_Number"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp"
                 android:ems="10"
                 android:hint="@string/telephone_number"
                 android:importantForAutofill="no"

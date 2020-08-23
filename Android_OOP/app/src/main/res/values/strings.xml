@@ -85,5 +85,6 @@
     <string name="riepilogo_della_richiesta">Riepilogo della richiesta:</string>
     <string name="ritirato">Ritirato!</string>
     <string name="usufruitore">Usufruitore:</string>
+    <string name="stato_annuncio">Stato annuncio:</string>
 
 </resources>

@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center_horizontal">
+    android:layout_height="match_parent">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -18,9 +18,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-
         <LinearLayout
-            android:id="@+id/container1"
+            android:id="@+id/contenitore"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -69,7 +68,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="15dp"
-                            android:layout_marginTop="15dp"
+                            android:layout_marginTop="10dp"
                             android:text="@string/quantit" />
 
 
@@ -78,7 +77,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
-                            android:layout_marginTop="15dp" />
+                            android:layout_marginTop="10dp" />
 
                     </LinearLayout>
 
@@ -92,7 +91,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="15dp"
-                            android:layout_marginTop="15dp"
+                            android:layout_marginTop="10dp"
                             android:text="@string/scadenza" />
 
                         <TextView
@@ -100,7 +99,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
-                            android:layout_marginTop="15dp" />
+                            android:layout_marginTop="10dp" />
 
                     </LinearLayout>
                 </LinearLayout>
@@ -109,6 +108,7 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
                     android:layout_marginStart="12dp"
                     android:layout_marginTop="8dp"
                     android:orientation="vertical"
@@ -118,71 +118,49 @@
                         android:id="@+id/btnelimina"
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
-                        android:layout_marginTop="5dp"
                         android:background="@drawable/buttons"
                         android:text="@string/elimina"
                         android:textColor="@color/color15" />
 
-                    <Button
-                        android:id="@+id/btninvia"
-                        android:layout_width="wrap_content"
-                        android:layout_height="40dp"
-                        android:layout_marginTop="15dp"
-                        android:background="@drawable/buttons"
-                        android:text="@string/ordina"
-                        android:textColor="@color/color15" />
                 </LinearLayout>
 
 
             </LinearLayout>
 
-
             <LinearLayout
                 android:id="@+id/user"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/borders"
                 android:orientation="horizontal">
 
                 <LinearLayout
                     android:id="@+id/nomeutentelayout"
-                    android:layout_width="215dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/productauthor"
+                        android:id="@+id/lblstato"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
-                        android:layout_marginTop="10dp" />
+                        android:layout_marginTop="15dp"
+                        android:text="@string/stato_annuncio" />
+
+                    <TextView
+                        android:id="@+id/txtstatoannuncio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="15dp" />
                 </LinearLayout>
 
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingEnd="10dp">
-
-                    <Button
-                        android:id="@+id/btngotouser"
-                        android:layout_width="wrap_content"
-                        android:layout_height="36dp"
-                        android:layout_marginStart="25dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@drawable/buttons"
-                        android:paddingEnd="10dp"
-                        android:text="@string/vai_all_utente"
-                        android:textColor="@color/color15"
-                        android:textSize="15sp" />
-                </RelativeLayout>
-
             </LinearLayout>
-
-
-
         </LinearLayout>
 
-
     </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

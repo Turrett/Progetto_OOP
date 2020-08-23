@@ -21,7 +21,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="8dp">
 
             <LinearLayout
                 android:id="@+id/containerhorizontal"
@@ -125,8 +126,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingBottom="5dp">
+                android:background="@drawable/borders"
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="220dp"
@@ -159,9 +160,9 @@
                     <Button
                         android:id="@+id/btnshowall"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
                         android:layout_marginStart="52dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="13dp"
                         android:layout_marginBottom="5dp"
                         android:background="@drawable/buttons"
                         android:text="@string/vedi_tutte"

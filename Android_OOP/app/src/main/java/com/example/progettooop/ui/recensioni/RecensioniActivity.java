@@ -10,5 +10,7 @@ public class RecensioniActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_recensione);
+        setTitle("Scrivi qui la tua recensione");
+
     }
 }
