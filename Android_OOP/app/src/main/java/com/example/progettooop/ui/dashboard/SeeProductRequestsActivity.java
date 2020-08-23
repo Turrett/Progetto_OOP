@@ -19,7 +19,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
-public class SeeProductRequests extends AppCompatActivity {
+public class SeeProductRequestsActivity extends AppCompatActivity {
     String ProductId;
     ArrayList<Request> requests ;
     RecyclerView recyclerView;

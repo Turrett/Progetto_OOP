@@ -13,7 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.progettooop.R;
 import com.example.progettooop.ui.Objects.Product;
-import com.example.progettooop.ui.recycleViewAdapters.HomeAndSearchCardAdapter;
+import com.example.progettooop.ui.Objects.wishedProd;
+import com.example.progettooop.ui.recycleViewAdapters.FavouriteCardAdapter;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -32,7 +33,7 @@ Bisogna solo creare la tabella che metta in relazione gli user con gli annunci.
 public class FavouriteAdvertisement extends Fragment {
     public static final String ARG_OBJECT = "object2";
     public RecyclerView recyclerView;
-    private ArrayList<Product> products;
+    private ArrayList<wishedProd> products;
     private QuerySnapshot querySnapshot;
     private CollectionReference db2;
     private FirebaseRecyclerAdapter firebaseRecyclerAdapter;
@@ -50,7 +51,7 @@ public class FavouriteAdvertisement extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);*/
 
-        products = new ArrayList<Product>();
+        products = new ArrayList<wishedProd>();
 
 
         favouriteProductsToRecycleview(root,products);
@@ -60,7 +61,7 @@ public class FavouriteAdvertisement extends Fragment {
         return root;
     }
 
-    private void favouriteProductsToRecycleview(View v, ArrayList<Product> prod) {
+    private void favouriteProductsToRecycleview(View v, ArrayList<wishedProd> prod) {
 
         FirebaseFirestore db;
         FirebaseAuth auth;
@@ -78,13 +79,15 @@ public class FavouriteAdvertisement extends Fragment {
                         if (task.isSuccessful()&& !task.getResult().isEmpty()) {
                             for (QueryDocumentSnapshot document : task.getResult())
                             {
-                                products.add( new Product(document.getString("name"),
+                                products.add( new wishedProd(document.getString("name"),
                                         document.getString("quantity"),
                                         document.getString("expire"),
                                         document.getString("UserPostingId"),
-                                        document.getString("Product")));
+                                        document.getString("Product"),
+                                        document.getString("UserAddingId"),
+                                        document.getId()));
                             }
-                            HomeAndSearchCardAdapter homeAndSearchCardAdapter = new HomeAndSearchCardAdapter(v.getContext(), prod);
+                            FavouriteCardAdapter homeAndSearchCardAdapter = new FavouriteCardAdapter(v.getContext(), prod);
                             recyclerView.setAdapter(homeAndSearchCardAdapter);
                             recyclerView.setLayoutManager(new LinearLayoutManager(v.getContext()));
                         }
@@ -96,8 +99,8 @@ public class FavouriteAdvertisement extends Fragment {
 
 
     private void fillRecycleView(View root) {
-        HomeAndSearchCardAdapter homeAndSearchCardAdapter = new HomeAndSearchCardAdapter(root.getContext(), products);
-        recyclerView.setAdapter(homeAndSearchCardAdapter);
+        FavouriteCardAdapter favouriteCardAdapter = new FavouriteCardAdapter(root.getContext(), products);
+        recyclerView.setAdapter(favouriteCardAdapter);
     }
 
     /*public class ViewHolderCard extends RecyclerView.ViewHolder {

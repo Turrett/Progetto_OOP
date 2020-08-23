@@ -12,9 +12,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.progettooop.R;
-import com.example.progettooop.ui.Objects.Product;
+import com.example.progettooop.ui.Objects.wishedProd;
 import com.example.progettooop.ui.user.ViewUserData;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -23,10 +24,10 @@ import java.util.ArrayList;
 
 public class FavouriteCardAdapter extends RecyclerView.Adapter<FavouriteCardAdapter.FavouriteViewHolder> {
 
-    private ArrayList< Product> products;
+    private ArrayList<wishedProd> products;
     private Context context;
 
-    public FavouriteCardAdapter(Context ct , ArrayList<Product> prodotti) {
+    public FavouriteCardAdapter(Context ct , ArrayList<wishedProd> prodotti) {
         products=prodotti;
         context=ct;
     }
@@ -41,7 +42,7 @@ public class FavouriteCardAdapter extends RecyclerView.Adapter<FavouriteCardAdap
             prod=itemView.findViewById(R.id.prodname);
             qty=itemView.findViewById(R.id.prodqta);
             exp=itemView.findViewById(R.id.prodexp);
-            username=itemView.findViewById(R.id.user);
+            username=itemView.findViewById(R.id.productauthor);
 
             delete=itemView.findViewById(R.id.btnelimina);
             order=itemView.findViewById(R.id.btninvia);
@@ -74,10 +75,32 @@ public class FavouriteCardAdapter extends RecyclerView.Adapter<FavouriteCardAdap
             }
         });//TODO adding a calculated field into product to reduce accesses to the server
 
+
+
+        holder.order.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(view.getContext(), ViewUserData.class);
+                i.putExtra("UserId",products.get(position).getUserId());
+                context.startActivity(i);
+            }
+        });
+
      holder.delete.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View view) {
-
+             db.collection("watchlist")
+                     .document(products.get(position).getWishedId())
+                     .delete()
+                     .addOnSuccessListener(new OnSuccessListener<Void>() {
+                         @Override
+                         public void onSuccess(Void aVoid) {
+                             products.remove(position);
+                             notifyItemRemoved(position);
+                             notifyItemRangeChanged(position, getItemCount());
+                             holder.itemView.setVisibility(View.GONE);
+                         }
+                     });
          }
      });
 
@@ -94,7 +117,7 @@ public class FavouriteCardAdapter extends RecyclerView.Adapter<FavouriteCardAdap
 
     @Override
     public int getItemCount() {
-        return 0;
+        return products.size();
     }
 
 

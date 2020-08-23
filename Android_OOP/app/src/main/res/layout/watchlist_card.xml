@@ -56,8 +56,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="18dp"
-                            android:layout_marginTop="12dp"
-                            />
+                            android:layout_marginTop="12dp" />
 
                     </LinearLayout>
 
@@ -109,7 +108,7 @@
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
                     android:layout_marginTop="8dp"
                     android:orientation="vertical"
@@ -133,9 +132,6 @@
                         android:text="@string/ordina"
                         android:textColor="@color/color15" />
                 </LinearLayout>
-
-
-
 
 
             </LinearLayout>

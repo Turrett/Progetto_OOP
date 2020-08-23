@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.progettooop.R;
 import com.example.progettooop.ui.Objects.DashProduct;
-import com.example.progettooop.ui.dashboard.SeeProductRequests;
+import com.example.progettooop.ui.dashboard.SeeProductRequestsActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -87,7 +87,7 @@ public class PostedProductsCardAdapter extends RecyclerView.Adapter<PostedProduc
             @Override
             public void onClick(View view) {
                 //TODO making the "VEDI TUTTE" button to work
-                Intent intent = new Intent(view.getContext(), SeeProductRequests.class);
+                Intent intent = new Intent(view.getContext(), SeeProductRequestsActivity.class);
                 intent.putExtra("productId",prodotti.get(position).getProductId());
                 context.startActivity(intent);
             }
