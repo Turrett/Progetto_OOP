@@ -6,14 +6,29 @@ public class Product {
     private String Expiration;
     private String UserId;
     private String productId;
+    private String State;
 
 
-    public Product(String name, String quantity, String expiration,String Uid, String productId) {
+    public Product(String name,
+                   String quantity,
+                   String expiration,
+                   String Uid,
+                   String productId,
+                   String state) {
         Name = name;
         Quantity = quantity;
         Expiration = expiration;
         UserId = Uid;
         this.productId = productId;
+        State=state;
+    }
+
+    public String getState() {
+        return State;
+    }
+
+    public void setState(String state) {
+        State = state;
     }
 
     public String getProductId() {

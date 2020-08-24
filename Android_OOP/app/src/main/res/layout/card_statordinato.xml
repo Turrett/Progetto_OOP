@@ -51,7 +51,7 @@
                             android:text="@string/prodotto" />
 
                         <TextView
-                            android:id="@+id/prodname"
+                            android:id="@+id/prodnamealt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="18dp"
@@ -73,7 +73,7 @@
 
 
                         <TextView
-                            android:id="@+id/prodqta"
+                            android:id="@+id/prodqtaalt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
@@ -95,7 +95,7 @@
                             android:text="@string/scadenza" />
 
                         <TextView
-                            android:id="@+id/prodexp"
+                            android:id="@+id/prodexpalt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"

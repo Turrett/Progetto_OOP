@@ -5,8 +5,8 @@ public class wishedProd extends Product {
     private String wishedId;
 
 
-    public wishedProd(String name, String quantity, String expiration, String userPostingId, String productId,String userAddingId,String wishedId) {
-        super(name, quantity, expiration, userPostingId, productId);
+    public wishedProd(String name, String quantity, String expiration, String userPostingId, String productId,String userAddingId,String wishedId,String state) {
+        super(name, quantity, expiration, userPostingId, productId,state);
         this.userAddingId=userAddingId;
         this.wishedId=wishedId;
     }
