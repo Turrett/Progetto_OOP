@@ -38,9 +38,9 @@ public class RecensioniActivity extends AppCompatActivity {
     EditText recensione;
     RatingBar rating;
 
-    private FirebaseAuth mAuth;
     public FirebaseFirestore db;
     private StorageReference ref;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,13 +54,17 @@ public class RecensioniActivity extends AppCompatActivity {
         error = (TextView) root.findViewById(R.id.txterror);
         rating = (RatingBar) root.findViewById(R.id.rating_recensione);
 
-        Bundle extras = getIntent().getExtras();
-        mAuth = FirebaseAuth.getInstance();
-        db = FirebaseFirestore.getInstance();
+        /*
+        teoricamente, qui ho impostato i testi delle textview
+        quindi, nel db posso direttamente prendere txtadding.getText()
+        per recuperare i valori di cui ho bisogno
+         */
 
-        if (Objects.equals(Objects.requireNonNull(extras).getString("type"), "watchlist")){
-            caricavalori();
-        }
+        Bundle extras = getIntent().getExtras();
+        assert extras != null;
+        txtadding.setText(extras.getString("UserAddingId"));
+        txtposting.setText(extras.getString("UserPostingId"));
+        txtprod.setText(extras.getString("ProductId"));
 
         Button btnsave = root.findViewById(R.id.btnrecensione);
         btnsave.setOnClickListener(new View.OnClickListener() {
@@ -73,6 +77,8 @@ public class RecensioniActivity extends AppCompatActivity {
     }
 
     private void addreview(){
+
+        //controllo la presenza o meno della recensione
         String rece = recensione.getText().toString();
         if(rece.isEmpty()){
             recensione.setError("inserisci il testo della recensione!");
@@ -80,30 +86,46 @@ public class RecensioniActivity extends AppCompatActivity {
             return;
         }
 
-        float rate = rating.getRating();
-        if(rate<1){
+        //controllo la presenza o meno delle stelline
+        float ratereview = rating.getRating();
+        if(ratereview<1){
             error.setError("Inserisci una recensione!");
             rating.requestFocus();
             return;
         }
 
-        //robe per aggiungere i dati nel db
+        /*se arrivo qui vuol dire che è stato completato tutto in modo corretto
+        e qindi posso aggiungere i dati nel documento "recensioni"
+         */
+
+        db = FirebaseFirestore.getInstance();
+
+        Map<String, Object> review = new HashMap<>();
+        review.put("UserPostingReviewId", txtadding.getText());
+        review.put("UserReviewedId", txtposting.getText());
+        review.put("ProductReviewId", txtprod.getText());
+        review.put("BodyReview", rece);
+        review.put("RatingReview", ratereview);
+        review.put("state", "reviewed");
 
 
-    }
-
-    private void caricavalori(){
-        db.collection("watchlist")
-                .whereEqualTo("UserAddingId", mAuth.getUid())
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        db.collection("recensioni")
+                .document()
+                .set(review, SetOptions.merge())
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        DocumentSnapshot document = task.getResult();
-                        txtadding.setText(extras.getString("UserAddingId"));
-                        txtposting.setText(extras.getString("UserPostingId"));
-                        txtprod.setText(extras.getString("ProductId"));
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(RecensioniActivity.this, "La tua recensione è stata salvata correttamente", Toast.LENGTH_SHORT).show();
+                        RecensioniActivity.this.finish();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "errore nel salvataggio della recensione", e);
+
                     }
                 });
     }
+
 }
