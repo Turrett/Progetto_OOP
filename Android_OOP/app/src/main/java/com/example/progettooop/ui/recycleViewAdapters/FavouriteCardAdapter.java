@@ -24,11 +24,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
 
 public class FavouriteCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-
     private ArrayList<wishedProd> products;
     private Context context;
     private static int TYPE_ACCEPTED =2;
     private static int TYPE_POSTED =1;
+
 
     public FavouriteCardAdapter(Context ct , ArrayList<wishedProd> prodotti) {
         products=prodotti;
@@ -79,6 +79,7 @@ public class FavouriteCardAdapter extends RecyclerView.Adapter<RecyclerView.View
             public void onClick(View view) {
                 Intent i = new Intent(view.getContext(), ProductRequestActivity.class);
                 i.putExtra("productId", products.get(position).getProductId());
+                i.putExtra("watchlistId",products.get(position).getWishedId());
                 context.startActivity(i);
             }
         });

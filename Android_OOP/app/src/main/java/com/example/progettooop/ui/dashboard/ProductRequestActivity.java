@@ -62,7 +62,7 @@ public class ProductRequestActivity extends AppCompatActivity {
 
         Map<String, Object> request = new HashMap<>();
         request.put("userId",auth.getUid());
-        request.put("productId",extra.get("productId"));
+        request.put("productId",extra.get("productId").toString());
         request.put("when",When);
         request.put("message",Message);
         request.put("status","requested");
@@ -74,10 +74,15 @@ public class ProductRequestActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         Toast.makeText(getApplicationContext(),"correctly requested",Toast.LENGTH_SHORT).show();
-                        ProductRequestActivity.this.finish();
+
                     }
                 });
 
+        db.collection("watchlist")
+                .document(extra.get("watchlistId").toString())
+                .update("state","requested");
+
+        ProductRequestActivity.this.finish();
     }
 
 

@@ -12,15 +12,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.progettooop.R;
-import com.example.progettooop.ui.Objects.Product;
 import com.example.progettooop.ui.Objects.wishedProd;
 import com.example.progettooop.ui.recycleViewAdapters.FavouriteCardAdapter;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -34,12 +33,9 @@ public class FavouriteAdvertisement extends Fragment {
     public static final String ARG_OBJECT = "object2";
     public RecyclerView recyclerView;
     private ArrayList<wishedProd> products;
-    private QuerySnapshot querySnapshot;
-    private CollectionReference db2;
-    private FirebaseRecyclerAdapter firebaseRecyclerAdapter;
-    private LinearLayoutManager linearLayoutManager;
-    Product product;
 
+    private RecyclerView.Adapter adapter;
+    private LinearLayoutManager linearLayoutManager;
 
     // creates the view and calls the function favouriteProductsToRecycleview to load the cards
     @Nullable
@@ -47,19 +43,48 @@ public class FavouriteAdvertisement extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_favourite, container, false);
         recyclerView = root.findViewById(R.id.result_favourite);
-        /*linearLayoutManager = new LinearLayoutManager(root.getContext());
-        recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setHasFixedSize(true);*/
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         products = new ArrayList<wishedProd>();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseFirestore.getInstance()
+                .collection("watchlist")
+                .whereEqualTo("UserAddingId", auth.getUid())
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                        for (QueryDocumentSnapshot document: value){
+                            products.add( new wishedProd(document.getString("name"),
+                                    document.getString("quantity"),
+                                    document.getString("expire"),
+                                    document.getString("UserPostingId"),
+                                    document.getString("ProductId"),
+                                    document.getString("UserAddingId"),
+                                    document.getId(),
+                                    document.getString("state")));
+                        }
+                        adapter=new FavouriteCardAdapter(getContext(),products);
+                        recyclerView.setAdapter(adapter);
+                    }
+                });
 
 
-        favouriteProductsToRecycleview(root,products);
 
-        fillRecycleView(root);
+
+        //favouriteProductsToRecycleview(root,products);
+
+        //fillRecycleView(root);
 
         return root;
     }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+    }
+
 
     private void favouriteProductsToRecycleview(View v, ArrayList<wishedProd> prod) {
 
@@ -88,8 +113,8 @@ public class FavouriteAdvertisement extends Fragment {
                                         document.getId(),
                                         document.getString("state")));
                             }
-                            FavouriteCardAdapter homeAndSearchCardAdapter = new FavouriteCardAdapter(v.getContext(), prod);
-                            recyclerView.setAdapter(homeAndSearchCardAdapter);
+                           // favouriteCardAdapter = new FavouriteCardAdapter(v.getContext(), prod);
+                            //recyclerView.setAdapter(favouriteCardAdapter);
                             recyclerView.setLayoutManager(new LinearLayoutManager(v.getContext()));
                         }
                     }

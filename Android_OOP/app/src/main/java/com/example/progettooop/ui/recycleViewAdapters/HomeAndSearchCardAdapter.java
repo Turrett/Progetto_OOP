@@ -84,6 +84,7 @@ public class HomeAndSearchCardAdapter extends RecyclerView.Adapter<HomeAndSearch
                 prod.put("quantity",products.get(position).getQuantity());
                 prod.put("expire",products.get(position).getExpiration());
                 prod.put("name",products.get(position).getName());
+                prod.put("state",products.get(position).getState());
 
                 db.collection("watchlist")
                         .document()
