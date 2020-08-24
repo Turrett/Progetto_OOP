@@ -15,26 +15,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginBottom="160dp"
-        android:clickable="true"
-        android:clipChildren="false"
-        android:focusable="true"
-        android:paddingStart="12dp"
-        android:paddingLeft="2dp"
-        android:paddingRight="2dp"
-        android:paddingBottom="2dp"
-        app:backgroundTint="@color/color17"
-        app:borderWidth="0dp"
-        app:elevation="1dp"
-        app:fabCustomSize="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:pressedTranslationZ="1dp"
-        app:srcCompat="@android:drawable/ic_menu_add" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

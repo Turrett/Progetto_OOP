@@ -19,15 +19,19 @@
         android:label="Dashboard"
         tools:layout="@layout/fragment_dashboard" />
 
+    <!-- aggiungi un nuovo annuncio -->
+    <fragment
+        android:id="@+id/navigation_addadv"
+        android:name="com.example.progettooop.ui.advertisement.AddAdvFragment"
+        android:label="Inserisci un nuovo annuncio"
+    />
+
     <!-- ricerca -->
     <fragment
         android:id="@+id/navigation_search"
         android:name="com.example.progettooop.ui.search.SearchFragment"
         android:label="Ricerca"
         tools:layout="@layout/fragment_search" >
-       <!-- <action
-            android:id="@+id/searchhome"
-            app:destination="@id/navigation_home" />-->
     </fragment>
 
     <!-- User -->
@@ -36,27 +40,5 @@
         android:name="com.example.progettooop.ui.user.UserFragment"
         android:label="Area personale"
         tools:layout="@layout/fragment_user" />
-
-    <!-- inserimento nuovo adv -->
-    <activity
-        android:id="@+id/navigation_addadv"
-        android:name="com.example.progettooop.ui.advertisement.AddAdvFragment"
-        android:label="Inserimento nuovo annuncio"
-        tools:layout="@layout/fragment_addadv" >
-    </activity>
-
-    <fragment
-        android:id="@+id/navigation_activeadv"
-        android:name="com.example.progettooop.ui.dashboard.ActiveAdvertisement"
-        android:label="annunciattivi"
-        android:layout="@layout/fragment_activeadv"
-        >
-        <action
-            android:id="@+id/active_adv"
-            app:destination="@id/navigation_addadv" />
-    </fragment>
-
-
-
 
 </navigation>
