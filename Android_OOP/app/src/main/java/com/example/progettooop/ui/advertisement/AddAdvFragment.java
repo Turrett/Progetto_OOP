@@ -57,7 +57,7 @@ public class AddAdvFragment extends AppCompatActivity implements View.OnClickLis
 
     private void addData () {
         progressBar.setVisibility(View.VISIBLE);
-        Product product = new Product(name.getText().toString(), quantity.getText().toString(), expiration.getText().toString(), Objects.requireNonNull(auth.getCurrentUser()).getUid(), null);
+        Product product = new Product(name.getText().toString(), quantity.getText().toString(), expiration.getText().toString(), Objects.requireNonNull(auth.getCurrentUser()).getUid(), null,"posted");
         if (product.getName().isEmpty()) {
             name.requestFocus();
             name.setError("name required");
@@ -82,7 +82,7 @@ public class AddAdvFragment extends AppCompatActivity implements View.OnClickLis
         user.put("quantity", product.getQuantity());
         user.put("expiration", product.getExpiration());
         user.put("search_name", product.getName().toLowerCase());
-        user.put("state","posted");
+        user.put("state",product.getState());
 
 
         db.collection("annuncio")

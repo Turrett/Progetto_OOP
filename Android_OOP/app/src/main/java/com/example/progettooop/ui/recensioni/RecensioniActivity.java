@@ -59,7 +59,7 @@ public class RecensioniActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
 
         if (Objects.equals(Objects.requireNonNull(extras).getString("type"), "watchlist")){
-            caricavalori();
+            //caricavalori();
         }
 
         Button btnsave = root.findViewById(R.id.btnrecensione);
@@ -92,7 +92,7 @@ public class RecensioniActivity extends AppCompatActivity {
 
     }
 
-    private void caricavalori(){
+   /* private void caricavalori(){
         db.collection("watchlist")
                 .whereEqualTo("UserAddingId", mAuth.getUid())
                 .get()
@@ -105,5 +105,5 @@ public class RecensioniActivity extends AppCompatActivity {
                         txtprod.setText(extras.getString("ProductId"));
                     }
                 });
-    }
+    }*/
 }

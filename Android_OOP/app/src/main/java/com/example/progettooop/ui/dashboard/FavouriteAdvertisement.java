@@ -85,7 +85,8 @@ public class FavouriteAdvertisement extends Fragment {
                                         document.getString("UserPostingId"),
                                         document.getString("ProductId"),
                                         document.getString("UserAddingId"),
-                                        document.getId()));
+                                        document.getId(),
+                                        document.getString("state")));
                             }
                             FavouriteCardAdapter homeAndSearchCardAdapter = new FavouriteCardAdapter(v.getContext(), prod);
                             recyclerView.setAdapter(homeAndSearchCardAdapter);

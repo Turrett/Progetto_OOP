@@ -69,7 +69,8 @@ public class HomeFragment extends Fragment {
                                             document.getString("quantity"),
                                             document.getString("expiration"),
                                             document.getString("UId"),
-                                            document.getId()));
+                                            document.getId(),
+                                            document.getString("state")));
                                 }
 
                             }

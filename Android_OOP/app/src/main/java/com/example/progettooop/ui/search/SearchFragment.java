@@ -84,7 +84,8 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
                                             document.getString("quantity"),
                                             document.getString("expiration"),
                                             document.getString("UId"),
-                                            document.getId()));
+                                            document.getId(),
+                                            document.getString("state")));
                                 }
 
                             }

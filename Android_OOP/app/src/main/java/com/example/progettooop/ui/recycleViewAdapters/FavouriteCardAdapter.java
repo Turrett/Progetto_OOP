@@ -27,7 +27,7 @@ public class FavouriteCardAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     private ArrayList<wishedProd> products;
     private Context context;
-    public static int TYPE_ACCEPTED =2;
+    private static int TYPE_ACCEPTED =2;
     private static int TYPE_POSTED =1;
 
     public FavouriteCardAdapter(Context ct , ArrayList<wishedProd> prodotti) {
@@ -43,7 +43,7 @@ public class FavouriteCardAdapter extends RecyclerView.Adapter<RecyclerView.View
             return 2;
     }
 
-    public static class FavouriteViewHolder extends RecyclerView.ViewHolder{
+    public class FavouriteViewHolder extends RecyclerView.ViewHolder{
         TextView prod,qty,exp,username;
         Button delete,order,gotouser;
 
@@ -58,9 +58,62 @@ public class FavouriteCardAdapter extends RecyclerView.Adapter<RecyclerView.View
             gotouser=itemView.findViewById(R.id.btngotouser);
 
         }
+        public void setProductPosted (ArrayList<wishedProd> products,Context context, int position) {
+            prod.setText(products.get(position).getName());
+        qty.setText(products.get(position).getQuantity());
+        exp.setText(products.get(position).getExpiration());
+
+        FirebaseFirestore db =FirebaseFirestore.getInstance();
+        db.collection("utenti").document(products.get(position).getUserId()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                DocumentSnapshot document=task.getResult();
+                username.setText(document.get("username").toString());
+            }
+        });//TODO adding a calculated field into product to reduce accesses to the server
+
+
+
+        order.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(view.getContext(), ProductRequestActivity.class);
+                i.putExtra("productId", products.get(position).getProductId());
+                context.startActivity(i);
+            }
+        });
+
+     delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                db.collection("watchlist")
+                        .document(products.get(position).getWishedId())
+                        .delete()
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                products.remove(position);
+                                notifyItemRemoved(position);
+                                notifyItemRangeChanged(position, getItemCount());
+                                itemView.setVisibility(View.GONE);
+                            }
+                        });
+            }
+        });
+
+        gotouser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(view.getContext(), ViewUserData.class);
+                i.putExtra("UserId",products.get(position).getUserId());
+                context.startActivity(i);
+            }
+        });
     }
+}
 
     public static class FavouriteViewHolderAccepted extends RecyclerView.ViewHolder {
+        private static final int TYPE_POSTED = 1;
         TextView prod,qty,exp,status;
         Button delete;
         public FavouriteViewHolderAccepted(@NonNull View itemView) {
@@ -73,10 +126,11 @@ public class FavouriteCardAdapter extends RecyclerView.Adapter<RecyclerView.View
 
 
         }
-
-        private void setProductAccepted(wishedProd product){
-            prod.setText(product.getName());
-            qty.setText(product.getQuantity());
+        private void setProductAccepted(ArrayList<wishedProd>products,int position){
+            prod.setText(products.get(position).getName());
+            qty.setText(products.get(position).getQuantity());
+            exp.setText(products.get(position).getExpiration());
+            status.setText(products.get(position).getState());
         }
     }
 
@@ -100,61 +154,11 @@ public class FavouriteCardAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        if(getItemViewType(position)==TYPE_POSTED){
-        holder.prod.setText(products.get(position).getName());
-        holder.qty.setText(products.get(position).getQuantity());
-        holder.exp.setText(products.get(position).getExpiration());
-
-        FirebaseFirestore db =FirebaseFirestore.getInstance();
-        db.collection("utenti").document(products.get(position).getUserId()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                DocumentSnapshot document=task.getResult();
-                holder.username.setText(document.get("username").toString());
-            }
-        });//TODO adding a calculated field into product to reduce accesses to the server
-
-
-
-        holder.order.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(view.getContext(), ProductRequestActivity.class);
-                i.putExtra("productId",products.get(position).getProductId());
-                context.startActivity(i);
-            }
-        });
-
-     holder.delete.setOnClickListener(new View.OnClickListener() {
-         @Override
-         public void onClick(View view) {
-             db.collection("watchlist")
-                     .document(products.get(position).getWishedId())
-                     .delete()
-                     .addOnSuccessListener(new OnSuccessListener<Void>() {
-                         @Override
-                         public void onSuccess(Void aVoid) {
-                             products.remove(position);
-                             notifyItemRemoved(position);
-                             notifyItemRangeChanged(position, getItemCount());
-                             holder.itemView.setVisibility(View.GONE);
-                         }
-                     });
-         }
-     });
-
-        holder.gotouser.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(view.getContext(), ViewUserData.class);
-                i.putExtra("UserId",products.get(position).getUserId());
-                context.startActivity(i);
-            }
-        });
+        if(getItemViewType(position)==TYPE_POSTED) {
+            ((FavouriteViewHolder)holder).setProductPosted(products,context,position);
         }
-
-        else{
-
+        else {
+            ((FavouriteViewHolderAccepted)holder).setProductAccepted(products,position);
         }
     }
 
