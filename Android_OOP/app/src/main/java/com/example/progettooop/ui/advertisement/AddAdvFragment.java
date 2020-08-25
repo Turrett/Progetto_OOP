@@ -2,13 +2,17 @@ package com.example.progettooop.ui.advertisement;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import com.example.progettooop.R;
 import com.example.progettooop.ui.Objects.Product;
@@ -24,19 +28,17 @@ import java.util.Objects;
 import static android.content.ContentValues.TAG;
 
 
-public class AddAdvFragment extends AppCompatActivity implements View.OnClickListener {
+public class AddAdvFragment extends Fragment implements View.OnClickListener {
     private EditText name,quantity,expiration;
     private ProgressBar progressBar;
     private FirebaseAuth auth;
     private FirebaseFirestore db;
 
 
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         AddAdvViewModel addadvViewModel = new ViewModelProvider(this).get(AddAdvViewModel.class);
-        View root = getLayoutInflater().inflate(R.layout.fragment_addadv,null);
-        setContentView(root);
-        setTitle("Inserisci un nuovo annuncio");
+        View root = inflater.inflate(R.layout.fragment_addadv,null);
         name = root.findViewById(R.id.addv_name);
         quantity = root.findViewById(R.id.addv_qty);
         expiration = root.findViewById(R.id.addv_expiration);
@@ -52,7 +54,7 @@ public class AddAdvFragment extends AppCompatActivity implements View.OnClickLis
             }
         });
 
-
+    return root;
     }
 
     private void addData () {
@@ -95,7 +97,7 @@ public class AddAdvFragment extends AppCompatActivity implements View.OnClickLis
                     @Override
                     public void onSuccess(Void aVoid) {
                         progressBar.setVisibility(View.GONE);
-                        Toast.makeText(AddAdvFragment.this, "Saved!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Saved!", Toast.LENGTH_SHORT).show();
                         Log.d(TAG, "DocumentSnapshot");
                         name.setText("");
                         quantity.setText("");

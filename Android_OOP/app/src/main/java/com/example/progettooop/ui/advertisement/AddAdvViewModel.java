@@ -9,7 +9,7 @@ public class AddAdvViewModel extends ViewModel {
 
     public AddAdvViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is addadv fragment");
+        mText.setValue("This is addadv");
     }
 
     public LiveData<String> getText() {

@@ -12,6 +12,11 @@
         android:title="@string/title_dashboard" />
 
     <item
+        android:id="@+id/navigation_addadv"
+        android:icon="@android:drawable/ic_menu_add"
+        android:title="@string/nuovo_adv" />
+
+    <item
         android:id="@+id/navigation_search"
         android:icon="@drawable/ic_baseline_search_24"
         android:title="@string/ricerca" />

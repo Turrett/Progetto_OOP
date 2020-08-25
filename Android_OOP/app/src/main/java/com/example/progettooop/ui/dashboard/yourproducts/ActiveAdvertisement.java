@@ -32,16 +32,13 @@ public class ActiveAdvertisement extends Fragment implements View.OnClickListene
     private FirebaseAuth mauth ;
     private FirebaseFirestore db;
     private RecyclerView recyclerView;
-    private FloatingActionButton fab;
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mauth = FirebaseAuth.getInstance();
         View root =inflater.inflate(R.layout.fragment_activeadv, container, false);
-
-        fab = (FloatingActionButton) root.findViewById(R.id.floatingActionButton);
-        fab.setOnClickListener(this);
 
         ArrayList<DashProduct> prodotti = new ArrayList<DashProduct>();
         searchProductsToRecycleview(root,prodotti);
@@ -89,17 +86,9 @@ public class ActiveAdvertisement extends Fragment implements View.OnClickListene
 
     @Override
     public void onClick(View view) {
-        switch(view.getId()){
-            case R.id.floatingActionButton:
-               addadv();
-               break;
 
-        }
     }
 
 
-    public void addadv(){
-        Intent intent = new Intent(getActivity(), AddAdvFragment.class);
-        startActivity(intent);
-    }
+
 }
