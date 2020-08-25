@@ -125,7 +125,8 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/buttons"
                 android:text="@string/ritirato"
-                android:textColor="@color/color15" />
+                android:textColor="@color/color15"
+                android:textSize="15sp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

@@ -65,12 +65,8 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginEnd="30dp"
                 android:ems="10"
-                android:hint="@string/nome_utente"
-                android:importantForAutofill="no"
-                android:inputType="textPersonName"
                 android:paddingTop="10dp"
-                android:textSize="18sp"
-                tools:ignore="TextViewEdits" />
+                android:textSize="18sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -93,12 +89,20 @@
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/fabopenreview"
-                    android:layout_width="0dp"
+                    android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginTop="5dp"
-                    android:layout_weight="1"
+                    android:layout_marginBottom="2dp"
+                    android:background="@color/color15"
+                    android:backgroundTint="@color/color17"
                     android:clickable="true"
+                    android:clipChildren="false"
                     android:focusable="true"
+                    android:paddingStart="12dp"
+                    android:paddingLeft="2dp"
+                    android:paddingRight="2dp"
+                    android:paddingBottom="2dp"
+                    app:elevation="1dp"
                     android:src="@drawable/ic_baseline_chrome_reader_mode_24"
                     app:fabCustomSize="30dp" />
             </LinearLayout>
