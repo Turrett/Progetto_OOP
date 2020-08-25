@@ -59,12 +59,14 @@ public class ActiveAdvertisement extends Fragment implements View.OnClickListene
                         if (task.isSuccessful()) {
 
                             for (QueryDocumentSnapshot document : task.getResult()) {
+                                //FACCIO UNO SWITCH PER I DUE TIPI DI CARD
+
 
                                 prod.add(new DashProduct(document.getString("name"),
                                         document.getString("quantity"),
                                         document.getString("expiration"),
                                         document.getId(),
-                                        document.getString("state")
+                                        document.getString("state")//TODO AGGIUNGERE ALTRI DATI WISHLIST ID , PRODUCT ID ,
                                         ));
 
                             }

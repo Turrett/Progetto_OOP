@@ -79,6 +79,7 @@ public class ProductRequestActivity extends AppCompatActivity {
                     }
                 });
 
+
         db.collection("watchlist")
                 .document(extra.get("watchlistId").toString())
                 .update("state","requested");

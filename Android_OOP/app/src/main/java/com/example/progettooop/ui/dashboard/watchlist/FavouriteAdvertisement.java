@@ -51,7 +51,7 @@ public class FavouriteAdvertisement extends Fragment {
                 .whereEqualTo("UserAddingId", auth.getUid())
                 .orderBy("state")
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                    @Override
+                        @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                         if (value!=null)
                         for (QueryDocumentSnapshot document : value) {

@@ -104,23 +104,39 @@ public class PostedProductsCardAdapter extends RecyclerView.Adapter<RecyclerView
             expire.setText(prodotti.get(position).getExpirationdash());
             userBuying.setText(prodotti.get(position).getUsername());
 
-            retired.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    FirebaseFirestore.getInstance().collection("richieste")
-                            .document(prodotti.get(position).getRequestId())
-                            .delete();
-                    FirebaseFirestore.getInstance().collection("wishlist")
-                            .document(prodotti.get(position).getWishedID())
-                            .update("state","retired");
-                    FirebaseFirestore.getInstance().collection("annuncio")
-                            .document(prodotti.get(position).getProductId())
-                            .update("state","retired");
-                }
-            });
+            FirebaseFirestore.getInstance().collection("richieste")
+                    .whereEqualTo("productId",prodotti.get(position).getProductId())
+                    .whereEqualTo("state","accepted")
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            for (QueryDocumentSnapshot document :task.getResult()){
+                                prodotti.get(position).setWishedID(document.getString("watchlistId"));
+                                prodotti.get(position).setRequestId(document.getId());
+                                prodotti.get(position).setUsername(document.getString("userId"));
+                                Toast.makeText(context,"dati aggiunti",Toast.LENGTH_SHORT).show();
+                            }
+
+                            retired.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+
+                                    FirebaseFirestore.getInstance().collection("richieste")
+                                            .document(prodotti.get(position).getRequestId())//TODO SISTEMARE QUA RISULTA NULL
+                                            .delete();
+                                    FirebaseFirestore.getInstance().collection("wishlist")
+                                            .document(prodotti.get(position).getWishedID())
+                                            .update("state","retired");
+                                    FirebaseFirestore.getInstance().collection("annuncio")
+                                            .document(prodotti.get(position).getProductId())
+                                            .update("state","retired");
+                                }
+                            });
+
+                        }
+                    });
         }
-
-
     }
 
 
