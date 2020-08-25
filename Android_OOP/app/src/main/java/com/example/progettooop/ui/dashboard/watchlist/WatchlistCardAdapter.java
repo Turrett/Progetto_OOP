@@ -1,4 +1,4 @@
-package com.example.progettooop.ui.recycleViewAdapters;
+package com.example.progettooop.ui.dashboard.watchlist;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.progettooop.R;
 import com.example.progettooop.ui.Objects.wishedProd;
-import com.example.progettooop.ui.dashboard.watchlist.ProductRequestActivity;
 import com.example.progettooop.ui.user.ViewUserData;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -80,7 +79,6 @@ public class WatchlistCardAdapter extends RecyclerView.Adapter<RecyclerView.View
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(view.getContext(), ProductRequestActivity.class);
-                i.putExtra("productId", products.get(position).getProductId());
                 i.putExtra("watchlistId",products.get(position).getWishedId());
                 context.startActivity(i);
             }
@@ -149,6 +147,7 @@ public class WatchlistCardAdapter extends RecyclerView.Adapter<RecyclerView.View
             qty.setText(products.get(position).getQuantity());
             exp.setText(products.get(position).getExpiration());
             status.setText(products.get(position).getState());
+            //TODO TASTO ELIMINA
         }
     }
 

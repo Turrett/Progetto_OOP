@@ -7,7 +7,6 @@ public class DashProduct {
     private String Expirationdash;
     private String ProductId;
     private String WishedID;
-    private String RequestId;
     private String UserId;
     private String State;
 
@@ -20,13 +19,13 @@ public class DashProduct {
         State=state;
     }
 
-    public DashProduct(String name, String quantity, String expiration,String Pid,String state,String requestId,String userId,String wishedID) {
+    public DashProduct(String name, String quantity, String expiration,String Pid,String state,String userId,String wishedID) {
         Namedash = name;
         Quantitydash = quantity;
         Expirationdash = expiration;
         ProductId = Pid;
         State=state;
-        RequestId = requestId;
+
         UserId = userId;
         WishedID =wishedID;
     }
@@ -47,13 +46,6 @@ public class DashProduct {
         UserId = userId;
     }
 
-    public String getRequestId() {
-        return RequestId;
-    }
-
-    public void setRequestId(String requestId) {
-        RequestId = requestId;
-    }
 
     public String getProductId() {
         return ProductId;

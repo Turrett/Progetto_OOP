@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.progettooop.R;
 import com.example.progettooop.ui.Objects.wishedProd;
-import com.example.progettooop.ui.recycleViewAdapters.WatchlistCardAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;

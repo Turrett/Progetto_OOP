@@ -1,4 +1,4 @@
-package com.example.progettooop.ui.recycleViewAdapters;
+package com.example.progettooop.ui.dashboard.yourproducts;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -67,37 +67,26 @@ public class ProductRequestAdapter extends RecyclerView.Adapter<ProductRequestAd
         holder.accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // accepts the request
-                db.collection("richieste")
-                        .document(requests.get(position).getRequestId())
-                        .update("state","accepted");
-
-                db.collection("richieste")
-                        .whereEqualTo("productId",requests.get(position).getProductId());
-                // eliminate the other requests
-                //TODO eliminate other requests
-
+                //TODO creare un bundle con transazione
+//accepts the request
                 db.collection("watchlist")
                         .document(requests.get(position).getWatchlistId())
                         .update("state","accepted");
 
+//metto l'annuncio come accettato in modo da non venire più mostrato nella home e nella ricerca
                 db.collection("annuncio")
                         .document(requests.get(position).getProductId())
                         .update("state","accepted");
 
-                db.collection("annuncio")
-                        .document(requests.get(position).getProductId())
-                        .update("RequestIdAccepted", requests.get(position).getRequestId());
-
+//chi ha accettato
                 db.collection("annuncio")
                         .document(requests.get(position).getProductId())
                         .update("UserIdAccepted", requests.get(position).getUserId());
 
+//la watchlist che ha accettato
                 db.collection("annuncio")
                         .document(requests.get(position).getProductId())
                         .update("WatchlistIdAccepted", requests.get(position).getWatchlistId());
-
-
             }
         });
     }

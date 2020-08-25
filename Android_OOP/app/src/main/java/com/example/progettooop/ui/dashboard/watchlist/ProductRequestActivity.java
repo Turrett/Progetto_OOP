@@ -59,16 +59,13 @@ public class ProductRequestActivity extends AppCompatActivity {
 
         Bundle extra = getIntent().getExtras();
         assert extra != null;
-
+        // aggiungo quando e il messaggio alla watchlist e aggiorno lo stato a requested
         Map<String, Object> request = new HashMap<>();
-        request.put("userId",auth.getUid());
-        request.put("productId",extra.get("productId").toString());
         request.put("when",When);
         request.put("message",Message);
         request.put("state","requested");
-        request.put("watchlistId",extra.get("watchlistId").toString());
 
-        db.collection("richieste")
+        db.collection("watchlist")
                 .document()
                 .set(request, SetOptions.merge())
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -78,12 +75,6 @@ public class ProductRequestActivity extends AppCompatActivity {
 
                     }
                 });
-
-
-        db.collection("watchlist")
-                .document(extra.get("watchlistId").toString())
-                .update("state","requested");
-
 
         ProductRequestActivity.this.finish();
     }
