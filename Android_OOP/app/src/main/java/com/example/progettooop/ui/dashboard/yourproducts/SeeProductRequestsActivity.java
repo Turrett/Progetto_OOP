@@ -1,4 +1,4 @@
-package com.example.progettooop.ui.dashboard;
+package com.example.progettooop.ui.dashboard.yourproducts;
 
 import android.os.Bundle;
 
@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.progettooop.R;
 import com.example.progettooop.ui.Objects.Request;
-import com.example.progettooop.ui.recycleViewAdapters.ProductRequestAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -38,8 +37,9 @@ public class SeeProductRequestsActivity extends AppCompatActivity {
 
     public void RequestsToRecyclerView(ArrayList<Request> requests, String ProductId){
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("richieste")
-                .whereEqualTo("productId",ProductId)
+        db.collection("watchlist")
+                .whereEqualTo("ProductId",ProductId)
+                .whereEqualTo("state","requested")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -47,11 +47,12 @@ public class SeeProductRequestsActivity extends AppCompatActivity {
                         if (task.isSuccessful()){
                             for (QueryDocumentSnapshot document:task.getResult()){
                                 requests.add(new Request(
-                                        document.getString("productId"),
-                                        document.getString("userId"),
+                                        document.getString("ProductId"),
+                                        document.getString("UserAddingId"),
                                         document.getString("message"),
                                         document.getString("when"),
                                         document.getId()));
+
                             }
                         }
                         ProductRequestAdapter myAdapter = new ProductRequestAdapter(requests,getApplicationContext());

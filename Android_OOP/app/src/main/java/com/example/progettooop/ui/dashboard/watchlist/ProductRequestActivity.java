@@ -1,4 +1,4 @@
-package com.example.progettooop.ui.dashboard;
+package com.example.progettooop.ui.dashboard.watchlist;
 
 import android.os.Bundle;
 import android.view.View;
@@ -52,23 +52,21 @@ public class ProductRequestActivity extends AppCompatActivity {
         }
         String Message =this.message.getText().toString();
         if (Message.isEmpty()){
-            message.setError("inserisci una possibile data di ritiro");
+            message.setError("inserisci un messaggio ");
             message.requestFocus();
             return;
         }
 
         Bundle extra = getIntent().getExtras();
         assert extra != null;
-
+        // aggiungo quando e il messaggio alla watchlist e aggiorno lo stato a requested
         Map<String, Object> request = new HashMap<>();
-        request.put("userId",auth.getUid());
-        request.put("productId",extra.get("productId").toString());
         request.put("when",When);
         request.put("message",Message);
-        request.put("status","requested");
+        request.put("state","requested");
 
-        db.collection("richieste")
-                .document()
+        db.collection("watchlist")
+                .document(extra.getString("watchlistId"))
                 .set(request, SetOptions.merge())
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -77,10 +75,6 @@ public class ProductRequestActivity extends AppCompatActivity {
 
                     }
                 });
-
-        db.collection("watchlist")
-                .document(extra.get("watchlistId").toString())
-                .update("state","requested");
 
         ProductRequestActivity.this.finish();
     }

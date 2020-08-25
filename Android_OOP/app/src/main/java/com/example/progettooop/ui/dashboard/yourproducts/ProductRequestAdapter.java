@@ -1,4 +1,4 @@
-package com.example.progettooop.ui.recycleViewAdapters;
+package com.example.progettooop.ui.dashboard.yourproducts;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -15,8 +15,10 @@ import com.example.progettooop.R;
 import com.example.progettooop.ui.Objects.Request;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.WriteBatch;
 
 import java.util.ArrayList;
 
@@ -68,33 +70,37 @@ public class ProductRequestAdapter extends RecyclerView.Adapter<ProductRequestAd
         holder.accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // accepts the request
-                db.collection("richieste")
-                        .document(requests.get(position).getRequestId())
-                        .update("state","accepted")
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                WriteBatch batch = db.batch();
+
+//accepts the request
+                DocumentReference doc1 =db.collection("watchlist")
+                        .document(requests.get(position).getWatchlistId());
+                        batch.update(doc1,"state","accepted");
+
+//metto l'annuncio come accettato in modo da non venire più mostrato nella home e nella ricerca
+                DocumentReference doc2 =db.collection("annuncio")
+                        .document(requests.get(position).getProductId());
+                        batch.update(doc2,"state","accepted");
+
+//chi ha accettato
+                DocumentReference doc3=db.collection("annuncio")
+                        .document(requests.get(position).getProductId());
+                        batch.update(doc3,"UserIdAccepted", requests.get(position).getUserId());
+
+//la watchlist che ha accettato
+                DocumentReference doc4=db.collection("annuncio")
+                        .document(requests.get(position).getProductId());
+                        batch.update(doc4,"WatchlistIdAccepted", requests.get(position).getWatchlistId());
+//eseguo la transazione
+                        batch.commit().addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
-                                Toast.makeText(context,"richiesta accettata",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context,"dataupdated",Toast.LENGTH_SHORT).show();
                             }
                         });
-                db.collection("annuncio")
-                        .document(requests.get(position).getProductId())
-                        .update("state","accepted")
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        Toast.makeText(context,"prodotto accettato",Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-                // eliminate the other requests
-              //TODO
             }
         });
     }
-
-
 
 
     @Override

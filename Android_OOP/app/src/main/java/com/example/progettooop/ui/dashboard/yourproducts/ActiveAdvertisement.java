@@ -1,24 +1,22 @@
-package com.example.progettooop.ui.dashboard;
+package com.example.progettooop.ui.dashboard.yourproducts;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.progettooop.R;
 import com.example.progettooop.ui.Objects.DashProduct;
-import com.example.progettooop.ui.advertisement.AddAdvFragment;
-import com.example.progettooop.ui.recycleViewAdapters.PostedProductsCardAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -57,10 +55,26 @@ public class ActiveAdvertisement extends Fragment implements View.OnClickListene
 
                             for (QueryDocumentSnapshot document : task.getResult()) {
 
+                                //FACCIO UNO SWITCH PER I DUE TIPI DI CARD
+                                if (document.getString("state").equals("posted") || document.getString("state").equals("requested")){
+
                                 prod.add(new DashProduct(document.getString("name"),
                                         document.getString("quantity"),
                                         document.getString("expiration"),
-                                        document.getId()));
+                                        document.getId(),
+                                        document.getString("state")
+                                        ));
+                                }
+                                if(document.getString("state").equals("accepted")){
+                                    prod.add(new DashProduct(document.getString("name"),
+                                            document.getString("quantity"),
+                                            document.getString("expiration"),
+                                            document.getId(),
+                                            document.getString("state"),
+                                            document.getString("UserIdAccepted"),
+                                            document.getString("WatchlistIdAccepted")
+                                    ));
+                                }
 
                             }
                             recyclerView = v.findViewById(R.id.result_annunci);
