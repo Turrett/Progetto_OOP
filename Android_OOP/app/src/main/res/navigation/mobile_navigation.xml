@@ -47,7 +47,7 @@
 
     <fragment
         android:id="@+id/navigation_activeadv"
-        android:name="com.example.progettooop.ui.dashboard.ActiveAdvertisement"
+        android:name="com.example.progettooop.ui.dashboard.yourproducts.ActiveAdvertisement"
         android:label="annunciattivi"
         android:layout="@layout/fragment_activeadv"
         >

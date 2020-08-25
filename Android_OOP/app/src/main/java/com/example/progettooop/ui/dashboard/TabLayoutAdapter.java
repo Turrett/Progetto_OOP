@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.annotation.NonNull;
 
+import com.example.progettooop.ui.dashboard.watchlist.FavouriteAdvertisement;
+import com.example.progettooop.ui.dashboard.yourproducts.ActiveAdvertisement;
+
 public class TabLayoutAdapter extends FragmentStateAdapter {
     public TabLayoutAdapter(Fragment fragment) {
         super(fragment);

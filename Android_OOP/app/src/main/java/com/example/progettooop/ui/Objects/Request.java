@@ -1,14 +1,23 @@
 package com.example.progettooop.ui.Objects;
 
 public class Request {
-    String productId,userId,message,requestId,when;
+    String productId,userId,message,requestId,when,watchlistId;
 
-    public Request(String productId, String userId, String message,String when,String requestId) {
+    public Request(String productId, String userId, String message,String when,String requestId,String watchlistId) {
         this.productId = productId;
         this.userId = userId;
         this.message = message;
         this.requestId = requestId;
         this.when = when ;
+        this.watchlistId=watchlistId;
+    }
+
+    public String getWatchlistId() {
+        return watchlistId;
+    }
+
+    public void setWatchlistId(String watchlistId) {
+        this.watchlistId = watchlistId;
     }
 
     public String getRequestId() {

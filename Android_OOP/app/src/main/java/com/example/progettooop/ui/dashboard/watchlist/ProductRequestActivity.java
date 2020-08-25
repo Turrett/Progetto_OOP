@@ -1,4 +1,4 @@
-package com.example.progettooop.ui.dashboard;
+package com.example.progettooop.ui.dashboard.watchlist;
 
 import android.os.Bundle;
 import android.view.View;
@@ -52,7 +52,7 @@ public class ProductRequestActivity extends AppCompatActivity {
         }
         String Message =this.message.getText().toString();
         if (Message.isEmpty()){
-            message.setError("inserisci una possibile data di ritiro");
+            message.setError("inserisci un messaggio ");
             message.requestFocus();
             return;
         }
@@ -65,7 +65,8 @@ public class ProductRequestActivity extends AppCompatActivity {
         request.put("productId",extra.get("productId").toString());
         request.put("when",When);
         request.put("message",Message);
-        request.put("status","requested");
+        request.put("state","requested");
+        request.put("watchlistId",extra.get("watchlistId").toString());
 
         db.collection("richieste")
                 .document()
@@ -81,6 +82,7 @@ public class ProductRequestActivity extends AppCompatActivity {
         db.collection("watchlist")
                 .document(extra.get("watchlistId").toString())
                 .update("state","requested");
+
 
         ProductRequestActivity.this.finish();
     }

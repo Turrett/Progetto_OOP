@@ -13,24 +13,26 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.progettooop.R;
 import com.example.progettooop.ui.Objects.wishedProd;
-import com.example.progettooop.ui.dashboard.ProductRequestActivity;
+import com.example.progettooop.ui.dashboard.watchlist.ProductRequestActivity;
 import com.example.progettooop.ui.user.ViewUserData;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 
 import java.util.ArrayList;
 
-public class FavouriteCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class WatchlistCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private ArrayList<wishedProd> products;
     private Context context;
     private static int TYPE_ACCEPTED =2;
     private static int TYPE_POSTED =1;
 
 
-    public FavouriteCardAdapter(Context ct , ArrayList<wishedProd> prodotti) {
+    public WatchlistCardAdapter(Context ct , ArrayList<wishedProd> prodotti) {
         products=prodotti;
         context=ct;
     }
@@ -87,6 +89,20 @@ public class FavouriteCardAdapter extends RecyclerView.Adapter<RecyclerView.View
      delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (products.get(position).getState().equals("requested")){
+                    Query query =db.collection("richieste")
+                            .whereEqualTo("productId",products.get(position).getProductId())
+                            .whereEqualTo("userId", FirebaseAuth.getInstance().getUid());
+
+                                //TODO find a way to delete the request made by the user
+
+                }
+                if (products.get(position).getState().equals("accepted")) {
+                    db.collection("annuncio")
+                            .document(products.get(position).getProductId())
+                            .update("state", "posted");
+                }
+
                 db.collection("watchlist")
                         .document(products.get(position).getWishedId())
                         .delete()
@@ -99,6 +115,7 @@ public class FavouriteCardAdapter extends RecyclerView.Adapter<RecyclerView.View
                                 itemView.setVisibility(View.GONE);
                             }
                         });
+
             }
         });
 

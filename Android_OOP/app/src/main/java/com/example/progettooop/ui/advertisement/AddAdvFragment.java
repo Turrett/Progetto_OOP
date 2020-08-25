@@ -83,6 +83,9 @@ public class AddAdvFragment extends AppCompatActivity implements View.OnClickLis
         user.put("expiration", product.getExpiration());
         user.put("search_name", product.getName().toLowerCase());
         user.put("state",product.getState());
+        user.put("RequestIdAccepted","");
+        user.put("UserIdAccepted","");
+        user.put("WatchlistIdAccepted","");
 
 
         db.collection("annuncio")

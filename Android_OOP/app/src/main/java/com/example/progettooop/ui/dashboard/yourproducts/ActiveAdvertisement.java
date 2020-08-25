@@ -1,4 +1,4 @@
-package com.example.progettooop.ui.dashboard;
+package com.example.progettooop.ui.dashboard.yourproducts;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -63,7 +63,9 @@ public class ActiveAdvertisement extends Fragment implements View.OnClickListene
                                 prod.add(new DashProduct(document.getString("name"),
                                         document.getString("quantity"),
                                         document.getString("expiration"),
-                                        document.getId()));
+                                        document.getId(),
+                                        document.getString("state")
+                                        ));
 
                             }
                             recyclerView = v.findViewById(R.id.result_annunci);

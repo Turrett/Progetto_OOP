@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -71,25 +70,34 @@ public class ProductRequestAdapter extends RecyclerView.Adapter<ProductRequestAd
                 // accepts the request
                 db.collection("richieste")
                         .document(requests.get(position).getRequestId())
-                        .update("state","accepted")
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                Toast.makeText(context,"richiesta accettata",Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                        .update("state","accepted");
+
+                db.collection("richieste")
+                        .whereEqualTo("productId",requests.get(position).getProductId());
+                // eliminate the other requests
+                //TODO eliminate other requests
+
+                db.collection("watchlist")
+                        .document(requests.get(position).getWatchlistId())
+                        .update("state","accepted");
+
                 db.collection("annuncio")
                         .document(requests.get(position).getProductId())
-                        .update("state","accepted")
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        Toast.makeText(context,"prodotto accettato",Toast.LENGTH_SHORT).show();
-                    }
-                });
+                        .update("state","accepted");
 
-                // eliminate the other requests
-              //TODO
+                db.collection("annuncio")
+                        .document(requests.get(position).getProductId())
+                        .update("RequestIdAccepted", requests.get(position).getRequestId());
+
+                db.collection("annuncio")
+                        .document(requests.get(position).getProductId())
+                        .update("UserIdAccepted", requests.get(position).getUserId());
+
+                db.collection("annuncio")
+                        .document(requests.get(position).getProductId())
+                        .update("WatchlistIdAccepted", requests.get(position).getWatchlistId());
+
+
             }
         });
     }

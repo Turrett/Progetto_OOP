@@ -1,4 +1,4 @@
-package com.example.progettooop.ui.dashboard;
+package com.example.progettooop.ui.dashboard.yourproducts;
 
 import android.os.Bundle;
 
@@ -51,7 +51,9 @@ public class SeeProductRequestsActivity extends AppCompatActivity {
                                         document.getString("userId"),
                                         document.getString("message"),
                                         document.getString("when"),
-                                        document.getId()));
+                                        document.getId(),
+                                        document.getString("watchlistId")));
+
                             }
                         }
                         ProductRequestAdapter myAdapter = new ProductRequestAdapter(requests,getApplicationContext());
