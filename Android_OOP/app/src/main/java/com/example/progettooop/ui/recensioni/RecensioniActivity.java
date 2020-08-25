@@ -46,7 +46,7 @@ public class RecensioniActivity extends AppCompatActivity {
         recensione = findViewById(R.id.txtrecensione);
         error = findViewById(R.id.txterror);
         rating =findViewById(R.id.rating_recensione);
-
+        txtprod =findViewById(R.id.txtprodid);
         /*
         teoricamente, qui ho impostato i testi delle textview
         quindi, nel db posso direttamente prendere txtadding.getText()
