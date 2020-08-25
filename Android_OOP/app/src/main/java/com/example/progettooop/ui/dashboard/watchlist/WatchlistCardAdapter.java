@@ -145,6 +145,7 @@ public class WatchlistCardAdapter extends RecyclerView.Adapter<RecyclerView.View
                      intent.putExtra("UserAddingId",products.get(position).getUserAddingId());
                      intent.putExtra("UserPostingId",products.get(position).getUserId());
                      intent.putExtra("ProductId",products.get(position).getProductId());
+                     intent.putExtra("watchlistId",products.get(position).getWishedId());
                      context.startActivity(intent);
                  }
              });

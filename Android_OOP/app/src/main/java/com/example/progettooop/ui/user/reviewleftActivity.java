@@ -2,27 +2,19 @@ package com.example.progettooop.ui.user;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.progettooop.ui.Objects.DashProduct;
-import com.example.progettooop.ui.Objects.reviewleft;
 import com.example.progettooop.R;
-import com.example.progettooop.ui.recycleViewAdapters.ReviewleftAdapter;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.Task;
+import com.example.progettooop.ui.Objects.reviewleft;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+
+//import com.example.progettooop.ui.recycleViewAdapters.ReviewleftAdapter;
 
 public class reviewleftActivity extends AppCompatActivity {
 
