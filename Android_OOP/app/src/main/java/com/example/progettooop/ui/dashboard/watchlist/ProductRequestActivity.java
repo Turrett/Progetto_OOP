@@ -66,7 +66,7 @@ public class ProductRequestActivity extends AppCompatActivity {
         request.put("state","requested");
 
         db.collection("watchlist")
-                .document()
+                .document(extra.getString("watchlistId"))
                 .set(request, SetOptions.merge())
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

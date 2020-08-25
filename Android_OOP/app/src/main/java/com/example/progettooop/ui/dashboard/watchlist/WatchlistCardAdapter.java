@@ -13,14 +13,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.progettooop.R;
 import com.example.progettooop.ui.Objects.wishedProd;
+import com.example.progettooop.ui.recensioni.RecensioniActivity;
 import com.example.progettooop.ui.user.ViewUserData;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.WriteBatch;
 
 import java.util.ArrayList;
 
@@ -87,19 +88,6 @@ public class WatchlistCardAdapter extends RecyclerView.Adapter<RecyclerView.View
      delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (products.get(position).getState().equals("requested")){
-                    Query query =db.collection("richieste")
-                            .whereEqualTo("productId",products.get(position).getProductId())
-                            .whereEqualTo("userId", FirebaseAuth.getInstance().getUid());
-
-                                //TODO find a way to delete the request made by the user
-
-                }
-                if (products.get(position).getState().equals("accepted")) {
-                    db.collection("annuncio")
-                            .document(products.get(position).getProductId())
-                            .update("state", "posted");
-                }
 
                 db.collection("watchlist")
                         .document(products.get(position).getWishedId())
@@ -128,7 +116,7 @@ public class WatchlistCardAdapter extends RecyclerView.Adapter<RecyclerView.View
     }
 }
 
-    public static class FavouriteViewHolderAccepted extends RecyclerView.ViewHolder {
+    public class FavouriteViewHolderAccepted extends RecyclerView.ViewHolder {
         private static final int TYPE_POSTED = 1;
         TextView prod,qty,exp,status;
         Button delete;
@@ -147,7 +135,50 @@ public class WatchlistCardAdapter extends RecyclerView.Adapter<RecyclerView.View
             qty.setText(products.get(position).getQuantity());
             exp.setText(products.get(position).getExpiration());
             status.setText(products.get(position).getState());
-            //TODO TASTO ELIMINA
+            //TODO sostituire questo if con una card a parte
+            if (products.get(position).getState().equals("retired")){
+             delete.setText("RECENSISCI");
+             delete.setOnClickListener(new View.OnClickListener() {
+                 @Override
+                 public void onClick(View view) {
+                     Intent intent = new Intent(view.getContext(), RecensioniActivity.class);
+                     intent.putExtra("UserAddingId",products.get(position).getUserAddingId());
+                     intent.putExtra("UserPostingId",products.get(position).getUserId());
+                     intent.putExtra("ProductId",products.get(position).getProductId());
+                     context.startActivity(intent);
+                 }
+             });
+            }
+            else {
+                delete.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        FirebaseFirestore db = FirebaseFirestore.getInstance();
+                        WriteBatch batch = db.batch();
+
+                        if (products.get(position).getState().equals("accepted")) {
+                            DocumentReference doc1 = db.collection("annuncio")
+                                    .document(products.get(position).getProductId());
+                            batch.update(doc1, "state", "posted");
+                        }
+
+                        DocumentReference doc2 = db.getInstance().collection("watchlist")
+                                .document(products.get(position).getWishedId());
+                        batch.delete(doc2);
+
+                        batch.commit().addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                products.remove(position);
+                                notifyItemRemoved(position);
+                                notifyItemRangeChanged(position, getItemCount());
+                                itemView.setVisibility(View.GONE);
+                            }
+                        });
+
+                    }
+                });
+            }
         }
     }
 

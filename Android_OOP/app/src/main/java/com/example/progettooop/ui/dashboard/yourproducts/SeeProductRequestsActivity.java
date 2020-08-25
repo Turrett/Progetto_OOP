@@ -38,7 +38,7 @@ public class SeeProductRequestsActivity extends AppCompatActivity {
     public void RequestsToRecyclerView(ArrayList<Request> requests, String ProductId){
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("watchlist")
-                .whereEqualTo("productId",ProductId)
+                .whereEqualTo("ProductId",ProductId)
                 .whereEqualTo("state","requested")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {

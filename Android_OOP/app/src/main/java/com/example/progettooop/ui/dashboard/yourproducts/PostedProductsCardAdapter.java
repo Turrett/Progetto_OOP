@@ -15,10 +15,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.progettooop.R;
 import com.example.progettooop.ui.Objects.DashProduct;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.WriteBatch;
 
 import java.util.ArrayList;
 
@@ -107,13 +110,21 @@ public class PostedProductsCardAdapter extends RecyclerView.Adapter<RecyclerView
             retired.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    FirebaseFirestore db = FirebaseFirestore.getInstance();
+                    WriteBatch batch =db.batch();
 
-                    FirebaseFirestore.getInstance().collection("wishlist")
-                            .document(prodotti.get(position).getWishedID())
-                            .update("state","retired");
-                    FirebaseFirestore.getInstance().collection("annuncio")
-                            .document(prodotti.get(position).getProductId())
-                            .update("state","retired");
+                    DocumentReference doc1 =db.collection("watchlist")
+                            .document(prodotti.get(position).getWishedID());
+                            batch.update(doc1,"state","retired");
+                    DocumentReference doc2 =db.collection("annuncio")
+                            .document(prodotti.get(position).getProductId());
+                            batch.update(doc2,"state","retired");
+                            batch.commit().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(context,"product retired",Toast.LENGTH_SHORT).show();
+                                }
+                            });
                 }
             });
         }
@@ -147,8 +158,9 @@ public class PostedProductsCardAdapter extends RecyclerView.Adapter<RecyclerView
             quantity.setText(prodotti.get(position).getQuantitydash());
             expire.setText(prodotti.get(position).getExpirationdash());
             //sets the number of requests
-            db.collection("richieste")
-                    .whereEqualTo("productId",prodotti.get(position).getProductId())
+            db.collection("watchlist")
+                    .whereEqualTo("ProductId",prodotti.get(position).getProductId())
+                    .whereEqualTo("state","requested")
                     .get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
