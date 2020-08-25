@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -12,11 +13,9 @@ import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.progettooop.R;
@@ -28,9 +27,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-
 import java.util.Objects;
-
 
 public class UserFragment extends Fragment implements View.OnClickListener {
 
@@ -47,10 +44,12 @@ public class UserFragment extends Fragment implements View.OnClickListener {
     StorageReference storageReference;
 
 
+    @SuppressLint("ClickableViewAccessibility")
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
         View root = inflater.inflate(R.layout.fragment_user, container, false);
         root.findViewById(R.id.modify_button).setOnClickListener(this);
+        root.findViewById(R.id.fabopenreview).setOnClickListener(this);
 
         username = root.findViewById(R.id.user_username);
         numero =root.findViewById(R.id.User_Phone_Number);
@@ -59,7 +58,6 @@ public class UserFragment extends Fragment implements View.OnClickListener {
         userImage = root.findViewById(R.id.User_iv);
         user_progressbar =root.findViewById(R.id.progressbar_user);
         rate = (RatingBar) root.findViewById(R.id.rating_bar);
-
 
         monday = root.findViewById(R.id.monday_hrs);
         tuesday = root.findViewById(R.id.tuesday_hrs);
@@ -73,6 +71,7 @@ public class UserFragment extends Fragment implements View.OnClickListener {
         mAuth = FirebaseAuth.getInstance();
         storageReference = FirebaseStorage.getInstance().getReference();
         getInfo();
+        fillratingbar();
         return root;
     }
 
@@ -81,11 +80,19 @@ public class UserFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == R.id.modify_button);
-        Intent intent  = new Intent(getContext(), ModifyUserInfo.class);
-        intent.putExtra("type","user");
-        startActivity(intent);
+        if (view.getId() == R.id.modify_button) {
+            Intent intent = new Intent(getContext(), ModifyUserInfo.class);
+            intent.putExtra("type", "user");
+            startActivity(intent);
+        }
+        if(view.getId()==R.id.fabopenreview){
+            Intent intent1 = new Intent(getContext(), reviewleftActivity.class);
+            intent1.putExtra("type", "user");
+            startActivity(intent1);
+        }
     }
+
+
 
     private void getInfo(){
         user_progressbar.setVisibility(View.VISIBLE);
@@ -142,6 +149,10 @@ public class UserFragment extends Fragment implements View.OnClickListener {
 
         });
         user_progressbar.setVisibility(View.GONE);
+    }
+
+    private void fillratingbar(){
+
     }
 }
 

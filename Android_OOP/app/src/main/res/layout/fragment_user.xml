@@ -72,19 +72,36 @@
                 android:textSize="18sp"
                 tools:ignore="TextViewEdits" />
 
-            <RatingBar
-                android:id="@+id/rating_bar"
-                style="@style/Widget.AppCompat.RatingBar.Indicator"
-                android:layout_width="wrap_content"
-                android:layout_height="42dp"
-                android:layout_gravity="center_horizontal"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
-                android:isIndicator="true"
-                android:max="10"
-                android:numStars="10"
-                android:scaleX="0.7"
-                android:scaleY="0.7"
-                tools:rating="0.5" />
+                android:orientation="horizontal">
+
+                <RatingBar
+                    android:id="@+id/rating_bar"
+                    style="@style/Widget.AppCompat.RatingBar.Indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="42dp"
+                    android:layout_gravity="center_horizontal"
+                    android:isIndicator="true"
+                    android:max="10"
+                    android:numStars="10"
+                    android:scaleX="0.7"
+                    android:scaleY="0.7"
+                    tools:rating="0.5" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/fabopenreview"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:src="@drawable/ic_baseline_chrome_reader_mode_24"
+                    app:fabCustomSize="30dp" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/User_email"
