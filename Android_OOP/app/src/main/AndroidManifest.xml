@@ -16,7 +16,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.dashboard.watchlist.ProductRequestActivity"></activity>
+        <activity android:name=".ui.dashboard.watchlist.ProductRequestActivity">
+        </activity>
         <activity android:name=".ui.user.ViewUserData" />
         <activity android:name=".ui.user.ModifyUserInfo" />
         <activity android:name=".ui.dashboard.yourproducts.SeeProductRequestsActivity" />
@@ -41,7 +42,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.advertisement.AddAdvFragment" />
+      <activity android:name=".ui.user.reviewleftActivity">
+
+      </activity>
     </application>
 
 </manifest>

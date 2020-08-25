@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.progettooop.ui.Objects.DashProduct;
 import com.example.progettooop.ui.Objects.reviewleft;
 import com.example.progettooop.R;
-import com.example.progettooop.ui.recycleViewAdapters.PostedProductsCardAdapter;
 import com.example.progettooop.ui.recycleViewAdapters.ReviewleftAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -38,8 +37,8 @@ public class reviewleftActivity extends AppCompatActivity {
             View root = getLayoutInflater().inflate(R.layout.layout_reviewleft, null);
             setContentView(root);
             setTitle("Leggi qui cosa si pensa di te");
-            ArrayList<reviewleft> review = new ArrayList<reviewleft>();
-            searchreviewtorecycler(root, review);
+           /* ArrayList<reviewleft> review = new ArrayList<reviewleft>();
+            searchreviewtorecycler(root, review);*/
         }
 
         public void searchreviewtorecycler(View v, ArrayList<reviewleft> r){
