@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
@@ -61,6 +62,8 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modify_user_information);
         setTitle("Inserisci i nuovi dati");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         username = (EditText) findViewById(R.id.modify_username);
         address = (EditText) findViewById(R.id.modify_address);
         citta = (EditText) findViewById(R.id.modify_citta);
@@ -78,8 +81,6 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
         saturday = findViewById(R.id.modify_saturday);
         sunday = findViewById(R.id.modify_sunday);
         loadingBar.setVisibility(View.GONE);
-
-
 
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
@@ -299,5 +300,18 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
     public void onClick(View view) {
 
     }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                ModifyUserInfo.this.finish();
+                break;
+            default:
+                break;
+        }
+        return true;
+    }
+
 
 }

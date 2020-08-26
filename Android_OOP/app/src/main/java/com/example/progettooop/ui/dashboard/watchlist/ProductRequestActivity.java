@@ -1,6 +1,7 @@
 package com.example.progettooop.ui.dashboard.watchlist;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,6 +31,8 @@ public class ProductRequestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_ordine);
         setTitle("Ordina il prodotto");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         when = findViewById(R.id.editorder);
         message =findViewById(R.id.editmessage);
         send=findViewById(R.id.btnsend);
@@ -79,6 +82,17 @@ public class ProductRequestActivity extends AppCompatActivity {
         ProductRequestActivity.this.finish();
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                ProductRequestActivity.this.finish();
+                break;
+            default:
+                break;
+        }
+        return true;
+    }
 
 
 }

@@ -1,6 +1,7 @@
 package com.example.progettooop.ui.user;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -40,7 +41,7 @@ public class reviewleftActivity extends AppCompatActivity {
             view = getLayoutInflater().inflate(R.layout.layout_reviewleft, null);
             setContentView(R.layout.layout_reviewleft);
             setTitle("Leggi qui cosa si pensa di te");
-
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             //inizializzo le variabili degli elementi nella view
             result = findViewById(R.id.result_reviewleft);
            ArrayList<reviewleft> review = new ArrayList<reviewleft>();
@@ -81,6 +82,19 @@ public class reviewleftActivity extends AppCompatActivity {
                 }
             });
         }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                reviewleftActivity.this.finish();
+                break;
+            default:
+                break;
+
+        }
+        return true;
+    }
 }
 
 

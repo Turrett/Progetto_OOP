@@ -2,6 +2,7 @@ package com.example.progettooop.ui.recycleViewAdapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +10,6 @@ import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -33,6 +33,7 @@ public class reviewleftCardAdapter extends RecyclerView.Adapter<reviewleftCardAd
 
     private ArrayList<reviewleft> review;
     Context context;
+    String watchlistId;
 
     public reviewleftCardAdapter(Context ct , ArrayList<reviewleft> r){
         review=r;
@@ -51,29 +52,30 @@ public class reviewleftCardAdapter extends RecyclerView.Adapter<reviewleftCardAd
     //qui aggiungo le informazioni alla card
     @Override
     public void onBindViewHolder(@NonNull ViewHolderRecensione holder, int position) {
-        holder.txtbody.setText(review.get(position).getTextreview());
         holder.txtproduct.setText(review.get(position).getTextprodotto());
+        holder.txtbody.setText(review.get(position).getTextreview());
+        holder.rate.setRating(review.get(position).getRatingleft());
 
-            FirebaseFirestore db = FirebaseFirestore.getInstance();
-            DocumentReference doc1 = db.collection("watchlist")
-                    .document(Objects.requireNonNull(review.get(position).getTextprodotto()));
-            doc1.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                @Override
-                public void onSuccess(DocumentSnapshot documentSnapshot) {
-                    if(documentSnapshot.exists()){
-                        holder.txtproduct.setText(documentSnapshot.getString("name"));
-                    }
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @SuppressLint("ShowToast")
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(context,"Fail Loading Data",Toast.LENGTH_SHORT);
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-                }
+        DocumentReference doc1 = db.collection("watchlist")
+               .document(Objects.requireNonNull(review.get(position).getTextprodotto()));
+        doc1.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+             @Override
+             public void onSuccess(DocumentSnapshot documentSnapshot) {
+                  if(documentSnapshot.exists()){
+                      holder.txtproduct.setText(documentSnapshot.getString("name"));
+                  }
+             }
+        }).addOnFailureListener(new OnFailureListener() {
+             @SuppressLint("ShowToast")
+             @Override
+             public void onFailure(@NonNull Exception e) {
+                 Toast.makeText(context,"Fail Loading Data",Toast.LENGTH_SHORT);
+             }
 
             });
-        holder.rate.setRating(review.get(position).getRatingleft());
+
     }
 
     @Override
@@ -89,8 +91,8 @@ public class reviewleftCardAdapter extends RecyclerView.Adapter<reviewleftCardAd
         RatingBar rate;
         public ViewHolderRecensione(@NonNull View itemView) {
             super(itemView);
-            txtbody = itemView.findViewById(R.id.reviewbody);
             txtproduct = itemView.findViewById(R.id.txtprod);
+            txtbody = itemView.findViewById(R.id.reviewbody);
             rate = itemView.findViewById(R.id.ratereview);
         }
     }

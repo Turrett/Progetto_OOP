@@ -3,6 +3,7 @@ package com.example.progettooop.ui.user;
 import android.annotation.SuppressLint;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -42,7 +43,7 @@ public class ViewUserData extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_user_data);
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         username = findViewById(R.id.user_username_alt);
         numero =findViewById(R.id.User_Phone_Number_alt);
         indirizzo = findViewById(R.id.User_address_alt);
@@ -125,4 +126,18 @@ public class ViewUserData extends AppCompatActivity {
 
         user_progressbar.setVisibility(View.GONE);
     }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                ViewUserData.this.finish();
+                break;
+            default:
+                break;
+
+        }
+        return true;
+    }
+
 }
