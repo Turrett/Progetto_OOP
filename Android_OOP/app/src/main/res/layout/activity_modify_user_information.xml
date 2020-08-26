@@ -69,6 +69,18 @@
                 android:textSize="18sp"
                 android:autofillHints="@string/inserisci_lo_username" />
 
+            <TextView
+                android:id="@+id/txtcittamodfy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp"
+                android:ems="10"
+                android:paddingTop="10dp"
+                android:textSize="18sp"
+                android:hint="@string/citt"/>
+
             <EditText
                 android:id="@+id/modify_address"
                 android:layout_width="match_parent"
