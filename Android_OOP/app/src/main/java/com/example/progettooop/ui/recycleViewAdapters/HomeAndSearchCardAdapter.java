@@ -39,8 +39,6 @@ public class HomeAndSearchCardAdapter extends RecyclerView.Adapter<HomeAndSearch
 
         products=prodotti;
         context=ct;
-
-
     }
 
         // here i create my card

@@ -1,14 +1,16 @@
 package com.example.progettooop.ui.Objects;
 
 public class reviewleft {
-    private String textreview;
-    private double ratingleft;
-    private String state;
+    private String textprodotto;
+    private String textreview; //testo della recensione
+    private float ratingleft; //numero di stelle lasciare
 
-    public reviewleft(String textreview, Double ratingleft, String state) {
+
+    public reviewleft(String textprodotto, String textreview, float ratingleft) {
         this.textreview = textreview;
         this.ratingleft = ratingleft;
-        this.state = state;
+        this.textprodotto =textprodotto;
+
     }
 
     public String getTextreview() {
@@ -19,7 +21,7 @@ public class reviewleft {
         this.textreview = textreview;
     }
 
-    public Double getRatingleft() {
+    public float getRatingleft() {
         return ratingleft;
     }
 
@@ -27,12 +29,11 @@ public class reviewleft {
         this.ratingleft = ratingleft;
     }
 
-
-    public String getState() {
-        return state;
+    public String getTextprodotto() {
+        return textprodotto;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public void setTextprodotto(String textprodotto) {
+        this.textprodotto = textprodotto;
     }
 }
