@@ -145,33 +145,37 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="20dp"
-                android:background="@drawable/border2"></GridView>
+                android:background="@drawable/border2">
+
+            </GridView>
 
             <LinearLayout
                 android:id="@+id/user"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:orientation="horizontal">
 
                 <LinearLayout
                     android:id="@+id/nomeutentelayout"
-                    android:layout_width="215dp"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:layout_width="210dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp">
 
                     <TextView
                         android:id="@+id/productauthor"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
-                        android:layout_marginTop="8dp" />
+                        android:layout_marginTop="8dp"
+                        android:paddingBottom="2dp"/>
                 </LinearLayout>
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingStart="20dp"
+                    android:layout_marginTop="5dp"
                     android:paddingEnd="10dp">
 
                     <Button
@@ -182,7 +186,9 @@
                         android:paddingEnd="10dp"
                         android:text="@string/vai_all_utente"
                         android:textColor="@color/color15"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:layout_marginStart="25dp"
+                        />
                 </RelativeLayout>
 
             </LinearLayout>
