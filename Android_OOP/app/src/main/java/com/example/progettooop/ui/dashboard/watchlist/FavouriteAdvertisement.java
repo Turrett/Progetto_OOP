@@ -13,10 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.progettooop.R;
 import com.example.progettooop.ui.Objects.wishedProd;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -48,24 +48,26 @@ public class FavouriteAdvertisement extends Fragment {
         FirebaseFirestore.getInstance()
                 .collection("watchlist")
                 .whereEqualTo("UserAddingId", auth.getUid())
-                .orderBy("state")
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                        @Override
-                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                        if (value!=null)
-                        for (QueryDocumentSnapshot document : value) {
-                            products.add(new wishedProd(document.getString("name"),
-                                    document.getString("quantity"),
-                                    document.getString("expire"),
-                                    document.getString("UserPostingId"),
-                                    document.getString("ProductId"),
-                                    document.getString("UserAddingId"),
-                                    document.getId(),
-                                    document.getString("state")));
-                        }
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+                        if (task.getResult()!=null)
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                products.add(new wishedProd(document.getString("name"),
+                                        document.getString("quantity"),
+                                        document.getString("expire"),
+                                        document.getString("UserPostingId"),
+                                        document.getString("ProductId"),
+                                        document.getString("UserAddingId"),
+                                        document.getId(),
+                                        document.getString("state")));
+                            }
                         adapter = new WatchlistCardAdapter(getContext(), products);
                         recyclerView.setAdapter(adapter);
                     }
+
                 });
 
 
@@ -75,6 +77,7 @@ public class FavouriteAdvertisement extends Fragment {
 
         return root;
     }
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {

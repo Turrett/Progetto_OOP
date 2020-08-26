@@ -53,9 +53,6 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
             public void onClick(View view) {
                 ArrayList <Product> products  = new ArrayList<Product>();
                 searchProductsToRecycleview(root,products,mSearchField.getText().toString().toLowerCase());
-                if (products.size()<=0){
-                    Toast.makeText(getContext(), "Nessun prodotto disponibile", Toast.LENGTH_SHORT).show();
-                }
             }
         });
 
@@ -88,6 +85,9 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
                                             document.getString("state")));
                                 }
 
+                            }
+                            if (prod.size()==0){
+                                Toast.makeText(getContext(), "Nessun prodotto disponibile", Toast.LENGTH_SHORT).show();
                             }
                             recyclerView = v.findViewById(R.id.result_list);
                             HomeAndSearchCardAdapter homeAndSearchCardAdapter = new HomeAndSearchCardAdapter(v.getContext(),prod);
