@@ -27,7 +27,7 @@ import java.util.ArrayList;
 public class ActiveAdvertisement extends Fragment implements View.OnClickListener{
 
     public static final String ARG_OBJECT = "object1";
-    private FirebaseAuth mauth ;
+    private FirebaseAuth mauth;
     private FirebaseFirestore db;
     private RecyclerView recyclerView;
 
