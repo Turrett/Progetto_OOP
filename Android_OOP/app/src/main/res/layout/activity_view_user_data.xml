@@ -87,6 +87,19 @@
                 android:textSize="18sp" />
 
             <TextView
+                android:id="@+id/User_citta_alt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/citt"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp"
+                android:autofillHints="yes"
+                android:ems="10"
+                android:paddingTop="8dp"
+                android:textSize="18sp"/>
+
+            <TextView
                 android:id="@+id/User_address_alt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -28,7 +28,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 public class ViewUserData extends AppCompatActivity {
-    private TextView username,numero,indirizzo,email;
+    private TextView username,numero,indirizzo,email, citta;
     private ProgressBar user_progressbar;
     private ImageView userImage;
     public String imageUrl;
@@ -46,6 +46,7 @@ public class ViewUserData extends AppCompatActivity {
         username = findViewById(R.id.user_username_alt);
         numero =findViewById(R.id.User_Phone_Number_alt);
         indirizzo = findViewById(R.id.User_address_alt);
+        citta = findViewById(R.id.User_citta_alt);
         email = findViewById(R.id.User_email_alt);
         userImage = findViewById(R.id.User_iv_alt);
         user_progressbar =findViewById(R.id.progressbar_user_alt);
@@ -73,6 +74,7 @@ public class ViewUserData extends AppCompatActivity {
                     email.setText(documentSnapshot.getString("email"));
                     indirizzo.setText(documentSnapshot.getString("address"));
                     numero.setText(documentSnapshot.getString("phone"));
+                    citta.setText(documentSnapshot.getString("city"));
 
                     imageUrl = documentSnapshot.getString("PhotoID");
 

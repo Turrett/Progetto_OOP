@@ -42,7 +42,7 @@ import java.util.Objects;
 public class ModifyUserInfo extends AppCompatActivity implements View.OnClickListener {
     private final static String TAG = "Upload user";
     private ImageView image;
-    private EditText username, address, phone;
+    private EditText username, address, phone, citta;
     private EditText monday,tuesday,wednesday,thursday,friday,saturday,sunday;
     private Button save;
     private ProgressBar loadingBar;
@@ -63,6 +63,7 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
         setTitle("Inserisci i nuovi dati");
         username = (EditText) findViewById(R.id.modify_username);
         address = (EditText) findViewById(R.id.modify_address);
+        citta = (EditText) findViewById(R.id.modify_citta);
         phone =  (EditText) findViewById(R.id.modify_phone);
         image = (ImageView) findViewById(R.id.imageView);
         save = (Button) findViewById(R.id.save_changes_button);
@@ -76,7 +77,6 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
         friday = findViewById(R.id.modify_friday);
         saturday = findViewById(R.id.modify_saturday);
         sunday = findViewById(R.id.modify_sunday);
-
         loadingBar.setVisibility(View.GONE);
 
 
@@ -190,6 +190,7 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
                                 username.setText(document.getString("username"));
                                 phone.setText(document.getString("phone"));
                                 address.setText(document.getString("address"));
+                                citta.setText(document.getString("city"));
                                 monday.setText(document.getString("monday"));
                                 tuesday.setText(document.getString("tuesday"));
                                 wednesday.setText(document.getString("wednesday"));

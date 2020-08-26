@@ -1,5 +1,6 @@
 package com.example.progettooop.ui.recensioni;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,18 +15,26 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.progettooop.R;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.firestore.WriteBatch;
+import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import static android.content.ContentValues.TAG;
 
@@ -36,6 +45,7 @@ public class RecensioniActivity extends AppCompatActivity {
     Bundle extras;
 
     public FirebaseFirestore db;
+    public FirebaseAuth auth;
     private StorageReference ref;
 
 
@@ -59,6 +69,8 @@ public class RecensioniActivity extends AppCompatActivity {
 
         txtposting.setText(extras.getString("UserPostingId"));
         txtprod.setText(extras.getString("ProductId"));
+        getusername();
+        getproduct();
 
         Button btnsave = findViewById(R.id.btnrecensione);
         btnsave.setOnClickListener(new View.OnClickListener() {
@@ -70,8 +82,56 @@ public class RecensioniActivity extends AppCompatActivity {
 
     }
 
-    private void addreview(){
 
+
+    private void getusername(){
+        db = FirebaseFirestore.getInstance();
+        auth = FirebaseAuth.getInstance();
+
+        DocumentReference doc = db.collection("utenti")
+                .document(Objects.requireNonNull(extras.getString("UserPostingId")));
+        doc.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if(documentSnapshot.exists()){
+                    txtposting.setText(documentSnapshot.getString("username"));
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @SuppressLint("ShowToast")
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(RecensioniActivity.this,"Fail Loading Data",Toast.LENGTH_SHORT);
+
+            }
+
+        });
+    }
+
+
+    private void getproduct(){
+        DocumentReference doc1 = db.collection("watchlist")
+                .document(Objects.requireNonNull(extras.getString("watchlistId")));
+        doc1.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if(documentSnapshot.exists()){
+                    txtprod.setText(documentSnapshot.getString("name"));
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @SuppressLint("ShowToast")
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(RecensioniActivity.this,"Fail Loading Data",Toast.LENGTH_SHORT);
+
+            }
+
+        });
+    }
+
+
+    private void addreview(){
         //controllo la presenza o meno della recensione
         String rece = recensione.getText().toString();
         if(rece.isEmpty()){
@@ -92,6 +152,7 @@ public class RecensioniActivity extends AppCompatActivity {
         e qindi posso aggiungere i dati nel documento "recensioni"
          */
 
+
         db = FirebaseFirestore.getInstance();
         Date date = new Date();
         SimpleDateFormat ft = new SimpleDateFormat ("E dd.MM.yyyy 'at' hh:mm:ss a zzz");
@@ -111,6 +172,7 @@ public class RecensioniActivity extends AppCompatActivity {
         DocumentReference doc2=db.collection("annuncio").document(extras.getString("ProductId"));
         DocumentReference doc3 = db.collection("recensione").document();
 
+
         batch.delete(doc1);
         batch.update(doc2,"state","reviewed");
         batch.set(doc3,review, SetOptions.merge());
@@ -128,6 +190,15 @@ public class RecensioniActivity extends AppCompatActivity {
                         Log.w(TAG, "errore nel salvataggio della recensione", e);
                     }
         });
+
+
     }
+
+
+
+
+
+
+
 
 }

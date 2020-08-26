@@ -1,7 +1,9 @@
 package com.example.progettooop.ui.dashboard.yourproducts;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,16 +16,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.progettooop.R;
 import com.example.progettooop.ui.Objects.DashProduct;
+import com.example.progettooop.ui.recensioni.RecensioniActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.WriteBatch;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class PostedProductsCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
@@ -87,7 +94,7 @@ public class PostedProductsCardAdapter extends RecyclerView.Adapter<RecyclerView
 
 
     public class DashAcceptedViewHolder extends RecyclerView.ViewHolder{
-        TextView name,quantity,expire,userBuying;
+        public TextView name,quantity,expire,userBuying;
         Button retired;
 
         public DashAcceptedViewHolder(@NonNull View itemView) {
@@ -96,15 +103,38 @@ public class PostedProductsCardAdapter extends RecyclerView.Adapter<RecyclerView
             quantity = itemView.findViewById(R.id.qta_dash);
             expire =itemView.findViewById(R.id.exp_dash);
             userBuying =itemView.findViewById(R.id.txtutilizzatore);
-
             retired=itemView.findViewById(R.id.buttonretire);
         }
+
 
         public void runAccept(ArrayList<DashProduct>prodotti , int position, Context context){
             name.setText(prodotti.get(position).getNamedash());
             quantity.setText(prodotti.get(position).getQuantitydash());
             expire.setText(prodotti.get(position).getExpirationdash());
             userBuying.setText(prodotti.get(position).getUsername());
+
+
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+            db = FirebaseFirestore.getInstance();
+
+            DocumentReference doc = db.collection("utenti")
+                    .document(Objects.requireNonNull(prodotti.get(position).getUsername()));
+            doc.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                    if(documentSnapshot.exists()){
+                        userBuying.setText(documentSnapshot.getString("username"));
+                    }
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @SuppressLint("ShowToast")
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(context,"Fail Loading Data",Toast.LENGTH_SHORT);
+
+                }
+
+            });
 
 
             retired.setOnClickListener(new View.OnClickListener() {
@@ -128,6 +158,7 @@ public class PostedProductsCardAdapter extends RecyclerView.Adapter<RecyclerView
                 }
             });
         }
+
 
 
     }
@@ -213,6 +244,8 @@ public class PostedProductsCardAdapter extends RecyclerView.Adapter<RecyclerView
             });
         }
     }
+
+
 
 
 }

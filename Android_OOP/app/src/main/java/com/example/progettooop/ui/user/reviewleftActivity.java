@@ -80,14 +80,6 @@ public class reviewleftActivity extends AppCompatActivity {
                     Toast.makeText(reviewleftActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
-
-
-
-
-
-
-
-
         }
 }
 
