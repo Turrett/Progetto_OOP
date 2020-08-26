@@ -14,9 +14,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.progettooop.R;
 import com.example.progettooop.ui.Objects.Product;
 import com.example.progettooop.ui.Objects.reviewleft;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class reviewleftCardAdapter extends RecyclerView.Adapter<reviewleftCardAdapter.ViewHolderRecensione> {
 
@@ -42,6 +47,21 @@ public class reviewleftCardAdapter extends RecyclerView.Adapter<reviewleftCardAd
     public void onBindViewHolder(@NonNull ViewHolderRecensione holder, int position) {
         holder.txtbody.setText(review.get(position).getTextreview());
         holder.txtproduct.setText(review.get(position).getTextprodotto());
+
+        // holder.txtproduct.setText(review.get(position).getTextprodotto());
+
+       /* FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("annuncio")
+                .document(review.get(position).getTextprodotto())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        DocumentSnapshot document = task.getResult();
+                        assert document != null;
+                        holder.txtproduct.setText(Objects.requireNonNull(document.get("name")).toString());
+                    }
+                });*/
         holder.rate.setRating(review.get(position).getRatingleft());
     }
 

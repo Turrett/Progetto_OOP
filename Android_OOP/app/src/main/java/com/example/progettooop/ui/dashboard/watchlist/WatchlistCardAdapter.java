@@ -217,7 +217,4 @@ public class WatchlistCardAdapter extends RecyclerView.Adapter<RecyclerView.View
     public int getItemCount() {
         return products.size();
     }
-
-
-
 }

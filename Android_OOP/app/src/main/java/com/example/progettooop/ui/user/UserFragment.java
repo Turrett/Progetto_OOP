@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class UserFragment extends Fragment implements View.OnClickListener {
 
-    private TextView username,numero,indirizzo,email;
+    private TextView username,numero,indirizzo,email, citta;
     private ProgressBar user_progressbar;
     private UserViewModel userViewModel;
     private ImageView userImage;
@@ -62,6 +62,7 @@ public class UserFragment extends Fragment implements View.OnClickListener {
         userImage = root.findViewById(R.id.User_iv);
         user_progressbar =root.findViewById(R.id.progressbar_user);
         rate = (RatingBar) root.findViewById(R.id.rating_bar);
+        citta = root.findViewById(R.id.txtcitta);
 
         monday = root.findViewById(R.id.monday_hrs);
         tuesday = root.findViewById(R.id.tuesday_hrs);
@@ -110,6 +111,7 @@ public class UserFragment extends Fragment implements View.OnClickListener {
                     username.setText(documentSnapshot.getString("username"));
                     email.setText(documentSnapshot.getString("email"));
                     indirizzo.setText(documentSnapshot.getString("address"));
+                    citta.setText(documentSnapshot.getString("city"));
                     numero.setText(documentSnapshot.getString("phone"));
                     monday.setText(documentSnapshot.getString("monday"));
                     tuesday.setText(documentSnapshot.getString("tuesday"));
