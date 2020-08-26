@@ -110,11 +110,11 @@ public class ViewUserData extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot querySnapshot) {
-                        Double count=0.0;
-                        Double sum = 0.0;
+                        float count= (float) 0.0;
+                        float sum = (float) 0.0;
                         for(QueryDocumentSnapshot doc:querySnapshot){
                             count+=1;
-                            sum += (Double) doc.get("RatingReview");
+                            sum += (float) doc.get("RatingReview",Float.class);
                         }
                         rate.setRating((float) (sum/count));
                     }
