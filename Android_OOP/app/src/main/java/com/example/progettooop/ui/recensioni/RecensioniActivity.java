@@ -28,7 +28,7 @@ import java.util.Map;
 import static android.content.ContentValues.TAG;
 
 public class RecensioniActivity extends AppCompatActivity {
-    TextView txtadding, txtposting, txtprod, error;
+    TextView txtposting, txtprod, error;
     EditText recensione;
     RatingBar rating;
     Bundle extras;
@@ -42,7 +42,6 @@ public class RecensioniActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_recensione);
         setTitle("Scrivi qui la tua recensione");
-        txtadding =findViewById(R.id.txtuseradding);
         txtposting = findViewById(R.id.txtuserposting);
         recensione = findViewById(R.id.txtrecensione);
         error = findViewById(R.id.txterror);
@@ -55,8 +54,8 @@ public class RecensioniActivity extends AppCompatActivity {
          */
          extras = getIntent().getExtras();
         assert extras != null;
-        txtadding.setText(extras.getString("UserAddingId"));
-        //txtposting.setText(extras.getString("UserPostingId"));
+
+        txtposting.setText(extras.getString("UserPostingId"));
         txtprod.setText(extras.getString("ProductId"));
 
         Button btnsave = findViewById(R.id.btnrecensione);

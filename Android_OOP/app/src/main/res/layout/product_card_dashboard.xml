@@ -123,10 +123,19 @@
 
             </LinearLayout>
 
+            <GridView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/border2"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp">
+            </GridView>
+
             <LinearLayout
+                android:id="@+id/layoutuser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/borders"
                 android:orientation="horizontal">
 
                 <LinearLayout

@@ -18,15 +18,16 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:paddingTop="8dp"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:text="@string/recensisci_l_utente_ed_il_suo_prodotto"/>
 
         <TextView
             android:id="@+id/txtuserposting"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
             android:paddingTop="8dp"
-            android:textSize="18sp"
-            android:layout_marginTop="10dp"/>
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/txtprodid"

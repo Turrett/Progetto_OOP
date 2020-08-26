@@ -196,10 +196,19 @@ public class PostedProductsCardAdapter extends RecyclerView.Adapter<RecyclerView
             seeAll.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    //solo se la textview è maggiore di 0
 
-                    Intent intent = new Intent(view.getContext(), SeeProductRequestsActivity.class);
-                    intent.putExtra("productId",prodotti.get(position).getProductId());
-                    context.startActivity(intent);
+                    String val = numRequests.getText().toString();
+                    String zero = "0";
+                    if(val.compareTo(zero) > 0) {
+
+                        Intent intent = new Intent(view.getContext(), SeeProductRequestsActivity.class);
+                        intent.putExtra("productId", prodotti.get(position).getProductId());
+                        context.startActivity(intent);
+                    }
+                    else{
+                        Toast.makeText(context, "Non c'è niente da mostrare", Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
         }
