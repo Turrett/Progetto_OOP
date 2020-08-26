@@ -22,6 +22,8 @@ import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.firestore.WriteBatch;
 import com.google.firebase.storage.StorageReference;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -91,6 +93,8 @@ public class RecensioniActivity extends AppCompatActivity {
          */
 
         db = FirebaseFirestore.getInstance();
+        Date date = new Date();
+        SimpleDateFormat ft = new SimpleDateFormat ("E dd.MM.yyyy 'at' hh:mm:ss a zzz");
 
         Map<String, Object> review = new HashMap<>();
         review.put("UserPostingReviewId", extras.getString("UserAddingId"));
@@ -98,6 +102,7 @@ public class RecensioniActivity extends AppCompatActivity {
         review.put("ProductReviewId", extras.getString("ProductId"));
         review.put("BodyReview", rece);
         review.put("RatingReview", ratereview);
+        review.put("date",ft.format(date));
         review.put("state", "reviewed");
 
         WriteBatch batch =db.batch();
