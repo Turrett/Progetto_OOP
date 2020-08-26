@@ -31,6 +31,7 @@ public class RecensioniActivity extends AppCompatActivity {
     TextView txtadding, txtposting, txtprod, error;
     EditText recensione;
     RatingBar rating;
+    Bundle extras;
 
     public FirebaseFirestore db;
     private StorageReference ref;
@@ -52,8 +53,7 @@ public class RecensioniActivity extends AppCompatActivity {
         quindi, nel db posso direttamente prendere txtadding.getText()
         per recuperare i valori di cui ho bisogno
          */
-
-        Bundle extras = getIntent().getExtras();
+         extras = getIntent().getExtras();
         assert extras != null;
         txtadding.setText(extras.getString("UserAddingId"));
         //txtposting.setText(extras.getString("UserPostingId"));
@@ -92,8 +92,6 @@ public class RecensioniActivity extends AppCompatActivity {
          */
 
         db = FirebaseFirestore.getInstance();
-
-        Bundle extras = getIntent().getExtras();
 
         Map<String, Object> review = new HashMap<>();
         review.put("UserPostingReviewId", extras.getString("UserAddingId"));

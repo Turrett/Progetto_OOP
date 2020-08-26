@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,15 +22,17 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 public class ViewUserData extends AppCompatActivity {
     private TextView username,numero,indirizzo,email;
     private ProgressBar user_progressbar;
-    private UserViewModel userViewModel;
     private ImageView userImage;
     public String imageUrl;
+    private RatingBar rate;
 
     private FirebaseFirestore db;
     private FirebaseAuth mAuth;
@@ -46,6 +49,7 @@ public class ViewUserData extends AppCompatActivity {
         email = findViewById(R.id.User_email_alt);
         userImage = findViewById(R.id.User_iv_alt);
         user_progressbar =findViewById(R.id.progressbar_user_alt);
+        rate= findViewById(R.id.rating_bar_alt);
 
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
@@ -101,6 +105,20 @@ public class ViewUserData extends AppCompatActivity {
 
         });
 
+        db.collection("recensione").whereEqualTo("UserReviewedId",extras.getString("UserId"))
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot querySnapshot) {
+                        Double count=0.0;
+                        Double sum = 0.0;
+                        for(QueryDocumentSnapshot doc:querySnapshot){
+                            count+=1;
+                            sum += (Double) doc.get("RatingReview");
+                        }
+                        rate.setRating((float) (sum/count));
+                    }
+                });
 
 
         user_progressbar.setVisibility(View.GONE);

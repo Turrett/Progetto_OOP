@@ -80,12 +80,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="42dp"
                     android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="300px"
                     android:isIndicator="true"
-                    android:max="10"
-                    android:numStars="10"
+                    android:max="5"
+                    android:numStars="5"
                     android:scaleX="0.7"
                     android:scaleY="0.7"
-                    tools:rating="0.5" />
+                    tools:rating="0" />
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/fabopenreview"

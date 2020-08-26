@@ -66,11 +66,11 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
                 android:isIndicator="true"
-                android:max="10"
-                android:numStars="10"
+                android:max="5"
+                android:numStars="5"
                 android:scaleX="0.7"
                 android:scaleY="0.7"
-                tools:rating="1" />
+                tools:rating="0" />
 
             <TextView
                 android:id="@+id/User_email_alt"
