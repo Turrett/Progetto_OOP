@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.progettooop.R;
 import com.example.progettooop.ui.Objects.Request;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -34,6 +35,7 @@ public class ProductRequestAdapter extends RecyclerView.Adapter<ProductRequestAd
     public static class RequestViewHolder extends RecyclerView.ViewHolder{
         TextView message,when,userId;
         Button accept;
+
 
         public RequestViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -72,6 +74,20 @@ public class ProductRequestAdapter extends RecyclerView.Adapter<ProductRequestAd
             public void onClick(View view) {
                 WriteBatch batch = db.batch();
 
+//set the other requests to refused
+                ArrayList <DocumentReference> doc =new ArrayList<DocumentReference>();
+                int count =0;
+                for (int i =0;i<requests.size();i++){
+                    if(i!=position){
+                        count++;
+                        doc.add(db.collection("watchlist").document(requests.get(i).getWatchlistId())) ;
+                    }
+                }
+
+                for (int i =0;i<count;i++){
+                    batch.update(doc.get(i),"state","refused");
+                }
+
 //accepts the request
                 DocumentReference doc1 =db.collection("watchlist")
                         .document(requests.get(position).getWatchlistId());
@@ -91,11 +107,19 @@ public class ProductRequestAdapter extends RecyclerView.Adapter<ProductRequestAd
                 DocumentReference doc4=db.collection("annuncio")
                         .document(requests.get(position).getProductId());
                         batch.update(doc4,"WatchlistIdAccepted", requests.get(position).getWatchlistId());
+
+                //set the other requests to refused
 //eseguo la transazione
                         batch.commit().addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 Toast.makeText(context,"dataupdated",Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(context,"Something went wrong",Toast.LENGTH_SHORT).show();
                             }
                         });
             }
