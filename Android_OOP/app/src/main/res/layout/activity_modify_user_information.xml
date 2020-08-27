@@ -141,13 +141,13 @@
                     android:id="@+id/modify_monday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="@string/nuovo_orario"
+                    android:layout_marginStart="10dp"
+                    android:autofillHints="@string/orario_di_luned"
+                    android:hint="@string/orario_di_luned"
+                    android:inputType="time|datetime"
                     android:paddingTop="3dp"
                     android:textSize="18sp"
-                    android:inputType="time|datetime"
-                    android:layout_marginStart="10dp"
-                    tools:ignore="TextFields"
-                    android:autofillHints="@string/nuovo_orario"/>
+                    tools:ignore="TextFields" />
 
                 <TextView
                     android:id="@+id/modifytxtv3"
@@ -161,13 +161,13 @@
                     android:id="@+id/modify_tuesday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="@string/nuovo_orario"
+                    android:layout_marginStart="10dp"
+                    android:autofillHints="@string/orario_di_marted"
+                    android:hint="@string/orario_di_marted"
+                    android:inputType="time|datetime"
                     android:paddingTop="3dp"
                     android:textSize="18sp"
-                    android:inputType="time|datetime"
-                    android:layout_marginStart="10dp"
-                    tools:ignore="TextFields"
-                    android:autofillHints="@string/nuovo_orario"/>
+                    tools:ignore="TextFields" />
 
                 <TextView
                     android:id="@+id/modifytxtv5"
@@ -181,13 +181,13 @@
                     android:id="@+id/modify_wednesday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="@string/nuovo_orario"
+                    android:layout_marginStart="10dp"
+                    android:autofillHints="@string/orario_di_mercoled"
+                    android:hint="@string/orario_di_mercoled"
+                    android:inputType="time|datetime"
                     android:paddingTop="3dp"
                     android:textSize="18sp"
-                    android:inputType="time|datetime"
-                    android:layout_marginStart="10dp"
-                    tools:ignore="TextFields"
-                    android:autofillHints="@string/nuovo_orario"/>
+                    tools:ignore="TextFields" />
 
                 <TextView
                     android:id="@+id/modifytxtv7"
@@ -201,13 +201,13 @@
                     android:id="@+id/modify_thursday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="@string/nuovo_orario"
+                    android:hint="@string/orario_di_gioved"
                     android:paddingTop="3dp"
                     android:textSize="18sp"
                     android:inputType="time|datetime"
                     android:layout_marginStart="10dp"
                     tools:ignore="TextFields"
-                    android:autofillHints="@string/nuovo_orario"/>
+                    android:autofillHints="@string/orario_di_gioved"/>
 
                 <TextView
                     android:id="@+id/modifytxtv9"
@@ -221,13 +221,13 @@
                     android:id="@+id/modify_friday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="@string/nuovo_orario"
+                    android:hint="@string/orario_di_venerd"
                     android:paddingTop="3dp"
                     android:textSize="18sp"
                     android:inputType="time|datetime"
                     android:layout_marginStart="10dp"
                     tools:ignore="TextFields"
-                    android:autofillHints="@string/nuovo_orario" />
+                    android:autofillHints="@string/orario_di_venerd" />
 
                 <TextView
                     android:id="@+id/modifytxtv11"
@@ -241,12 +241,12 @@
                     android:id="@+id/modify_saturday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="@string/nuovo_orario"
+                    android:hint="@string/orario_di_sabato"
                     android:paddingTop="3dp"
                     android:textSize="18sp"
                     android:inputType="time|datetime"
                     android:layout_marginStart="10dp"
-                    android:autofillHints="@string/nuovo_orario"
+                    android:autofillHints="@string/orario_di_sabato"
                     tools:ignore="TextFields" />
 
                 <TextView
@@ -262,11 +262,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:hint="@string/nuovo_orario"
+                    android:hint="@string/orario_di_domenica"
                     android:paddingTop="3dp"
                     android:textSize="18sp"
                     android:inputType="time|datetime"
-                    android:autofillHints="@string/nuovo_orario"
+                    android:autofillHints="@string/orario_di_domenica"
                     tools:ignore="TextFields" />
             </GridLayout>
 

@@ -155,14 +155,14 @@
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:paddingLeft="8dp"
-                    android:text="Lunedì"
+                    android:text="@string/luned"
                     android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/monday_hour_alt"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="orario di lunedì"
+                    android:text="@string/orario_di_luned"
                     android:textSize="18sp" />
 
                 <TextView
@@ -171,7 +171,7 @@
                     android:layout_height="wrap_content"
                     android:paddingLeft="8dp"
                     android:paddingTop="3dp"
-                    android:text="Martedì"
+                    android:text="@string/marted"
                     android:textSize="18sp" />
 
                 <TextView
@@ -179,7 +179,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:paddingTop="3dp"
-                    android:text="orario di martedì"
+                    android:text="@string/orario_di_marted"
                     android:textSize="18sp" />
 
                 <TextView
@@ -188,7 +188,7 @@
                     android:layout_height="match_parent"
                     android:paddingLeft="8dp"
                     android:paddingTop="3dp"
-                    android:text="Mercoledì"
+                    android:text="@string/mercoled"
                     android:textSize="18sp" />
 
                 <TextView
@@ -196,7 +196,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:paddingTop="3dp"
-                    android:text="TextView"
+                    android:text="@string/orario_di_mercoled"
                     android:textSize="18sp" />
 
                 <TextView
@@ -205,15 +205,15 @@
                     android:layout_height="wrap_content"
                     android:paddingLeft="8dp"
                     android:paddingTop="3dp"
-                    android:text="Giovedì"
+                    android:text="@string/gioved"
                     android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/thursday_hour_alt"
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
                     android:paddingTop="3dp"
-                    android:text="TextView"
+                    android:text="@string/orario_di_gioved"
                     android:textSize="18sp" />
 
                 <TextView
@@ -222,15 +222,15 @@
                     android:layout_height="match_parent"
                     android:paddingLeft="8dp"
                     android:paddingTop="3dp"
-                    android:text="Venerdì"
+                    android:text="@string/venerd"
                     android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/friday_hour_alt"
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
                     android:paddingTop="3dp"
-                    android:text="TextView"
+                    android:text="@string/orario_di_venerd"
                     android:textSize="18sp" />
 
                 <TextView
@@ -239,14 +239,14 @@
                     android:layout_height="wrap_content"
                     android:paddingLeft="8dp"
                     android:paddingTop="3dp"
-                    android:text="Sabato"
+                    android:text="@string/sabato"
                     android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/saturday_hour_alt"
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
-                    android:text="orario di sabato"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/orario_di_sabato"
                     android:textSize="18sp" />
 
                 <TextView
@@ -254,14 +254,14 @@
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:paddingLeft="8dp"
-                    android:text="Domenica"
+                    android:text="@string/domenica"
                     android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/sunday_hour_alt"
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
-                    android:text="TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/orario_di_domenica"
                     android:textSize="18sp" />
             </GridLayout>
 

@@ -58,7 +58,7 @@ public class AddAdvFragment extends Fragment implements View.OnClickListener {
     }
 
     private void addData () {
-        progressBar.setVisibility(View.VISIBLE);
+
         Product product = new Product(name.getText().toString(), quantity.getText().toString(), expiration.getText().toString(), Objects.requireNonNull(auth.getCurrentUser()).getUid(), null,"posted");
         if (product.getName().isEmpty()) {
             name.requestFocus();
@@ -77,7 +77,7 @@ public class AddAdvFragment extends Fragment implements View.OnClickListener {
             return;
         }
 
-
+        progressBar.setVisibility(View.VISIBLE);
         Map<String, Object> user = new HashMap<>();
         user.put("UId", product.getUserId());
         user.put("name", product.getName());
