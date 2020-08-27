@@ -1,6 +1,7 @@
 package com.example.progettooop.ui.dashboard.yourproducts;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,6 +28,8 @@ public class SeeProductRequestsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recycler_watchlist);
         setTitle("Richieste ricevute");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         requests=new ArrayList<>();
         recyclerView = findViewById(R.id.rec_cardrequest);
 
@@ -61,6 +64,20 @@ public class SeeProductRequestsActivity extends AppCompatActivity {
                     }
                 });
     }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                SeeProductRequestsActivity.this.finish();
+                break;
+            default:
+                break;
+
+        }
+        return true;
+    }
+
 }
 
 

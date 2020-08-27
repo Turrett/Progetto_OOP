@@ -3,6 +3,7 @@ package com.example.progettooop.ui.recensioni;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -54,6 +55,8 @@ public class RecensioniActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_recensione);
         setTitle("Scrivi qui la tua recensione");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         txtposting = findViewById(R.id.txtuserposting);
         recensione = findViewById(R.id.txtrecensione);
         error = findViewById(R.id.txterror);
@@ -196,6 +199,18 @@ public class RecensioniActivity extends AppCompatActivity {
 
 
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                RecensioniActivity.this.finish();
+                break;
+            default:
+                break;
+
+        }
+        return true;
+    }
 
 
 
