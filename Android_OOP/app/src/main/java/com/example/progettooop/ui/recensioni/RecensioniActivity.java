@@ -59,7 +59,6 @@ public class RecensioniActivity extends AppCompatActivity {
 
         txtposting = findViewById(R.id.txtuserposting);
         recensione = findViewById(R.id.txtrecensione);
-        error = findViewById(R.id.txterror);
         rating =findViewById(R.id.rating_recensione);
         txtprod =findViewById(R.id.txtprodid);
         /*
@@ -137,23 +136,13 @@ public class RecensioniActivity extends AppCompatActivity {
     private void addreview(){
         //controllo la presenza o meno della recensione
         String rece = recensione.getText().toString();
-        if(rece.isEmpty()){
-            recensione.setError("inserisci il testo della recensione!");
+        //controllo la presenza o meno delle stelline
+        float ratereview = rating.getRating();
+        if(rece.isEmpty() || ratereview<0.5){
+            recensione.setError("Inserisci un testo e il rating!");
             recensione.requestFocus();
             return;
         }
-
-        //controllo la presenza o meno delle stelline
-        float ratereview = rating.getRating();
-        if(ratereview<1){
-            error.setError("Inserisci una recensione!");
-            rating.requestFocus();
-            return;
-        }
-
-        /*se arrivo qui vuol dire che è stato completato tutto in modo corretto
-        e qindi posso aggiungere i dati nel documento "recensioni"
-         */
 
 
         db = FirebaseFirestore.getInstance();

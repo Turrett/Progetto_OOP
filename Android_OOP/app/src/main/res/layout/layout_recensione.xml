@@ -66,17 +66,12 @@
             android:scaleY="1"
             tools:rating="0.5" />
 
-        <TextView
-            android:id="@+id/txterror"
-            android:layout_width="match_parent"
-            android:layout_height="2dp" />
-
         <Button
             android:id="@+id/btnrecensione"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="60dp"
             android:background="@drawable/buttons"
             android:text="@string/recensisci"
             android:textColor="@color/color15" />
