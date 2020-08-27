@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -43,8 +42,6 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
         setTitle("Inizia la tua registrazione qui");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         EditTextPassword=(EditText) findViewById(R.id.edit_text_register_password);
         EditTextEmail=(EditText) findViewById(R.id.edit_text_registration_email);
         EditTextPasswordCheck = (EditText) findViewById(R.id.edit_text_confirm_password);
@@ -173,21 +170,10 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 }
 
     private void changeUi(){
+
         Intent intent =new Intent(SignUp.this, ModifyUserInfo.class);
         intent.putExtra("type","SignUp");
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                SignUp.this.finish();
-                break;
-            default:
-                break;
-        }
-        return true;
     }
 }
