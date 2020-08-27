@@ -11,9 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.progettooop.ui.Objects.DashProduct;
-import com.example.progettooop.ui.Objects.reviewleft;
 import com.example.progettooop.R;
+import com.example.progettooop.ui.Objects.reviewleft;
 import com.example.progettooop.ui.recycleViewAdapters.reviewleftCardAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -24,7 +23,6 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class reviewleftActivity extends AppCompatActivity {
 
@@ -61,9 +59,9 @@ public class reviewleftActivity extends AppCompatActivity {
                             if (task.isSuccessful()) {
 
                                 for (QueryDocumentSnapshot document : task.getResult()) {
-                                        r.add(new reviewleft(document.getString("BodyReview"),
-                                                 document.getString("ProductReviewId"),
-                                                 document.get("RatingReview", Float.class)
+                                        r.add(new reviewleft(document.getString("ProductReviewId"),//testo recensione
+                                                 document.getString("BodyReview"),//id del prodotto recensito
+                                                 document.get("RatingReview", Float.class)//stelline
                                         ));
                                 }
 
