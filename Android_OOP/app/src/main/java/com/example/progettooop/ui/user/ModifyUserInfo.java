@@ -260,6 +260,7 @@ public class ModifyUserInfo extends AppCompatActivity implements View.OnClickLis
         user.put ("PhotoID",imagePath);
         user.put("phone", numero);
         user.put("username", nick);
+        user.put("city", citta.getText().toString());
         user.put("address", indirizzo);
         user.put("monday",monday.getText().toString());
         user.put("tuesday",tuesday.getText().toString());
