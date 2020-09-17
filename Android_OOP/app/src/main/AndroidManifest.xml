@@ -24,6 +24,7 @@
         <activity android:name=".ui.SignUp" />
         <activity android:name=".ui.mainDashboard" />
         <activity android:name=".ui.recensioni.RecensioniActivity"/>
+        <activity android:name=".ui.advertisement.InfoProduct"/>
         <activity android:name=".ui.search.Searchmod">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />

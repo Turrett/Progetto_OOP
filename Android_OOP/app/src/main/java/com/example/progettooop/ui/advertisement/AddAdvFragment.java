@@ -1,5 +1,6 @@
 package com.example.progettooop.ui.advertisement;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
@@ -16,6 +18,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import com.example.progettooop.R;
 import com.example.progettooop.ui.Objects.Product;
+import com.example.progettooop.ui.SignUp;
+import com.example.progettooop.ui.user.ModifyUserInfo;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,6 +35,7 @@ import static android.content.ContentValues.TAG;
 public class AddAdvFragment extends Fragment implements View.OnClickListener {
     private EditText name,quantity,expiration;
     private ProgressBar progressBar;
+    private ImageButton info;
     private FirebaseAuth auth;
     private FirebaseFirestore db;
 
@@ -42,10 +47,13 @@ public class AddAdvFragment extends Fragment implements View.OnClickListener {
         name = root.findViewById(R.id.addv_name);
         quantity = root.findViewById(R.id.addv_qty);
         expiration = root.findViewById(R.id.addv_expiration);
+        info = root.findViewById(R.id.btninfo);
+        info.setOnClickListener(this);
         Button saveButton = root.findViewById(R.id.addv_save);
         progressBar = root.findViewById(R.id.addv_progressbar);
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
+
 
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,6 +124,8 @@ public class AddAdvFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-
+        if (view.getId() == R.id.btninfo) {
+            startActivity(new Intent(getContext(), InfoProduct.class));
+        }
     }
 }

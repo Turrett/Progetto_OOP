@@ -91,5 +91,7 @@
     <string name="recensisci_l_utente_ed_il_suo_prodotto">Recensisci l\'utente ed il suo prodotto</string>
     <string name="citt">Città</string>
     <string name="inserisci_la_citt">Inserisci la città</string>
+    <string name="info" />
+    <string name="informazioni">"I prodotti per i quali possono essere creati gli annunci devono essere confezionati, mantenuti correttamente, alla giusta temperatura. Affidiamo a voi il buon senso di garantire al prossimo la massima qualità del prodotto per rendere profiquo il funzionamento del servizio."</string>
 
 </resources>

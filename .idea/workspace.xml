@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a7ded79e-cf86-4475-862b-348058925f0e" name="Default Changelist" comment="" />
+    <list default="true" id="a7ded79e-cf86-4475-862b-348058925f0e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android_OOP/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Android_OOP/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android_OOP/app/src/main/java/com/example/progettooop/ui/advertisement/AddAdvFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Android_OOP/app/src/main/java/com/example/progettooop/ui/advertisement/AddAdvFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android_OOP/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Android_OOP/app/src/main/res/values/colors.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,7 +25,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Android_OOP" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="SvnConfiguration">
